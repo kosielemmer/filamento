@@ -1,0 +1,96 @@
+from flask import Flask, request, jsonify
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship, sessionmaker
+
+# Create a PostgreSQL engine
+engine = create_engine('postgresql://user:password@host:port/dbname')
+
+# Define the Manufacturer and Filament tables
+class Manufacturer(Base):
+    __tablename__ = 'manufacturers'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+class Filament(Base):
+    __tablename__ = 'filaments'
+    id = Column(Integer, primary_key=True)
+    manufacturer_id = Column(Integer, ForeignKey('manufacturers.id'))
+    type = Column(String)
+    color_name = Column(String)
+    color_hex_code = Column(String)
+
+# Create a Flask app
+app = Flask(__name__)
+
+# Define the routes for the app
+@app.route('/manufacturers', methods=['GET'])
+def get_manufacturers():
+    # Query the database for all manufacturers
+    session = Session()
+    manufacturers = session.query(Manufacturer).all()
+    return jsonify([{
+        'id': m.id,
+        'name': m.name
+    } for m in manufacturers])
+
+@app.route('/filaments', methods=['GET'])
+def get_filaments():
+    # Query the database for all filaments
+    session = Session()
+    filaments = session.query(Filament).all()
+    return jsonify([{
+        'id': f.id,
+        'manufacturer_id': f.manufacturer_id,
+        'type': f.type,
+        'color_name': f.color_name,
+        'color_hex_code': f.color_hex_code
+    } for f in filaments])
+
+@app.route('/filaments', methods=['POST'])
+def create_filament():
+    # Create a new filament in the database
+    data = request.get_json()
+    session = Session()
+    filament = Filament(**data)
+    session.add(filament)
+    session.commit()
+    return jsonify({'id': filament.id})
+
+@app.route('/filaments/<int:filament_id>', methods=['GET'])
+def get_filament(filament_id):
+    # Query the database for a specific filament
+    session = Session()
+    filament = session.query(Filament).get(filament_id)
+    if filament is None:
+        return jsonify({'error': 'Filament not found'}), 404
+    return jsonify({
+        'id': filament.id,
+        'manufacturer_id': filament.manufacturer_id,
+        'type': filament.type,
+        'color_name': filament.color_name,
+        'color_hex_code': filament.color_hex_code
+    })
+
+@app.route('/filaments/<int:filament_id>', methods=['PUT'])
+def update_filament(filament_id):
+    # Update a specific filament in the database
+    data = request.get_json()
+    session = Session()
+    filament = session.query(Filament).get(filament_id)
+    if filament is None:
+        return jsonify({'error': 'Filament not found'}), 404
+    for key, value in data.items():
+        setattr(filament, key, value)
+    session.commit()
+    return jsonify({'id': filament.id})
+
+@app.route('/filaments/<int:filament_id>', methods=['DELETE'])
+def delete_filament(filament_id):
+    # Delete a specific filament from the database
+    session = Session()
+    filament = session.query(Filament).get(filament_id)
+    if filament is None:
+        return jsonify({'error': 'Filament not found'}), 404
+    session.delete(filament)
+    session.commit()
+    return jsonify({'message': 'Filament deleted successfully'})
