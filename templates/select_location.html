@@ -2,17 +2,11 @@
 
 {% block content %}
 <a href="{{ url_for('select_location') }}" class="btn btn-secondary">Back</a>
-<h1>Shelf {{ shelf }}</h1>
-<form action="{{ url_for('add_inventory') }}" method="post">
-    <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
-    <input type="hidden" name="filament_type" value="{{ filament_type }}">
-    <input type="hidden" name="color_name" value="{{ color_name }}">
-    <div class="position-grid">
-        <button type="submit" name="location" value="{{ shelf }} left front" class="grid-item">{{ shelf }} Left Front</button>
-        <button type="submit" name="location" value="{{ shelf }} left back" class="grid-item">{{ shelf }} Left Back</button>
-        <button type="submit" name="location" value="{{ shelf }} right front" class="grid-item">{{ shelf }} Right Front</button>
-        <button type="submit" name="location" value="{{ shelf }} right back" class="grid-item">{{ shelf }} Right Back</button>
-    </div>
-    <button type="submit" class="btn btn-medium">Add to Inventory</button>
-</form>
+<h1>Select Shelf</h1>
+<div class="shelf-buttons">
+    {% for shelf in range(1, 9) %}
+        <a href="{{ url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf) }}" class="btn btn-shelf">Shelf {{ shelf }}</a>
+    {% endfor %}
+</div>
+<a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Shelf {{ shelf }}</h1>
+<form action="{{ url_for('add_inventory') }}" method="post">
+    <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
+    <input type="hidden" name="filament_type" value="{{ filament_type }}">
+    <input type="hidden" name="color_name" value="{{ color_name }}">
+    <div class="position-grid">
+        <button type="submit" name="location" value="{{ shelf }} left front" class="grid-item">Left Front</button>
+        <button type="submit" name="location" value="{{ shelf }} left back" class="grid-item">Left Back</button>
+        <button type="submit" name="location" value="{{ shelf }} right front" class="grid-item">Right Front</button>
+        <button type="submit" name="location" value="{{ shelf }} right back" class="grid-item">Right Back</button>
+    </div>
+</form>
+<a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name) }}" class="btn btn-small">Back to Shelf Selection</a>
+{% endblock %}

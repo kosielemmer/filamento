@@ -68,12 +68,19 @@ def select_color(manufacturer_id):
     except Exception as e:
         return render_template('error.html', error=f"Error in select_color: {str(e)}"), 500
 
-@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<int:shelf>')
-def select_location(manufacturer_id, filament_type, color_name, shelf):
+@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
+def select_location(manufacturer_id, filament_type, color_name):
     try:
-        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf)
+        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name)
     except Exception as e:
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
+
+@app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<int:shelf>')
+def select_position(manufacturer_id, filament_type, color_name, shelf):
+    try:
+        return render_template('select_position.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf)
+    except Exception as e:
+        return render_template('error.html', error=f"Error in select_position: {str(e)}"), 500
 
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
