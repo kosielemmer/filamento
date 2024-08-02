@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Filament Inventory</h1>
+<a href="{{ url_for('select_manufacturer') }}" class="btn btn-large">Add Inventory</a>
+<a href="{{ url_for('view_inventory') }}" class="btn btn-large">View Inventory</a>
+{% endblock %}

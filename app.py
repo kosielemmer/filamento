@@ -25,18 +25,6 @@ def handle_exception(e):
     return render_template("error.html", error=str(e)), 500
 
 
-app = Flask(__name__)
-
-# Database connection
-def get_db_connection():
-    conn = psycopg2.connect(
-        host="192.168.1.12",
-        database="filamento",
-        user="filamento",
-        password="filamento"
-    )
-    return conn
-
 @app.route('/')
 def index():
     return render_template('index.html')
