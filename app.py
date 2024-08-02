@@ -1,6 +1,26 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+import os
 import psycopg2
-import requests
+
+def get_db_connection():
+    conn = psycopg2.connect(
+        host=os.getenv('DB_HOST', '192.168.1.12'),
+        database=os.getenv('DB_DATABASE', 'filamento'),
+        user=os.getenv('DB_USER', 'filamento'),
+        password=os.getenv('DB_PASSWORD', 'filamento')
+    )
+    return conn
+
+app = Flask(__name__)
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors
+    if isinstance(e, HTTPException):
+        return e
+    # now you're handling non-HTTP exceptions only
+    return render_template("error.html", error=str(e)), 500
+
 
 app = Flask(__name__)
 
