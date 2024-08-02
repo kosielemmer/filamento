@@ -11,5 +11,4 @@ def get_db_connection():
 
 
 if __name__ == '__main__':
-    import_data()
-    print("Data import completed successfully.")
+    print("This script no longer performs data import.")
