@@ -1,36 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Select Filament</h1>
-<form id="filament-form">
-    <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
-    <div>
-        <label for="filament_type">Filament Type:</label>
-        <select name="filament_type" id="filament_type" required>
-            {% for type in types %}
-            <option value="{{ type[0] }}">{{ type[0] }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div>
-        <label for="color_name">Color:</label>
-        <select name="color_name" id="color_name" required>
-            {% for color in colors %}
-            <option value="{{ color[0] }}" style="background-color: {{ color[1] }};">{{ color[0] }}</option>
-            {% endfor %}
-        </select>
-    </div>
-</form>
-<button id="location-btn" class="btn btn-medium">Select Location</button>
-
-<script>
-document.getElementById('location-btn').addEventListener('click', function() {
-    let form = document.getElementById('filament-form');
-    let filamentType = document.getElementById('filament_type').value;
-    let colorName = document.getElementById('color_name').value;
-    form.action = "{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type='FILAMENT_TYPE', color_name='COLOR_NAME') }}".replace('FILAMENT_TYPE', filamentType).replace('COLOR_NAME', colorName);
-    form.submit();
-});
-</script>
+<h1>Select Filament Type</h1>
+<div class="filament-type-buttons">
+{% for type in types %}
+    <a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=type[0], shelf=shelf) }}" class="btn btn-filament-type">{{ type[0] }}</a>
+{% endfor %}
+</div>
 <a href="{{ url_for('select_manufacturer') }}" class="btn btn-small">Back to Manufacturers</a>
 {% endblock %}

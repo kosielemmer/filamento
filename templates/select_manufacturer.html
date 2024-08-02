@@ -10,22 +10,3 @@
 {% endfor %}
 </div>
 {% endblock %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Manufacturer</title>
-    <!-- Add any specific stylesheet links here -->
-</head>
-<body>
-    <h1>Select a Manufacturer</h1>
-    <div class="manufacturer-buttons">
-    {% for manufacturer in manufacturers %}
-        <a href="{{ url_for('select_filament', manufacturer_id=manufacturer.id) }}" class="btn btn-manufacturer">{{ manufacturer.name }}</a>
-    {% else %}
-        <p>No manufacturers found.</p>
-    {% endfor %}
-    </div>
-</body>
-</html>
