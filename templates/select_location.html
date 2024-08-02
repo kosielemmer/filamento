@@ -6,30 +6,14 @@
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
     <input type="hidden" name="color_name" value="{{ color_name }}">
-    <table>
-        <tr>
-            <th></th>
-            <th>Left</th>
-            <th>Right</th>
-        </tr>
+    <div class="grid-container">
         {% for shelf in range(1, 9) %}
-        <tr>
-            <td>Shelf {{ shelf }}</td>
-            <td>
-                <input type="radio" name="location" value="Shelf {{ shelf }} left front" id="shelf{{ shelf }}-left-front" required>
-                <label for="shelf{{ shelf }}-left-front">Front</label>
-                <input type="radio" name="location" value="Shelf {{ shelf }} left back" id="shelf{{ shelf }}-left-back" required>
-                <label for="shelf{{ shelf }}-left-back">Back</label>
-            </td>
-            <td>
-                <input type="radio" name="location" value="Shelf {{ shelf }} right front" id="shelf{{ shelf }}-right-front" required>
-                <label for="shelf{{ shelf }}-right-front">Front</label>
-                <input type="radio" name="location" value="Shelf {{ shelf }} right back" id="shelf{{ shelf }}-right-back" required>
-                <label for="shelf{{ shelf }}-right-back">Back</label>
-            </td>
-        </tr>
+            <button type="submit" name="location" value="Shelf {{ shelf }} left front" class="grid-item">Shelf {{ shelf }}<br>Left Front</button>
+            <button type="submit" name="location" value="Shelf {{ shelf }} left back" class="grid-item">Shelf {{ shelf }}<br>Left Back</button>
+            <button type="submit" name="location" value="Shelf {{ shelf }} right front" class="grid-item">Shelf {{ shelf }}<br>Right Front</button>
+            <button type="submit" name="location" value="Shelf {{ shelf }} right back" class="grid-item">Shelf {{ shelf }}<br>Right Back</button>
         {% endfor %}
-    </table>
+    </div>
     <button type="submit" class="btn btn-medium">Add to Inventory</button>
 </form>
 {% endblock %}
