@@ -39,6 +39,16 @@ def select_manufacturer():
     conn.close()
     return render_template('select_manufacturer.html', manufacturers=manufacturers)
 
+@app.route('/select_filament/<int:manufacturer_id>')
+def select_filament(manufacturer_id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
+    types = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('select_filament.html', manufacturer_id=manufacturer_id, types=types)
+
 @app.route('/select_filament_type/<int:manufacturer_id>')
 def select_filament_type(manufacturer_id):
     conn = get_db_connection()
@@ -63,7 +73,7 @@ def select_color(manufacturer_id, filament_type):
         return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
     except Exception as e:
         flash(f"Error in select_color: {str(e)}", 'error')
-        return redirect(url_for('select_filament_type', manufacturer_id=manufacturer_id))
+        return redirect(url_for('select_filament', manufacturer_id=manufacturer_id))
 
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
 def select_location(manufacturer_id, filament_type, color_name):
