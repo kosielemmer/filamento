@@ -75,15 +75,15 @@ def select_color(manufacturer_id):
         conn.close()
         if not colors:
             flash('No colors found for this filament type.', 'warning')
-        return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
+        return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors, shelf=shelf)
     except Exception as e:
         flash(f"Error in select_color: {str(e)}", 'error')
         return redirect(url_for('select_filament', manufacturer_id=manufacturer_id))
 
-@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>')
-def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
+@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
+def select_location(manufacturer_id, filament_type, color_name, color_hex_code, shelf):
     try:
-        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name)
+        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code, shelf=shelf)
     except Exception as e:
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
 
