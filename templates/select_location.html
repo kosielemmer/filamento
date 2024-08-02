@@ -8,10 +8,15 @@
     <input type="hidden" name="color_name" value="{{ color_name }}">
     <div class="grid-container">
         {% for shelf in range(1, 9) %}
-            <button type="submit" name="location" value="Shelf {{ shelf }} left front" class="grid-item">Shelf {{ shelf }}<br>Left Front</button>
-            <button type="submit" name="location" value="Shelf {{ shelf }} left back" class="grid-item">Shelf {{ shelf }}<br>Left Back</button>
-            <button type="submit" name="location" value="Shelf {{ shelf }} right front" class="grid-item">Shelf {{ shelf }}<br>Right Front</button>
-            <button type="submit" name="location" value="Shelf {{ shelf }} right back" class="grid-item">Shelf {{ shelf }}<br>Right Back</button>
+            <div class="shelf-row">
+                <div class="shelf-label">Shelf {{ shelf }}</div>
+                <div class="position-grid">
+                    <button type="submit" name="location" value="Shelf {{ shelf }} left front" class="grid-item">Left<br>Front</button>
+                    <button type="submit" name="location" value="Shelf {{ shelf }} left back" class="grid-item">Left<br>Back</button>
+                    <button type="submit" name="location" value="Shelf {{ shelf }} right front" class="grid-item">Right<br>Front</button>
+                    <button type="submit" name="location" value="Shelf {{ shelf }} right back" class="grid-item">Right<br>Back</button>
+                </div>
+            </div>
         {% endfor %}
     </div>
     <button type="submit" class="btn btn-medium">Add to Inventory</button>
