@@ -17,7 +17,7 @@ This application is designed to manage a filament inventory for 3D printing. It 
 
 1. **Manufacturer Selection**: Users can select a manufacturer from a list, which is populated from the database.
 2. **Filament Selection**: Based on the selected manufacturer, users can pick a filament type and color. The available options are read from the database.
-3. **Location Selection**: Users can pick a storage location for the filament from a list of available locations. The available options are read from the database.
+3. **Location Selection**: Users can pick a storage location for the filament, which includes options for shelf number (1-8), side (left or right), and position (front or back). This is presented in a grid format.
 4. **View Inventory**: Users can view the entire inventory, which includes details such as manufacturer, filament type, color, and storage location.
 5. **Add Inventory**: Users can add new inventory items by selecting the manufacturer, filament type, color, and location.
 
