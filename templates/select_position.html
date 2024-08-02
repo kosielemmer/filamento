@@ -6,9 +6,9 @@
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
     <input type="hidden" name="color_name" value="{{ color_name }}">
-    <div class="position-grid">
+    <div class="position-buttons">
         {% for position in ['Left Front', 'Left Back', 'Right Front', 'Right Back'] %}
-            <button type="submit" name="location" value="{{ shelf }} {{ position.lower() }}" class="grid-item">{{ position }}</button>
+            <button type="submit" name="location" value="{{ shelf }} {{ position.lower() }}" class="btn btn-large">{{ position }}</button>
         {% endfor %}
     </div>
 </form>
