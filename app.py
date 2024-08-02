@@ -78,17 +78,17 @@ def select_color(manufacturer_id, filament_type):
         flash(f"Error in select_color: {str(e)}", 'error')
         return redirect(url_for('select_filament', manufacturer_id=manufacturer_id))
 
-@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
-def select_location(manufacturer_id, filament_type, color_name):
+@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>')
+def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
     try:
         return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name)
     except Exception as e:
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
 
-@app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<int:shelf>')
-def select_position(manufacturer_id, filament_type, color_name, shelf):
+@app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
+def select_position(manufacturer_id, filament_type, color_name, color_hex_code, shelf):
     try:
-        return render_template('select_position.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf)
+        return render_template('select_position.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code, shelf=shelf)
     except Exception as e:
         return render_template('error.html', error=f"Error in select_position: {str(e)}"), 500
 
@@ -97,13 +97,14 @@ def add_inventory():
     manufacturer_id = request.form['manufacturer_id']
     filament_type = request.form['filament_type']
     color_name = request.form['color_name']
+    color_hex_code = request.form['color_hex_code']
     location = request.form['location']
     
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(
-        sql.SQL("INSERT INTO inventory (manufacturer_id, filament_type, color_name, location) VALUES (%s, %s, %s, %s)"),
-        (manufacturer_id, filament_type, color_name, location)
+        sql.SQL("INSERT INTO inventory (manufacturer_id, filament_type, color_name, color_hex_code, location) VALUES (%s, %s, %s, %s, %s)"),
+        (manufacturer_id, filament_type, color_name, color_hex_code, location)
     )
     conn.commit()
     cur.close()
@@ -117,7 +118,7 @@ def view_inventory():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("""
-        SELECT m.name, i.filament_type, i.color_name, i.location 
+        SELECT m.name, i.filament_type, i.color_name, i.color_hex_code, i.location 
         FROM inventory i 
         JOIN manufacturer m ON i.manufacturer_id = m.id 
         ORDER BY m.name, i.filament_type, i.color_name;
