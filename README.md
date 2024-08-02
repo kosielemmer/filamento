@@ -27,8 +27,24 @@ The application uses two main tables within the PostgreSQL database:
 
 - **Manufacturer**: Contains `id` (primary key) and `name` of the filament manufacturers.
 - **Filament**: Contains `id` (primary key), `manufacturer_id` (foreign key), `type`, `color_name`, and `color_hex_code`.
+- **Inventory**: Contains `id` (primary key), `manufacturer_id` (foreign key), `filament_type`, `color_name`, `color_hex_code`, and `location`.
 
 There is a many-to-one relationship from Filament to Manufacturer, indicated by the `manufacturer_id` foreign key.
+
+## Database Setup
+
+To set up the inventory table in your PostgreSQL database, use the following SQL command:
+
+```sql
+CREATE TABLE IF NOT EXISTS inventory (
+    id SERIAL PRIMARY KEY,
+    manufacturer_id INTEGER,
+    filament_type VARCHAR(50),
+    color_name VARCHAR(50),
+    color_hex_code CHAR(7),
+    location VARCHAR(50)
+);
+```
 
 ## Configuration
 
