@@ -9,14 +9,21 @@
     {% endfor %}
   {% endif %}
 {% endwith %}
-<div class="color-buttons">
-{% if colors %}
-  {% for color in colors %}
-    <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0], color_hex_code=color[1], shelf=shelf) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
-  {% endfor %}
-{% else %}
-  <p>No colors available for this filament type.</p>
-{% endif %}
-</div>
+<form id="colorForm" action="{{ url_for('select_color') }}" method="post">
+    <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
+    <input type="hidden" name="filament_type" value="{{ filament_type }}">
+    <div class="color-buttons">
+    {% if colors %}
+      {% for color in colors %}
+        <button type="submit" name="color_name" value="{{ color[0] }}" class="btn btn-color" style="background-color: {{ color[1] }};">
+          {{ color[0] }}
+          <input type="hidden" name="color_hex_code" value="{{ color[1] }}">
+        </button>
+      {% endfor %}
+    {% else %}
+      <p>No colors available for this filament type.</p>
+    {% endif %}
+    </div>
+</form>
 <a href="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" class="btn btn-small">Back to Filament Types</a>
 {% endblock %}
