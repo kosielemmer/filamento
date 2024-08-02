@@ -7,4 +7,5 @@
     <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0], shelf=shelf) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
 {% endfor %}
 </div>
+<a href="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" class="btn btn-small">Back to Filament Types</a>
 {% endblock %}
