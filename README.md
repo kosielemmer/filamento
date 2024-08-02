@@ -33,18 +33,36 @@ There is a many-to-one relationship from Filament to Manufacturer, indicated by 
 
 ## Database Setup
 
-To set up the inventory table in your PostgreSQL database, use the following SQL command:
+To set up the necessary tables in your PostgreSQL database, use the following SQL commands:
 
 ```sql
+-- Create Manufacturer table
+CREATE TABLE IF NOT EXISTS manufacturer (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Create Filament table
+CREATE TABLE IF NOT EXISTS filament (
+    id SERIAL PRIMARY KEY,
+    manufacturer_id INTEGER REFERENCES manufacturer(id),
+    type VARCHAR(50) NOT NULL,
+    color_name VARCHAR(50) NOT NULL,
+    color_hex_code CHAR(7) NOT NULL
+);
+
+-- Create Inventory table
 CREATE TABLE IF NOT EXISTS inventory (
     id SERIAL PRIMARY KEY,
-    manufacturer_id INTEGER,
+    manufacturer_id INTEGER REFERENCES manufacturer(id),
     filament_type VARCHAR(50),
     color_name VARCHAR(50),
     color_hex_code CHAR(7),
     location VARCHAR(50)
 );
 ```
+
+These commands will create the Manufacturer, Filament, and Inventory tables with the appropriate relationships between them.
 
 ## Configuration
 
