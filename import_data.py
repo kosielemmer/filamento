@@ -28,6 +28,23 @@ def import_data():
         cur.execute('INSERT INTO manufacturer (name) VALUES (%s) RETURNING id;', (manufacturer,))
         manufacturer_id = cur.fetchone()[0]
 
+    # Create tables if they don't exist
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS manufacturer (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) UNIQUE NOT NULL
+        );
+    ''')
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS filament (
+            id SERIAL PRIMARY KEY,
+            manufacturer_id INTEGER REFERENCES manufacturer(id),
+            type VARCHAR(50) NOT NULL,
+            color_name VARCHAR(50) NOT NULL,
+            color_hex_code CHAR(7) NOT NULL
+        );
+    ''')
+
     # Import filaments
     with open('filaments.txt', 'r') as f:
         for line in f:
