@@ -58,9 +58,12 @@ def select_color(manufacturer_id, filament_type):
         colors = cur.fetchall()
         cur.close() 
         conn.close()
+        if not colors:
+            flash('No colors found for this filament type.', 'warning')
         return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
     except Exception as e:
-        return render_template('error.html', error=f"Error in select_color: {str(e)}"), 500
+        flash(f"Error in select_color: {str(e)}", 'error')
+        return redirect(url_for('select_filament_type', manufacturer_id=manufacturer_id))
 
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
 def select_location(manufacturer_id, filament_type, color_name):

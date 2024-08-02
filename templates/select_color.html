@@ -2,10 +2,21 @@
 
 {% block content %}
 <h1>Select Color for {{ filament_type }}</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="flash-message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <div class="color-buttons">
-{% for color in colors %}
+{% if colors %}
+  {% for color in colors %}
     <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0]) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
-{% endfor %}
+  {% endfor %}
+{% else %}
+  <p>No colors available for this filament type.</p>
+{% endif %}
 </div>
 <a href="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" class="btn btn-small">Back to Filament Types</a>
 {% endblock %}
