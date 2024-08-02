@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Select Filament</h1>
 <form action="{{ url_for('select_location', manufacturer_id=manufacturer_id) }}" method="post">
+    <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <div>
         <label for="filament_type">Filament Type:</label>
         <select name="filament_type" id="filament_type" required>
@@ -13,13 +14,13 @@
     </div>
     <div>
         <label for="color_name">Color:</label>
+        <select name="color_name" id="color_name" required onchange="this.form.submit()">
         <select name="color_name" id="color_name" required>
             {% for color in colors %}
             <option value="{{ color[0] }}" style="background-color: {{ color[1] }};">{{ color[0] }}</option>
             {% endfor %}
         </select>
     </div>
-    <button type="submit" class="btn btn-medium">Select Location</button>
 </form>
 <a href="{{ url_for('select_manufacturer') }}" class="btn btn-small">Back to Manufacturers</a>
 {% endblock %}
