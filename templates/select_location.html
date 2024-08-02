@@ -6,16 +6,21 @@
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
     <input type="hidden" name="color_name" value="{{ color_name }}">
-    <div class="grid-container">
+    <div class="location-grid">
+        <div class="grid-row">
+            <div class="grid-label"></div>
+            <div class="grid-label">Left Front</div>
+            <div class="grid-label">Left Back</div>
+            <div class="grid-label">Right Front</div>
+            <div class="grid-label">Right Back</div>
+        </div>
         {% for shelf in range(1, 9) %}
-            <div class="shelf-row">
-                <div class="shelf-label">Shelf {{ shelf }}</div>
-                <div class="position-grid">
-                    <button type="submit" name="location" value="Shelf {{ shelf }} left front" class="grid-item">Left<br>Front</button>
-                    <button type="submit" name="location" value="Shelf {{ shelf }} left back" class="grid-item">Left<br>Back</button>
-                    <button type="submit" name="location" value="Shelf {{ shelf }} right front" class="grid-item">Right<br>Front</button>
-                    <button type="submit" name="location" value="Shelf {{ shelf }} right back" class="grid-item">Right<br>Back</button>
-                </div>
+            <div class="grid-row">
+                <div class="grid-label">Shelf {{ shelf }}</div>
+                <button type="submit" name="location" value="Shelf {{ shelf }} left front" class="grid-item"></button>
+                <button type="submit" name="location" value="Shelf {{ shelf }} left back" class="grid-item"></button>
+                <button type="submit" name="location" value="Shelf {{ shelf }} right front" class="grid-item"></button>
+                <button type="submit" name="location" value="Shelf {{ shelf }} right back" class="grid-item"></button>
             </div>
         {% endfor %}
     </div>
