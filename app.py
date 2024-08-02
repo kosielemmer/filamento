@@ -126,7 +126,12 @@ def select_position(manufacturer_id, filament_type, color_name, color_hex_code, 
     except Exception as e:
         # Log the error for debugging
         app.logger.error(f"Error in select_position: {str(e)}")
-        return render_template('error.html', error=f"Error in select_position: {str(e)}"), 500
+        # Redirect to select_location with all necessary parameters
+        return redirect(url_for('select_location', 
+                                manufacturer_id=manufacturer_id, 
+                                filament_type=filament_type, 
+                                color_name=color_name, 
+                                color_hex_code=color_hex_code))
 
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
