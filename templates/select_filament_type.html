@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Select Shelf and Filament Type</h1>
-<form id="shelfForm" action="{{ url_for('select_color', manufacturer_id=manufacturer_id) }}" method="get">
+<form id="shelfForm" action="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type='') }}" method="get">
     <label for="shelf">Select Shelf:</label>
     <select id="shelf" name="shelf">
         <option value="1">Shelf 1</option>

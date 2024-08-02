@@ -62,8 +62,10 @@ def select_filament_type(manufacturer_id):
     conn.close()
     return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
-@app.route('/select_color/<int:manufacturer_id>/<filament_type>')
-def select_color(manufacturer_id, filament_type):
+@app.route('/select_color/<int:manufacturer_id>')
+def select_color(manufacturer_id):
+    filament_type = request.args.get('filament_type')
+    shelf = request.args.get('shelf')
     try:
         conn = get_db_connection()
         cur = conn.cursor()
