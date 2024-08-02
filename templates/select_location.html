@@ -4,8 +4,10 @@
 <h1>Select Shelf</h1>
 <div class="shelf-buttons">
     {% for shelf in range(1, 9) %}
-        <a href="{{ url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf) }}" class="btn btn-large">Shelf {{ shelf }}</a>
+        <a href="{{ url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf) }}" class="btn btn-large shelf-btn">Shelf {{ shelf }}</a>
     {% endfor %}
 </div>
-<a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
+<div class="navigation-buttons">
+    <a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
+</div>
 {% endblock %}
