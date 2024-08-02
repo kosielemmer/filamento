@@ -56,8 +56,7 @@ def select_filament(manufacturer_id):
 def select_filament_type(manufacturer_id):
     if request.method == 'POST':
         filament_type = request.form['filament_type']
-        shelf = request.form['shelf']
-        return redirect(url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type, shelf=shelf))
+        return redirect(url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type))
     else:
         conn = get_db_connection()
         cur = conn.cursor()
@@ -72,11 +71,9 @@ def select_color():
     if request.method == 'POST':
         manufacturer_id = request.form.get('manufacturer_id', type=int)
         filament_type = request.form.get('filament_type')
-        shelf = request.form.get('shelf')
     else:
         manufacturer_id = request.args.get('manufacturer_id', type=int)
         filament_type = request.args.get('filament_type')
-        shelf = request.args.get('shelf')
     try:
         conn = get_db_connection()
         cur = conn.cursor()
@@ -86,15 +83,15 @@ def select_color():
         conn.close()
         if not colors:
             flash('No colors found for this filament type.', 'warning')
-        return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors, shelf=shelf)
+        return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
     except Exception as e:
         flash(f"Error in select_color: {str(e)}", 'error')
         return redirect(url_for('select_filament', manufacturer_id=manufacturer_id))
 
-@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
-def select_location(manufacturer_id, filament_type, color_name, color_hex_code, shelf):
+@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>')
+def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
     try:
-        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code, shelf=shelf)
+        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code)
     except Exception as e:
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
 
