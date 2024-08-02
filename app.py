@@ -154,6 +154,33 @@ def add_inventory():
     flash('Success', 'success')
     return redirect(url_for('select_manufacturer'))
 
+@app.route('/add_inventory_item', methods=['POST'])
+def add_inventory_item():
+    try:
+        manufacturer_id = request.form['manufacturer_id']
+        filament_type = request.form['filament_type']
+        color_name = request.form['color_name']
+        color_hex_code = request.form['color_hex_code']
+        shelf = request.form['shelf']
+        position = request.form['position']
+        location = f"{shelf}-{position}"
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO inventory (manufacturer_id, filament_type, color_name, color_hex_code, location) VALUES (%s, %s, %s, %s, %s)",
+            (manufacturer_id, filament_type, color_name, color_hex_code, location)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        flash('Inventory item added successfully!', 'success')
+        return redirect(url_for('view_inventory'))
+    except Exception as e:
+        flash(f"Error adding inventory item: {str(e)}", 'error')
+        return redirect(url_for('select_manufacturer'))
+
 @app.route('/view_inventory')
 def view_inventory():
     conn = get_db_connection()
