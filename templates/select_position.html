@@ -3,6 +3,8 @@
 {% block content %}
 <h1>Shelf {{ shelf }}</h1>
 <h2>Select position for {{ color_name }} {{ filament_type }}</h2>
+<div style="background-color: #{{ color_hex_code }}; width: 50px; height: 50px; display: inline-block; vertical-align: middle; margin-right: 10px;"></div>
+<span style="vertical-align: middle;">Color: #{{ color_hex_code }}</span>
 <form action="{{ url_for('add_inventory') }}" method="post">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
