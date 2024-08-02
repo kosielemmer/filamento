@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Current Inventory</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Manufacturer</th>
+            <th>Filament Type</th>
+            <th>Color</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in inventory %}
+        <tr>
+            <td>{{ item.manufacturer }}</td>
+            <td>{{ item.filament_type }}</td>
+            <td>{{ item.color_name }}</td>
+            <td>{{ item.location }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('index') }}" class="btn btn-small">Back to Main Page</a>
+{% endblock %}
