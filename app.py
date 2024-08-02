@@ -52,7 +52,7 @@ def select_manufacturer():
     conn.close()
     return render_template('select_manufacturer.html', manufacturers=manufacturers)
 
-@app.route('/select_filament/<int:manufacturer_id>')
+@app.route('/select_filament/<int:manufacturer_id>', methods=['GET', 'POST'])
 def select_filament(manufacturer_id):
     conn = get_db_connection()
     cur = conn.cursor()
