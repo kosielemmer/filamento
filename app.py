@@ -110,8 +110,13 @@ def select_color():
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>')
 def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
     try:
-        return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code)
+        return render_template('select_location.html', 
+                               manufacturer_id=manufacturer_id, 
+                               filament_type=filament_type, 
+                               color_name=color_name, 
+                               color_hex_code=color_hex_code)
     except Exception as e:
+        app.logger.error(f"Error in select_location: {str(e)}")
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
 
 @app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
