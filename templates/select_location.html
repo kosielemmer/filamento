@@ -1,28 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Select Location</h1>
+<a href="{{ url_for('select_location') }}" class="btn btn-secondary">Back</a>
+<h1>Shelf {{ request.args.get('shelf', '') }}</h1>
 <form action="{{ url_for('add_inventory') }}" method="post">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
     <input type="hidden" name="color_name" value="{{ color_name }}">
-    <div class="location-grid">
-        <div class="grid-row">
-            <div class="grid-label"></div>
-            <div class="grid-label">Left Front</div>
-            <div class="grid-label">Left Back</div>
-            <div class="grid-label">Right Front</div>
-            <div class="grid-label">Right Back</div>
-        </div>
-        {% for shelf in range(1, 9) %}
-            <div class="grid-row">
-                <div class="grid-label">Shelf {{ shelf }}</div>
-                <button type="submit" name="location" value="Shelf {{ shelf }} left front" class="grid-item"></button>
-                <button type="submit" name="location" value="Shelf {{ shelf }} left back" class="grid-item"></button>
-                <button type="submit" name="location" value="Shelf {{ shelf }} right front" class="grid-item"></button>
-                <button type="submit" name="location" value="Shelf {{ shelf }} right back" class="grid-item"></button>
-            </div>
-        {% endfor %}
+    <div class="position-grid">
+        <button type="submit" name="location" value="{{ request.args.get('shelf', '') }} left front" class="grid-item">{{ request.args.get('shelf', '') }} Left Front</button>
+        <button type="submit" name="location" value="{{ request.args.get('shelf', '') }} left back" class="grid-item">{{ request.args.get('shelf', '') }} Left Back</button>
+        <button type="submit" name="location" value="{{ request.args.get('shelf', '') }} right front" class="grid-item">{{ request.args.get('shelf', '') }} Right Front</button>
+        <button type="submit" name="location" value="{{ request.args.get('shelf', '') }} right back" class="grid-item">{{ request.args.get('shelf', '') }} Right Back</button>
     </div>
     <button type="submit" class="btn btn-medium">Add to Inventory</button>
 </form>
