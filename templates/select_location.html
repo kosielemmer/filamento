@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>Select Shelf</h1>
+<h2>For {{ color_name }} {{ filament_type }}</h2>
 <div class="shelf-buttons">
     {% for shelf in range(1, 9) %}
         <a href="{{ url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf) }}" class="btn btn-large shelf-btn">Shelf {{ shelf }}</a>
