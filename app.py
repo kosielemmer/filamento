@@ -31,6 +31,9 @@ def create_tables():
 
 app = Flask(__name__)
 
+# Set a secret key for the application
+app.secret_key = 'your_secret_key_here'  # Replace with a strong, random secret key
+
 # Call create_tables function when the app starts
 create_tables()
 
