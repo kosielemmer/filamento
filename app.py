@@ -60,8 +60,8 @@ def select_color(manufacturer_id, filament_type):
     return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
 
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
-def select_location(manufacturer_id, filament_type, color_name):
-    return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name)
+def select_location(manufacturer_id, filament_type, color_name, shelf=1):
+    return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf)
 
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
