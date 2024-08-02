@@ -47,7 +47,7 @@ def select_filament_type(manufacturer_id):
     types = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
+    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types, shelf=1)  # Default shelf to 1
 
 @app.route('/select_color/<int:manufacturer_id>/<filament_type>/<int:shelf>')
 def select_color(manufacturer_id, filament_type, shelf):
