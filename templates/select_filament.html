@@ -2,10 +2,8 @@
 
 {% block content %}
 <h1>Select Filament</h1>
-<form action="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name) }}" method="post">
+<form id="filament-form">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
-    <input type="hidden" name="filament_type" value="{{ filament_type }}">
-    <input type="hidden" name="color_name" value="{{ color_name }}">
     <div>
         <label for="filament_type">Filament Type:</label>
         <select name="filament_type" id="filament_type" required>
@@ -22,8 +20,18 @@
             {% endfor %}
         </select>
     </div>
-    <button type="submit" class="btn btn-medium">Select Location</button>
 </form>
+<button id="location-btn" class="btn btn-medium">Select Location</button>
+
+<script>
+document.getElementById('location-btn').addEventListener('click', function() {
+    let form = document.getElementById('filament-form');
+    let filamentType = document.getElementById('filament_type').value;
+    let colorName = document.getElementById('color_name').value;
+    form.action = "{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type='FILAMENT_TYPE', color_name='COLOR_NAME') }}".replace('FILAMENT_TYPE', filamentType).replace('COLOR_NAME', colorName);
+    form.submit();
+});
+</script>
 <a href="{{ url_for('select_manufacturer') }}" class="btn btn-small">Back to Manufacturers</a>
 {% endblock %}
 {% extends 'base.html' %}

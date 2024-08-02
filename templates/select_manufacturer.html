@@ -22,9 +22,7 @@
     <h1>Select a Manufacturer</h1>
     <div class="manufacturer-buttons">
     {% for manufacturer in manufacturers %}
-        <form action="{{ url_for('select_filament', manufacturer_id=manufacturer.id) }}" method="post">
-            <button type="submit" class="btn btn-manufacturer">{{ manufacturer.name }}</button>
-        </form>
+        <a href="{{ url_for('select_filament', manufacturer_id=manufacturer.id) }}" class="btn btn-manufacturer">{{ manufacturer.name }}</a>
     {% else %}
         <p>No manufacturers found.</p>
     {% endfor %}

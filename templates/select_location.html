@@ -8,7 +8,17 @@
     <input type="hidden" name="color_name" value="{{ color_name }}">
     <div>
         <label for="location">Location:</label>
-        <input type="text" name="location" id="location" required>
+        <select name="location" id="location" required>
+            {% for shelf in range(1, 9) %}
+                {% for side in ['left', 'right'] %}
+                    {% for position in ['front', 'back'] %}
+                        <option value="Shelf {{ shelf }} {{ side }} {{ position }}">
+                            Shelf {{ shelf }} {{ side }} {{ position }}
+                        </option>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        </select>
     </div>
     <button type="submit" class="btn btn-medium">Add to Inventory</button>
 </form>
