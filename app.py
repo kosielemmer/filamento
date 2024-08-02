@@ -87,6 +87,9 @@ def select_color():
     if request.method == 'POST':
         manufacturer_id = request.form.get('manufacturer_id', type=int)
         filament_type = request.form.get('filament_type')
+        color_name = request.form.get('color_name')
+        color_hex_code = request.form.get('color_hex_code')
+        return redirect(url_for('select_shelf', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code))
     else:
         manufacturer_id = request.args.get('manufacturer_id', type=int)
         filament_type = request.args.get('filament_type')
