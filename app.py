@@ -52,15 +52,20 @@ def select_filament(manufacturer_id):
     conn.close()
     return render_template('select_filament.html', manufacturer_id=manufacturer_id, types=types)
 
-@app.route('/select_filament_type/<int:manufacturer_id>')
+@app.route('/select_filament_type/<int:manufacturer_id>', methods=['GET', 'POST'])
 def select_filament_type(manufacturer_id):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
-    types = cur.fetchall()
-    cur.close()
-    conn.close()
-    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
+    if request.method == 'POST':
+        filament_type = request.form['filament_type']
+        shelf = request.form['shelf']
+        return redirect(url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type, shelf=shelf))
+    else:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
+        types = cur.fetchall()
+        cur.close()
+        conn.close()
+        return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
 @app.route('/select_color')
 def select_color():
