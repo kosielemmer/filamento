@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Select Manufacturer</h1>
+{% for manufacturer in manufacturers %}
+<a href="{{ url_for('select_filament', manufacturer_id=manufacturer[0]) }}" class="btn btn-medium">{{ manufacturer[1] }}</a>
+{% endfor %}
+<a href="{{ url_for('index') }}" class="btn btn-small">Back to Main Menu</a>
+{% endblock %}
