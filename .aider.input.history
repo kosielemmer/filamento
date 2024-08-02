@@ -915,3 +915,484 @@
 +dump() shows all variables in the frame
 +dump(obj) dumps all that's known about the object
 +
+
+# 2024-08-02 05:51:21.704929
++Please read the README.md file and summarise our agreement.
+
+# 2024-08-02 05:51:57.764307
++ok - now review the rest of the files in context of the rest of README.md and apply fixes
+
+# 2024-08-02 05:53:17.913689
++first page error - please qa all the code before we do another commit
++
++TemplateAssertionError
++jinja2.exceptions.TemplateAssertionError: block 'title' defined twice
++
++Traceback (most recent call last)
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 880, in full_dispatch_request
++rv = self.dispatch_request()
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 865, in dispatch_request
++return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
++File "/mnt/c/users/kosie/code/filamento4/filamento4/app.py", line 29, in index
++return render_template('index.html')
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
++return _render(app, template, context)
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
++rv = template.render(context)
++File "/home/kosie/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
++self.environment.handle_exception()
++File "/home/kosie/.local/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
++raise rewrite_traceback_stack(source=source)
++File "/mnt/c/users/kosie/code/filamento4/filamento4/templates/index.html", line 1, in top-level template code
++{% extends 'base.html' %}
++File "/home/kosie/.local/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
++raise rewrite_traceback_stack(source=source)
++File "/mnt/c/users/kosie/code/filamento4/filamento4/templates/base.html", line 30, in template
++<title>{% block title %}Filament Inventory Application{% endblock %}</title>
++During handling of the above exception, another exception occurred:
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 1498, in __call__
++return self.wsgi_app(environ, start_response)
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 1476, in wsgi_app
++response = self.handle_exception(e)
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 1473, in wsgi_app
++response = self.full_dispatch_request()
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 882, in full_dispatch_request
++rv = self.handle_user_exception(e)
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/app.py", line 772, in handle_user_exception
++return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
++File "/mnt/c/users/kosie/code/filamento4/filamento4/app.py", line 24, in handle_exception
++return render_template("error.html", error=str(e)), 500
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
++return _render(app, template, context)
++File "/home/kosie/.local/lib/python3.10/site-packages/flask/templating.py", line 131, in _render
++rv = template.render(context)
++File "/home/kosie/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1304, in render
++self.environment.handle_exception()
++File "/home/kosie/.local/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
++raise rewrite_traceback_stack(source=source)
++File "/mnt/c/users/kosie/code/filamento4/filamento4/templates/error.html", line 1, in top-level template code
++{% extends 'base.html' %}
++File "/home/kosie/.local/lib/python3.10/site-packages/jinja2/environment.py", line 939, in handle_exception
++raise rewrite_traceback_stack(source=source)
++File "/mnt/c/users/kosie/code/filamento4/filamento4/templates/base.html", line 30, in template
++<title>{% block title %}Filament Inventory Application{% endblock %}</title>
++jinja2.exceptions.TemplateAssertionError: block 'title' defined twice
++The debugger caught an exception in your WSGI application. You can now look at the traceback which led to the error.
++To switch between the interactive traceback and the plaintext one, you can click on the "Traceback" headline. From the text traceback you can also create a paste of it. For code execution mouse-over the frame you want to debug and click on the console icon on the right side.
++
++You can execute arbitrary Python code in the stack frames and there are some extra helpers available for introspection:
++
++dump() shows all variables in the frame
++dump(obj) dumps all that's known about the object
++
+
+# 2024-08-02 05:54:23.008442
++select_filament error:
++
++An Error Occurred
++block 'content' defined twice
++
++Go back to the homepage
+
+# 2024-08-02 05:57:50.999792
++filament type and color wrong.  Select location should be on own screen.  Filament type should be selected and then the color - the color buttons must have the background of the hex code in the data and only those colors or filaments that belong together must be shown.  This is how it renders now - https://imgur.com/a/nWgVA6F  - please tell me how you will fix it before making changes
+
+# 2024-08-02 06:00:08.377166
++Just tell me the fill text of what select_filament.html should be and I will paste it in
+
+# 2024-08-02 06:01:14.546132
++stop creating new files!!!! you are making a mess:  An Error Occurred
++Could not build url for endpoint 'select_filament' with values ['manufacturer_id']. Did you mean 'select_filament_type' instead?
++
++Go back to the homepage
+
+# 2024-08-02 06:02:29.110470
++after selecting filament color:  An Error Occurred
++Could not build url for endpoint 'select_filament' with values ['manufacturer_id']. Did you mean 'select_filament_type' instead?
++
++Go back to the homepage
+
+# 2024-08-02 06:03:28.668341
++I did not ask you to create a footer
+
+# 2024-08-02 06:04:31.135126
++same error and more garbage on screen after selecting color:  Home
++Select Manufacturer
++View Inventory
++An Error Occurred
++Could not build url for endpoint 'select_filament' with values ['manufacturer_id']. Did you mean 'select_filament_type' instead?
++
++Go back to the homepage
+
+# 2024-08-02 06:05:34.035299
++you must follow my instructions to the letter and not ad lib - acknowledge
+
+# 2024-08-02 06:06:13.531153
++so why did you add "back to...." links - I didn't ask for that
+
+# 2024-08-02 06:06:37.051841
++remove those "back to...." links
+
+# 2024-08-02 06:08:13.770964
++this is still wrong:
++read the README.md file again
++https://imgur.com/a/HHfOW4s
+
+# 2024-08-02 06:09:05.349216
++are you nuts?  NEVER change the ground rules.  Reinstate this:  3. **Location Selection**: Users can pick a storage location for the filament, which includes options for shelf number (1-8), side (left or right), and position (front or back). This is presented in a grid format.
++=======
+
+# 2024-08-02 06:09:30.327462
++so review the location selection screen and amend
+
+# 2024-08-02 06:10:37.343548
++not radio buttons - normal buttons laid out in a 8x4 formation
+
+# 2024-08-02 06:12:37.102278
++better but still wrong:  https://imgur.com/a/hNlHcro
++
++has to fit onto iphone 13 pro max held in portrait - that goes for all screens
+
+# 2024-08-02 06:15:56.616039
++https://imgur.com/a/aL1wODD  - 8 rows (1-8) , 4 columns [left front], [left back], [right front] [right back].  Correct width - no more that 1200 pixels wide for any screen
+
+# 2024-08-02 06:22:00.397119
++because I am stuggling to get through to you I drew on the rendered page https://imgur.com/a/eymYjOn.  This is the screen after selecting shelf
+
+# 2024-08-02 06:22:52.130557
++/undo
+
+# 2024-08-02 06:24:44.062105
++https://imgur.com/a/gL0vSEL
+
+# 2024-08-02 06:25:06.057618
++/undo
+
+# 2024-08-02 06:25:23.872467
++/undo
+
+# 2024-08-02 06:25:36.182077
++/stop
+
+# 2024-08-02 06:28:21.397153
++on the http://127.0.0.1:5000/select_location/1/ABS/Azure screen I get this error
++
++https://imgur.com/a/gL0vSEL
+
+# 2024-08-02 06:29:29.461507
++same error - no difference
+
+# 2024-08-02 06:30:39.376754
++"GET /select_location/1/ABS/Azure?shelf=1 HTTP/1.1" 500 -
+
+# 2024-08-02 06:31:54.515536
++same error Could not build url for endpoint 'select_location'. Did you forget to specify values ['color_name', 'filament_type', 'manufacturer_id']?
+
+# 2024-08-02 06:33:30.816509
++now I don't even get to color:  An Error Occurred
++'shelf' is undefined
++
++Go back to the homepage
++
++Can you add some error trapping so we know where it bombs?
+
+# 2024-08-02 06:34:36.446578
++you are wasting my time bye
+
+# 2024-08-02 06:36:43.044692
++I get this error after selecting color:  https://imgur.com/a/gL0vSEL
+
+# 2024-08-02 06:38:48.391155
++same error - do you have all the files you need?  I also see this in the python terminal:  "GET /select_location/1/ABS%20GF/Blue?shelf=1 HTTP/1.1" 500 -.  I don't want default locations in case of error - it has to be 100% reliable for quick data capture.
+
+# 2024-08-02 06:40:29.464549
++error: https://imgur.com/a/oBkd484 note web address
+
+# 2024-08-02 06:41:21.635457
++same error - this approach is getting us nowhere
+
+# 2024-08-02 06:43:03.007890
++same error and it happens with any color - not just the one you selected - it seems you are not familiar with the files.  Should I do a recommit and add them again?
+
+# 2024-08-02 06:43:44.005965
++how is this changing anything:
++
++<<<<<<< SEARCH
++<a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0], shelf=shelf) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
++=======
++<a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0], shelf=shelf) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
++>>>>>>> REPLACE
+
+# 2024-08-02 06:44:37.436245
++exact same error - wake up! :)
+
+# 2024-08-02 06:45:47.198414
++same error - why are you sticking with this when it is clearly not working - you replace blocks with the same content.  For goodness' sake try something different
+
+# 2024-08-02 06:46:47.859283
++new error but still broken: Could not build url for endpoint 'select_color' with values ['filament_type', 'manufacturer_id']. Did you forget to specify values ['shelf']?
++
++Go back to the homepage
+
+# 2024-08-02 06:47:50.654622
++I am losing my patience with you - you are wasting my money Could not build url for endpoint 'select_color' with values ['filament_type', 'manufacturer_id']. Did you forget to specify values ['shelf']?
++
++Go back to the homepage
+
+# 2024-08-02 06:48:44.732318
++you changed NOTHING 
+
+# 2024-08-02 06:50:26.402711
++An Error Occurred
++invalid literal for int() with base 10: '__SHELF__'
++
++Go back to the homepage
++Back to Homepage
+
+# 2024-08-02 06:51:04.984788
++and?
+
+# 2024-08-02 06:52:47.792817
++don't do anything but tell me what is wrong with this screenshot of the app,  there are at least 4 issues https://imgur.com/a/3g7nmG0
+
+# 2024-08-02 06:53:24.830611
++and what about shelf selection not being a button and being on the same page as the filament selection? 
+
+# 2024-08-02 06:54:13.326745
++how many shelves should there be?
+
+# 2024-08-02 06:55:29.023166
++go back over the readme and tell me what you think - tell me if you think you are sticking to our agreement and specs?
+
+# 2024-08-02 06:55:59.893553
++and the app spec?  how many shelves and positiions?
+
+# 2024-08-02 06:56:27.959080
++no no - what does README.md Say?
+
+# 2024-08-02 06:56:55.023545
++fix it and stop being smarmy
+
+# 2024-08-02 06:58:31.061434
++hey dummy - why are you messing with our specs from the file we just reviewed?  Look at this mess:  https://imgur.com/a/TM8tIOo
+
+# 2024-08-02 06:59:37.515337
++so what do you think about going off piste and doing your own thing vs doing only what I ask?
+
+# 2024-08-02 07:00:35.425745
++is this right or wrong:  https://imgur.com/a/64lvxTg
+
+# 2024-08-02 07:01:02.946275
++really?  check the README.md file what we say about drop downs
+
+# 2024-08-02 07:02:35.226578
++you know - you are probably only 20% compliant with instructions overall - by that I mean out of 100 requests you complete 20 full and correctly and the other 80 are incorrect to some degree.  You need to learn from this.
+
+# 2024-08-02 07:03:28.257762
++is this correct and as agreed?  https://imgur.com/a/64lvxTg
+
+# 2024-08-02 07:04:27.620782
++so now you mess around with README.md and do nothing about thedrop downs?
+
+# 2024-08-02 07:05:28.420451
++you have made NO CHANGES.  Are you falling asleep / drunk / on drugs / just don't care?
+
+# 2024-08-02 07:06:07.562144
++I want you to fix the damn shelf selection screen.
+
+# 2024-08-02 07:08:42.304910
++you really suck this morning - we were close and now you just keep breaking things.  The shelf selection is still drop downs and the color selection and is nowhere to be found.  Before we carry on please desribe the different screens,   what elements they contain,  what the workflow looks like.
+
+# 2024-08-02 07:10:04.416430
++what are you changing here and why are you adding back to garbage functionality again.  What did we say about off piste:
++
++<<<<<<< SEARCH
++{% extends 'base.html' %}
++
++{% block content %}
++<h1>Select Shelf</h1>
++<div class="shelf-buttons">
++    {% for shelf in range(1, 9) %}
++        <a href="{{ url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf) }}" class="btn btn-large shelf-btn">Shelf {{ shelf }}</a>
++    {% endfor %}
++</div>
++<div class="navigation-buttons">
++    <a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
++</div>
++{% endblock %}
++=======
++{% extends 'base.html' %}
++
++{% block content %}
++<h1>Select Shelf</h1>
++<div class="shelf-buttons">
++    {% for shelf in range(1, 9) %}
++        <a href="{{ url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf) }}" class="btn btn-large shelf-btn">Shelf {{ shelf }}</a>
++    {% endfor %}
++</div>
++<div class="navigation-buttons">
++    <a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
++</div>
++{% endblock %}
++>>>>>>> REPLACE
+
+# 2024-08-02 07:11:33.378653
++tell me about the select_location screen,  classes, layout, workflow, functionality, after which screen does it appear?
+
+# 2024-08-02 07:12:54.323869
++hwat about front and back and left and right.  Can you please refer to README.md continuously - you are super forgetful which is just amazing for an AI.  I am a mere meatbag but remember better than you
+
+# 2024-08-02 07:13:32.238195
++but you don't even remember what we discussed 5 minutes ago in this conversation
+
+# 2024-08-02 07:14:18.114300
++AAAAAAAAND we are back to this crap:  Could not build url for endpoint 'select_color' with values ['manufacturer_id']. Did you forget to specify values ['filament_type']?
++
++Go back to the homepage
+
+# 2024-08-02 07:15:25.944170
++stop apologising for the confusion - I am not confused - if you want to be accurate then apologise for your (the AI's) confusion
+
+# 2024-08-02 07:16:36.168144
++last screen:  relation "inventory" does not exist LINE 1: INSERT INTO inventory (manufacturer_id, filament_type, color... ^
++
++
+
+# 2024-08-02 07:18:26.090485
++there is no need for a secret key - remove the functionality
+
+# 2024-08-02 07:18:59.507266
++why do I get this error then on the last screen:  The session is unavailable because no secret key was set. Set the secret_key on the application to something unique and secret.
+
+# 2024-08-02 07:21:01.793138
++please add the color hex code into the inventory table too - we are now really close.  Please give the the table create sql and I will recreate it
+
+# 2024-08-02 07:21:57.078274
++you can remove the sql from app.py - just add it in README.md - I will manually create it from there
+
+# 2024-08-02 07:24:39.718897
++you still haven't added the hex color to the data committed
+
+# 2024-08-02 07:25:34.649480
++and update the create table scrip too
+
+# 2024-08-02 07:27:20.413310
++remove the damn import_data function - I told you I would do that manually - but add the sql create table queries in the readme file.  This doesn't even create all the tables
+
+# 2024-08-02 07:29:27.665230
++so do you think you have added all the necassary sql queries to the README.md file?
+
+# 2024-08-02 07:30:51.381132
++what have you done now?  It was working and now it doesn't progress beyond selecting filament type
+
+# 2024-08-02 07:31:58.231797
++what did we agree about you keep saying "I apologize for the confusion."
+
+# 2024-08-02 07:33:04.568143
++no change - doesn't progress past filament type screen - you make me so angry!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# 2024-08-02 07:34:32.704970
++remove all damn footers and there is no change to this thing working - still no progress after filament
+
+# 2024-08-02 07:35:20.245369
++and?
+
+# 2024-08-02 07:37:07.756877
++why do we have three similar files - which one is the right one?
+
+# 2024-08-02 07:39:08.702292
++oh you idiot - now the app is looking for that file - make sure the rest of the files point to the right filament file
+
+# 2024-08-02 07:40:15.172110
++what are you changing here:
++
++@app.route('/select_filament/<int:manufacturer_id>')
++def select_filament(manufacturer_id):
++    conn = get_db_connection()
++    cur = conn.cursor()
++    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
++    types = cur.fetchall()
++    cur.close()
++    conn.close()
++    return render_template('select_filament.html', manufacturer_id=manufacturer_id, types=types)
++=======
++@app.route('/select_filament/<int:manufacturer_id>')
++def select_filament(manufacturer_id):
++    conn = get_db_connection()
++    cur = conn.cursor()
++    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
++    types = cur.fetchall()
++    cur.close()
++    conn.close()
++    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
++>>>>>>> REPLACE
++
++This change updates the select_filament route to use the select_filament_type.html template instead of select_filament.html.
++
++Now, let's update the select_filament_type route to ensure it's consistent with the new template:
++
++app.py
++
++<<<<<<< SEARCH
++@app.route('/select_filament_type/<int:manufacturer_id>', methods=['GET', 'POST'])
++def select_filament_type(manufacturer_id):
++    if request.method == 'POST':
++        filament_type = request.form['filament_type']
++        shelf = request.form['shelf']
++        return redirect(url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type, shelf=shelf))
++    else:
++        conn = get_db_connection()
++        cur = conn.cursor()
++        cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
++        types = cur.fetchall()
++        cur.close()
++        conn.close()
++        return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
++=======
++@app.route('/select_filament_type/<int:manufacturer_id>', methods=['GET', 'POST'])
++def select_filament_type(manufacturer_id):
++    if request.method == 'POST':
++        filament_type = request.form['filament_type']
++        shelf = request.form['shelf']
++        return redirect(url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type, shelf=shelf))
++    else:
++        conn = get_db_connection()
++        cur = conn.cursor()
++        cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
++        types = cur.fetchall()
++        cur.close()
++        conn.close()
++        return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
++>>>>>>> REPLACE
+
+# 2024-08-02 07:41:20.947561
++and now we are back to mixing shelves and filaments and drop downs - nice going - another 90 minutes and $10 wasted
+
+# 2024-08-02 07:42:07.010628
++are you really "I apologize for the confusion and the mistake"?
+
+# 2024-08-02 07:44:08.272488
++do unit tests on every screen and see whether you think this is good enough and adheres to README.md
+
+# 2024-08-02 07:46:05.405503
++forget the testst - are there drop downs anywhere in the code?
+
+# 2024-08-02 07:48:01.075326
++and what did we agree about dropdowns?
+
+# 2024-08-02 07:49:03.232745
++127.0.0.1 - - [02/Aug/2024 07:48:42] "GET /select_position/1/ABS/Azure/%23489FDF/1 HTTP/1.1" 500 - Error in select_position: Could not build url for endpoint 'select_location' with values ['color_name', 'filament_type', 'manufacturer_id']. Did you forget to specify values ['color_hex_code']?
+
+# 2024-08-02 07:50:00.939202
++127.0.0.1 - - [02/Aug/2024 07:49:41] "GET /select_position/1/ABS/Red/%23489FDF/1 HTTP/1.1" 500 -
++127.0.0.1 - - [02/Aug/2024 07:49:41] "GET /static/style.css HTTP/1.1" 304 -
++Error in select_position: Could not build url for endpoint 'select_location' with values ['color_name', 'filament_type', 'manufacturer_id']. Did you forget to specify values ['color_hex_code']?
+
+# 2024-08-02 07:51:20.402464
++Error in select_location: Could not build url for endpoint 'select_position' with values ['color_name', 'filament_type', 'manufacturer_id', 'shelf']. Did you forget to specify values ['color_hex_code']?
+
+# 2024-08-02 07:53:17.992159
++commit this as a major version and don't allow further edits to the repo . clone a new copy for us to work on further
+
+# 2024-08-02 07:53:51.299139
++give me the steps to accomplish what I just asked
