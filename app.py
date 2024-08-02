@@ -22,6 +22,7 @@ def create_tables():
             manufacturer_id INTEGER,
             filament_type VARCHAR(50),
             color_name VARCHAR(50),
+            color_hex_code CHAR(7),
             location VARCHAR(50)
         );
     """)
