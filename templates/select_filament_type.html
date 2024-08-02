@@ -1,17 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Select Shelf and Filament Type</h1>
-<form id="shelfForm" action="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" method="post">
-    <label for="shelf">Select Shelf:</label>
-    <select id="shelf" name="shelf">
-        <option value="1">Shelf 1</option>
-        <option value="2">Shelf 2</option>
-        <option value="3">Shelf 3</option>
-        <option value="4">Shelf 4</option>
-        <option value="5">Shelf 5</option>
-    </select>
-    
+<h1>Select Filament Type</h1>
+<form id="filamentTypeForm" action="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" method="post">
     <label for="filament_type">Select Filament Type:</label>
     <select id="filament_type" name="filament_type">
         {% for type in types %}
