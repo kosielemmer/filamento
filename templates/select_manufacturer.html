@@ -8,7 +8,12 @@
 </head>
 <body>
     <h1>Select a Manufacturer</h1>
-    <!-- Add content and structure for selecting a manufacturer here -->
-    <!-- This will likely include a form and a list of manufacturers -->
+    <ul>
+    {% for manufacturer in manufacturers %}
+        <li>{{ manufacturer.name }}</li>
+    {% else %}
+        <p>No manufacturers found.</p>
+    {% endfor %}
+    </ul>
 </body>
 </html>
