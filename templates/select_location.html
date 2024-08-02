@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<a href="{{ url_for('select_location') }}" class="btn btn-secondary">Back</a>
 <h1>Select Shelf</h1>
 <div class="shelf-buttons">
     {% for shelf in range(1, 9) %}
