@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>Shelf {{ shelf }}</h1>
+<h2>Select position for {{ color_name }} {{ filament_type }}</h2>
 <form action="{{ url_for('add_inventory') }}" method="post">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
