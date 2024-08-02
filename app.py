@@ -13,7 +13,26 @@ def get_db_connection():
     )
     return conn
 
+def create_tables():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS inventory (
+            id SERIAL PRIMARY KEY,
+            manufacturer_id INTEGER,
+            filament_type VARCHAR(50),
+            color_name VARCHAR(50),
+            location VARCHAR(50)
+        );
+    """)
+    conn.commit()
+    cur.close()
+    conn.close()
+
 app = Flask(__name__)
+
+# Call create_tables function when the app starts
+create_tables()
 
 @app.errorhandler(Exception)
 def handle_exception(e):
