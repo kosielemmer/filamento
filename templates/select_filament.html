@@ -15,7 +15,6 @@
     <div>
         <label for="color_name">Color:</label>
         <select name="color_name" id="color_name" required>
-        <select name="color_name" id="color_name" required>
             {% for color in colors %}
             <option value="{{ color[0] }}" style="background-color: {{ color[1] }};">{{ color[0] }}</option>
             {% endfor %}
