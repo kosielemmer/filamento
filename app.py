@@ -67,11 +67,16 @@ def select_filament_type(manufacturer_id):
         conn.close()
         return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
-@app.route('/select_color')
+@app.route('/select_color', methods=['GET', 'POST'])
 def select_color():
-    manufacturer_id = request.args.get('manufacturer_id', type=int)
-    filament_type = request.args.get('filament_type')
-    shelf = request.args.get('shelf')
+    if request.method == 'POST':
+        manufacturer_id = request.form.get('manufacturer_id', type=int)
+        filament_type = request.form.get('filament_type')
+        shelf = request.form.get('shelf')
+    else:
+        manufacturer_id = request.args.get('manufacturer_id', type=int)
+        filament_type = request.args.get('filament_type')
+        shelf = request.args.get('shelf')
     try:
         conn = get_db_connection()
         cur = conn.cursor()
