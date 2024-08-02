@@ -4,7 +4,7 @@
 <h1>Select Color for {{ filament_type }}</h1>
 <div class="color-buttons">
 {% for color in colors %}
-    <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0], shelf=shelf) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
+    <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0]) }}?shelf={{ shelf }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
 {% endfor %}
 </div>
 {% endblock %}

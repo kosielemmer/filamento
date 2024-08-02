@@ -63,8 +63,9 @@ def select_color(manufacturer_id, filament_type):
     except Exception as e:
         return render_template('error.html', error=f"Error in select_color: {str(e)}")
 
-@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<int:shelf>')
-def select_location(manufacturer_id, filament_type, color_name, shelf):
+@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
+def select_location(manufacturer_id, filament_type, color_name):
+    shelf = request.args.get('shelf', 1, type=int)
     return render_template('select_location.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, shelf=shelf)
 
 @app.route('/add_inventory', methods=['POST'])
