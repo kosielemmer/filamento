@@ -173,7 +173,7 @@ body {
 }
 .location-grid {
     display: grid;
-    grid-template-columns: 100px repeat(4, 1fr);
+    grid-template-columns: 100px repeat(5, 1fr);
     gap: 10px;
     max-width: 1200px;
     margin: 0 auto;
