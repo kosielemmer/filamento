@@ -9,8 +9,9 @@ This application is designed to manage a filament inventory for 3D printing. It 
 ## Ground rules
 1. Be brief
 2. Diffs only
-3. No drop downs or text entry  - well spaced buttons only
-4. Never remove files from chat
+3. No dropdowns or text entry - use well-spaced buttons only
+4. 8 shelves, each with 4 positions (Left Front, Left Back, Right Front, Right Back)
+5. Never remove files from chat
 
 
 ## Features
