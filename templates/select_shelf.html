@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Select Shelf</h1>
+<form action="{{ url_for('select_shelf') }}" method="post">
+    <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
+    <input type="hidden" name="filament_type" value="{{ filament_type }}">
+    <input type="hidden" name="color_name" value="{{ color_name }}">
+    <input type="hidden" name="color_hex_code" value="{{ color_hex_code }}">
+    
+    <label for="shelf">Select Shelf:</label>
+    <select id="shelf" name="shelf">
+        <option value="1">Shelf 1</option>
+        <option value="2">Shelf 2</option>
+        <option value="3">Shelf 3</option>
+        <option value="4">Shelf 4</option>
+    </select>
+    
+    <button type="submit" class="btn btn-primary">Next</button>
+</form>
+<a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
+{% endblock %}

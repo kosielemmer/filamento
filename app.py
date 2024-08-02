@@ -66,6 +66,22 @@ def select_filament_type(manufacturer_id):
         conn.close()
         return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
+@app.route('/select_shelf', methods=['GET', 'POST'])
+def select_shelf():
+    if request.method == 'POST':
+        manufacturer_id = request.form.get('manufacturer_id', type=int)
+        filament_type = request.form.get('filament_type')
+        color_name = request.form.get('color_name')
+        color_hex_code = request.form.get('color_hex_code')
+        shelf = request.form.get('shelf')
+        return redirect(url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code, shelf=shelf))
+    else:
+        manufacturer_id = request.args.get('manufacturer_id', type=int)
+        filament_type = request.args.get('filament_type')
+        color_name = request.args.get('color_name')
+        color_hex_code = request.args.get('color_hex_code')
+        return render_template('select_shelf.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code)
+
 @app.route('/select_color', methods=['GET', 'POST'])
 def select_color():
     if request.method == 'POST':
