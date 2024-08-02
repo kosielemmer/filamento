@@ -47,11 +47,17 @@ def select_filament_type(manufacturer_id):
     types = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types, shelf=1)
+    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
-@app.route('/select_color/<int:manufacturer_id>/<filament_type>/<int:shelf>')
-def select_color(manufacturer_id, filament_type, shelf):
+@app.route('/select_color/<int:manufacturer_id>')
+def select_color(manufacturer_id):
     try:
+        shelf = request.args.get('shelf', type=int)
+        filament_type = request.args.get('filament_type')
+        
+        if not shelf or not filament_type:
+            return redirect(url_for('select_filament_type', manufacturer_id=manufacturer_id))
+        
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute("SELECT DISTINCT color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
