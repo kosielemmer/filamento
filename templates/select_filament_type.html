@@ -1,41 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Select Filament Type and Shelf</h1>
-
-<form id="shelfForm">
+<h1>Select Shelf and Filament Type</h1>
+<form id="shelfForm" action="{{ url_for('select_color', manufacturer_id=manufacturer_id) }}" method="get">
     <label for="shelf">Select Shelf:</label>
     <select id="shelf" name="shelf">
-        <option value="1" {% if shelf == 1 %}selected{% endif %}>Shelf 1</option>
-        <option value="2" {% if shelf == 2 %}selected{% endif %}>Shelf 2</option>
-        <option value="3" {% if shelf == 3 %}selected{% endif %}>Shelf 3</option>
-        <option value="4" {% if shelf == 4 %}selected{% endif %}>Shelf 4</option>
+        <option value="1">Shelf 1</option>
+        <option value="2">Shelf 2</option>
+        <option value="3">Shelf 3</option>
+        <option value="4">Shelf 4</option>
     </select>
+    
+    <label for="filament_type">Select Filament Type:</label>
+    <select id="filament_type" name="filament_type">
+        {% for type in types %}
+            <option value="{{ type[0] }}">{{ type[0] }}</option>
+        {% endfor %}
+    </select>
+    
+    <button type="submit" class="btn btn-primary">Next</button>
 </form>
-
-<div class="filament-type-buttons">
-{% for type in types %}
-    <a href="#" class="btn btn-filament-type" data-type="{{ type[0] }}">{{ type[0] }}</a>
-{% endfor %}
-</div>
-
 <a href="{{ url_for('select_manufacturer') }}" class="btn btn-small">Back to Manufacturers</a>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const shelfSelect = document.getElementById('shelf');
-    const filamentButtons = document.querySelectorAll('.btn-filament-type');
-
-    filamentButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const filamentType = this.getAttribute('data-type');
-            const selectedShelf = shelfSelect.value;
-            window.location.href = "{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type='__TYPE__', shelf=0) }}"
-                .replace('__TYPE__', filamentType)
-                .replace('/0', '/' + selectedShelf);
-        });
-    });
-});
-</script>
 {% endblock %}
