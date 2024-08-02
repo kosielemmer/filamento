@@ -12,7 +12,7 @@
 <div class="color-buttons">
 {% if colors %}
   {% for color in colors %}
-    <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0]) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
+    <a href="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color[0], color_hex_code=color[1], shelf=shelf) }}" class="btn btn-color" style="background-color: {{ color[1] }};">{{ color[0] }}</a>
   {% endfor %}
 {% else %}
   <p>No colors available for this filament type.</p>
