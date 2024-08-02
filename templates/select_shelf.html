@@ -8,15 +8,10 @@
     <input type="hidden" name="color_name" value="{{ color_name }}">
     <input type="hidden" name="color_hex_code" value="{{ color_hex_code }}">
     
-    <label for="shelf">Select Shelf:</label>
-    <select id="shelf" name="shelf">
-        <option value="1">Shelf 1</option>
-        <option value="2">Shelf 2</option>
-        <option value="3">Shelf 3</option>
-        <option value="4">Shelf 4</option>
-    </select>
-    
-    <button type="submit" class="btn btn-primary">Next</button>
+    <h2>Select Shelf:</h2>
+    {% for shelf in range(1, 5) %}
+        <button type="submit" name="shelf" value="{{ shelf }}" class="btn btn-primary">Shelf {{ shelf }}</button>
+    {% endfor %}
 </form>
 <a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
 {% endblock %}
