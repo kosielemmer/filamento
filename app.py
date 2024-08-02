@@ -39,17 +39,25 @@ def select_manufacturer():
     conn.close()
     return render_template('select_manufacturer.html', manufacturers=manufacturers)
 
-@app.route('/select_filament/<int:manufacturer_id>', methods=['GET', 'POST'])
-def select_filament(manufacturer_id):
+@app.route('/select_filament_type/<int:manufacturer_id>')
+def select_filament_type(manufacturer_id):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
     types = cur.fetchall()
-    cur.execute("SELECT DISTINCT color_name, color_hex_code FROM filament WHERE manufacturer_id = %s ORDER BY color_name;", (manufacturer_id,))
-    colors = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('select_filament.html', manufacturer_id=manufacturer_id, types=types, colors=colors)
+    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
+
+@app.route('/select_color/<int:manufacturer_id>/<filament_type>')
+def select_color(manufacturer_id, filament_type):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
+    colors = cur.fetchall()
+    cur.close() 
+    conn.close()
+    return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
 
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>')
 def select_location(manufacturer_id, filament_type, color_name):
