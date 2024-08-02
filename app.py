@@ -50,7 +50,7 @@ def select_filament(manufacturer_id):
     types = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('select_filament.html', manufacturer_id=manufacturer_id, types=types)
+    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
 @app.route('/select_filament_type/<int:manufacturer_id>', methods=['GET', 'POST'])
 def select_filament_type(manufacturer_id):
