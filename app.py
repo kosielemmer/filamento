@@ -117,8 +117,15 @@ def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
 @app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
 def select_position(manufacturer_id, filament_type, color_name, color_hex_code, shelf):
     try:
-        return render_template('select_position.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code, shelf=shelf)
+        return render_template('select_position.html', 
+                               manufacturer_id=manufacturer_id, 
+                               filament_type=filament_type, 
+                               color_name=color_name, 
+                               color_hex_code=color_hex_code, 
+                               shelf=shelf)
     except Exception as e:
+        # Log the error for debugging
+        app.logger.error(f"Error in select_position: {str(e)}")
         return render_template('error.html', error=f"Error in select_position: {str(e)}"), 500
 
 @app.route('/add_inventory', methods=['POST'])
