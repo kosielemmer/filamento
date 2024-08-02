@@ -102,6 +102,7 @@ def select_manufacturer():
     cur = conn.cursor()
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name;")
     manufacturers = cur.fetchall()
+    manufacturers = [{'id': m[0], 'name': m[1]} for m in manufacturers]
     cur.close()
     conn.close()
     return render_template('select_manufacturer.html', manufacturers=manufacturers)

@@ -30,7 +30,7 @@
 
 {% block content %}
 <h1>Select Filament</h1>
-<form action="{{ url_for('select_location', manufacturer_id=manufacturer_id) }}" method="post">
+<form action="{{ url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name) }}" method="post">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <div>
         <label for="filament_type">Filament Type:</label>
