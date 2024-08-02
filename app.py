@@ -50,14 +50,18 @@ def select_filament_type(manufacturer_id):
     return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
 
 @app.route('/select_color/<int:manufacturer_id>/<filament_type>')
-def select_color(manufacturer_id, filament_type, shelf=1):
+def select_color(manufacturer_id, filament_type):
+    shelf = request.args.get('shelf', 1, type=int)
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
     colors = cur.fetchall()
     cur.close() 
     conn.close()
-    return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
+    try:
+        return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors, shelf=shelf)
+    except Exception as e:
+        return render_template('error.html', error=f"Error in select_color: {str(e)}")
 
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<int:shelf>')
 def select_location(manufacturer_id, filament_type, color_name, shelf):
