@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const filamentType = this.getAttribute('data-type');
             const selectedShelf = shelfSelect.value;
-            window.location.href = "{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type='__TYPE__', shelf='__SHELF__') }}"
+            window.location.href = "{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type='__TYPE__', shelf=0) }}"
                 .replace('__TYPE__', filamentType)
-                .replace('__SHELF__', selectedShelf);
+                .replace('/0', '/' + selectedShelf);
         });
     });
 });
