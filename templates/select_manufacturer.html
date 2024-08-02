@@ -4,7 +4,7 @@
 <h1>Select a Manufacturer</h1>
 <div class="manufacturer-buttons">
 {% for manufacturer in manufacturers %}
-    <a href="{{ url_for('select_filament', manufacturer_id=manufacturer.id) }}" class="btn btn-manufacturer">{{ manufacturer.name }}</a>
+    <a href="{{ url_for('select_filament_type', manufacturer_id=manufacturer.id) }}" class="btn btn-manufacturer">{{ manufacturer.name }}</a>
 {% else %}
     <p>No manufacturers found.</p>
 {% endfor %}
