@@ -175,9 +175,7 @@ def add_inventory_item():
         filament_type = request.form['filament_type']
         color_name = request.form['color_name']
         color_hex_code = request.form['color_hex_code']
-        shelf = request.form['shelf']
-        position = request.form['position']
-        location = f"{shelf}-{position}"
+        location = request.form['location']
 
         conn = get_db_connection()
         cur = conn.cursor()
