@@ -219,7 +219,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: #e6e6fa; /* Light blue-grey color */
+    background-color: #eff2f4; /* Updated background color */
     color: var(--martini-dark-blue);
 }
 
@@ -238,9 +238,18 @@ th {
     width: 100%;
     padding: 5px;
     margin-top: 5px;
-    background-color: #f0f0f5; /* Slightly lighter than the table background */
+    background-color: #eff2f4; /* Updated background color */
     border: 1px solid var(--martini-gray);
     color: var(--martini-dark-blue);
+}
+
+input[type="text"], input[type="color"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--martini-gray);
+    border-radius: 5px;
+    background-color: #eff2f4; /* Updated background color */
 }
 
 .color-sample {
