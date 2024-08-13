@@ -144,13 +144,16 @@ input[type="text"], input[type="color"], input[type="number"] {
 }
 
 .table-container {
-    overflow-x: visible;
+    overflow-x: auto;
+    max-width: 100%;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    background-color: var(--martini-dark-blue);
+    color: var(--martini-white);
 }
 
 .column-filter {
@@ -158,6 +161,9 @@ table {
     box-sizing: border-box;
     padding: 5px;
     margin-top: 5px;
+    background-color: var(--martini-dark-blue);
+    color: var(--martini-white);
+    border: 1px solid var(--martini-light-blue);
 }
 
 .dataTables_wrapper .dataTables_filter {
@@ -257,7 +263,7 @@ input[type="text"], input[type="color"], input[type="number"] {
     height: 30px;
     border-radius: 50%;
     display: inline-block;
-    border: 1px solid #000;
+    border: 1px solid var(--martini-white);
 }
 
 .table-container {
