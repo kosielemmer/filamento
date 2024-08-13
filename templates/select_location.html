@@ -2,9 +2,8 @@
 
 {% block content %}
 <h1>Select Location</h1>
-<h2>For {{ manufacturer_name }} {{ color_name }} {{ filament_type }}</h2>
+<h2>For {{ manufacturer_name }} {{ filament_type }}</h2>
 <div style="background-color: #{{ color_hex_code }}; width: 50px; height: 50px; display: inline-block; vertical-align: middle; margin-right: 10px;"></div>
-<span style="vertical-align: middle;">Color: #{{ color_hex_code }}</span>
 
 <form action="{{ url_for('select_location', filament_id=filament_id) }}" method="post">
     <input type="hidden" name="filament_id" value="{{ filament_id }}">
