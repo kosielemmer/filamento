@@ -216,32 +216,34 @@ th {
 
 .location-grid-container {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .location-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    max-width: 600px;
 }
 
 .grid-row {
-    display: flex;
-    align-items: center;
+    display: contents;
 }
 
-.grid-label {
-    width: 80px;
-    font-weight: bold;
+.btn-occupied {
+    background-color: var(--martini-gray);
+    cursor: not-allowed;
 }
 
-.grid-item {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--martini-light-blue);
-    margin-right: 10px;
+.btn-empty {
+    background-color: var(--martini-white);
+    color: var(--martini-dark-blue);
+}
+
+.btn-empty:hover {
+    background-color: var(--martini-light-blue);
+    color: var(--martini-white);
 }
 .home-content {
     display: flex;

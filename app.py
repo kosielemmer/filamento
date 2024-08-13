@@ -110,11 +110,32 @@ def select_color():
 @app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>')
 def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
     try:
+        # Fetch current inventory status
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT location FROM inventory")
+        occupied_locations = [row[0] for row in cur.fetchall()]
+        cur.close()
+        conn.close()
+
+        # Create a grid of shelves and positions
+        shelves = range(1, 9)  # 8 shelves
+        positions = ['LF', 'LB', 'RF', 'RB']  # 4 positions per shelf
+        grid = []
+        for shelf in shelves:
+            row = []
+            for position in positions:
+                location = f"{shelf}-{position}"
+                status = 'occupied' if location in occupied_locations else 'empty'
+                row.append({'location': location, 'status': status})
+            grid.append(row)
+
         return render_template('select_location.html', 
                                manufacturer_id=manufacturer_id, 
                                filament_type=filament_type, 
                                color_name=color_name, 
-                               color_hex_code=color_hex_code)
+                               color_hex_code=color_hex_code,
+                               grid=grid)
     except Exception as e:
         app.logger.error(f"Error in select_location: {str(e)}")
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
