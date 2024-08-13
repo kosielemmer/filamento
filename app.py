@@ -184,6 +184,9 @@ def add_inventory_item():
         # Debug logging
         app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
 
+        # Debug logging
+        app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
+
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute(
@@ -193,6 +196,9 @@ def add_inventory_item():
         conn.commit()
         cur.close()
         conn.close()
+
+        # Debug logging
+        app.logger.debug(f"Inserted into database: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
 
         # Debug logging
         app.logger.debug(f"Inserted into database: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
