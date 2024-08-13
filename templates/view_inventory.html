@@ -6,11 +6,18 @@
     <table id="inventoryTable">
         <thead>
             <tr>
-                <th>Manufacturer <select class="column-filter" data-column="0"></select></th>
-                <th>Filament Type <select class="column-filter" data-column="1"></select></th>
-                <th>Color <select class="column-filter" data-column="2"></select></th>
+                <th>Manufacturer</th>
+                <th>Filament Type</th>
+                <th>Color</th>
                 <th>Color Sample</th>
-                <th>Location <select class="column-filter" data-column="4"></select></th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <th><input type="text" class="column-filter" data-column="0" placeholder="Filter Manufacturer"></th>
+                <th><input type="text" class="column-filter" data-column="1" placeholder="Filter Filament Type"></th>
+                <th><input type="text" class="column-filter" data-column="2" placeholder="Filter Color"></th>
+                <th></th>
+                <th><input type="text" class="column-filter" data-column="4" placeholder="Filter Location"></th>
             </tr>
         </thead>
         <tbody>
@@ -38,31 +45,16 @@
 $(document).ready(function() {
     var table = $('#inventoryTable').DataTable({
         "paging": false,
-        "info": false
+        "info": false,
+        "ordering": true
     });
 
-    // Populate dropdowns
-    table.columns().every(function() {
-        var column = this;
-        var select = $('<select multiple><option value=""></option></select>')
-            .appendTo($(column.header()).find('.column-filter').empty())
-            .on('change', function() {
-                var vals = $(this).val();
-                column
-                    .search(vals ? vals.join('|') : '', true, false)
-                    .draw();
-            });
-
-        column.data().unique().sort().each(function(d, j) {
-            select.append('<option value="' + d + '">' + d + '</option>')
-        });
-    });
-
-    // Initialize select2 for better dropdown experience
-    $('.column-filter select').select2({
-        placeholder: 'Select options',
-        allowClear: true,
-        width: '100%'
+    // Apply column filtering
+    $('.column-filter').on('keyup change', function() {
+        table
+            .column($(this).data('column'))
+            .search(this.value)
+            .draw();
     });
 });
 </script>
