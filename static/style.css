@@ -264,6 +264,8 @@ input[type="text"], input[type="color"], input[type="number"] {
     border-radius: 50%;
     display: inline-block;
     border: 1px solid var(--martini-white);
+    position: relative;
+    z-index: 1;
 }
 
 .table-container {
