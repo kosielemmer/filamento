@@ -293,7 +293,7 @@ def manage_manufacturers():
     
     if request.method == 'POST':
         new_manufacturer = request.form['manufacturer_name']
-        cur.execute("INSERT INTO manufacturer (name) VALUES (?)", (new_manufacturer,))
+        cur.execute("INSERT INTO manufacturer (name) VALUES (%s)", (new_manufacturer,))
         conn.commit()
         flash('New manufacturer added successfully!', 'success')
     
