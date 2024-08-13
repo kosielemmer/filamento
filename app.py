@@ -271,5 +271,24 @@ def view_inventory():
 def data_maintenance():
     return render_template('data_maintenance.html')
 
+@app.route('/manage_manufacturers', methods=['GET', 'POST'])
+def manage_manufacturers():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    if request.method == 'POST':
+        new_manufacturer = request.form['manufacturer_name']
+        cur.execute("INSERT INTO manufacturer (name) VALUES (?)", (new_manufacturer,))
+        conn.commit()
+        flash('New manufacturer added successfully!', 'success')
+    
+    cur.execute("SELECT * FROM manufacturer ORDER BY name")
+    manufacturers = cur.fetchall()
+    
+    cur.close()
+    conn.close()
+    
+    return render_template('manage_manufacturers.html', manufacturers=manufacturers)
+
 if __name__ == '__main__':
     app.run(debug=True)
