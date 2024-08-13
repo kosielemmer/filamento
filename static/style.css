@@ -221,32 +221,62 @@ input[type="text"], input[type="color"], input[type="number"] {
     overflow-x: hidden;
 }
 
-table {
-    width: 95%;
+/* DataTables custom styling */
+#inventoryTable {
+    width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: #eff2f4; /* Updated background color */
+    background-color: #e6f2ff; /* Light grey-blue color */
     color: var(--martini-dark-blue);
 }
 
-th, td {
+#inventoryTable th, #inventoryTable td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid var(--martini-gray);
 }
 
-th {
+#inventoryTable th {
     background-color: var(--martini-light-blue);
     color: var(--martini-white);
 }
 
-.column-filter {
-    width: 100%;
-    padding: 5px;
-    margin-top: 5px;
-    background-color: #eff4f3; /* Updated background color */
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0.5em;
+    background-color: #eff4f3;
     border: 1px solid var(--martini-gray);
     color: var(--martini-dark-blue);
+    padding: 5px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    background-color: #eff4f3;
+    border: 1px solid var(--martini-gray);
+    color: var(--martini-dark-blue);
+    padding: 5px;
+}
+
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    margin-top: 10px;
+    color: var(--martini-white);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: var(--martini-white) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: var(--martini-light-blue) !important;
+    color: var(--martini-white) !important;
+    border: 1px solid var(--martini-light-blue) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--martini-light-blue) !important;
+    color: var(--martini-white) !important;
+    border: 1px solid var(--martini-light-blue) !important;
 }
 
 input[type="text"], input[type="color"], input[type="number"] {
