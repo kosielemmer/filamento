@@ -31,6 +31,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -42,20 +44,25 @@ $(document).ready(function() {
     // Populate dropdowns
     table.columns().every(function() {
         var column = this;
-        var select = $('<select><option value=""></option></select>')
+        var select = $('<select multiple><option value=""></option></select>')
             .appendTo($(column.header()).find('.column-filter').empty())
             .on('change', function() {
-                var val = $.fn.dataTable.util.escapeRegex(
-                    $(this).val()
-                );
+                var vals = $(this).val();
                 column
-                    .search(val ? '^' + val + '$' : '', true, false)
+                    .search(vals ? vals.join('|') : '', true, false)
                     .draw();
             });
 
         column.data().unique().sort().each(function(d, j) {
             select.append('<option value="' + d + '">' + d + '</option>')
         });
+    });
+
+    // Initialize select2 for better dropdown experience
+    $('.column-filter select').select2({
+        placeholder: 'Select options',
+        allowClear: true,
+        width: '100%'
     });
 });
 </script>
