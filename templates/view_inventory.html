@@ -45,6 +45,21 @@ $(document).ready(function() {
         "language": {
             "search": "Filter:"
         },
+        "autoWidth": false,
+        "columns": [
+            { "width": "25%" },
+            { "width": "25%" },
+            { "width": "25%" },
+            { "width": "25%" }
+        ],
+        "initComplete": function(settings, json) {
+            this.api().columns().every(function() {
+                var column = this;
+                var header = $(column.header());
+                var columnWidth = header.width();
+                header.width(columnWidth);
+            });
+        }
     });
 });
 </script>
