@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Current Inventory</h1>
 <div class="table-container">
-    <table id="inventoryTable">
+    <table id="inventoryTable" class="display">
         <thead>
             <tr>
                 <th>Manufacturer</th>
@@ -11,13 +11,6 @@
                 <th>Color</th>
                 <th>Color Sample</th>
                 <th>Location</th>
-            </tr>
-            <tr>
-                <th><input type="text" class="column-filter" data-column="0" placeholder="Filter Manufacturer"></th>
-                <th><input type="text" class="column-filter" data-column="1" placeholder="Filter Filament Type"></th>
-                <th><input type="text" class="column-filter" data-column="2" placeholder="Filter Color"></th>
-                <th></th>
-                <th><input type="text" class="column-filter" data-column="4" placeholder="Filter Location"></th>
             </tr>
         </thead>
         <tbody>
@@ -35,26 +28,19 @@
 </div>
 <a href="{{ url_for('index') }}" class="btn btn-small">Back to Main Page</a>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
 <script>
 $(document).ready(function() {
-    var table = $('#inventoryTable').DataTable({
-        "paging": false,
-        "info": false,
-        "ordering": true
-    });
-
-    // Apply column filtering
-    $('.column-filter').on('keyup change', function() {
-        table
-            .column($(this).data('column'))
-            .search(this.value)
-            .draw();
+    $('#inventoryTable').DataTable({
+        "pageLength": 25,
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "order": [[0, "asc"]],
+        "columnDefs": [
+            { "orderable": false, "targets": 3 }
+        ]
     });
 });
 </script>
