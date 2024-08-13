@@ -7,10 +7,7 @@
 
 <form action="{{ url_for('select_location', filament_id=filament_id) }}" method="post">
     <input type="hidden" name="filament_id" value="{{ filament_id }}">
-    <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" value="1" min="1" required>
-    </div>
+    <input type="hidden" name="quantity" value="1">
     <div class="location-grid-container">
         <div class="location-grid">
             {% for shelf in range(1, 9) %}
