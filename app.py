@@ -255,15 +255,15 @@ def view_inventory():
         FROM inventory i 
         JOIN filament f ON i.filament_id = f.id
         JOIN manufacturer m ON f.manufacturer_id = m.id 
-
-@app.route('/data_maintenance')
-def data_maintenance():
-    return render_template('data_maintenance.html')
         ORDER BY m.name, f.type, f.color_name;
     """)
     inventory = cur.fetchall()
     cur.close()
     conn.close()
+
+@app.route('/data_maintenance')
+def data_maintenance():
+    return render_template('data_maintenance.html')
     
     # Debug: Print color information
     for item in inventory:
