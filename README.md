@@ -51,13 +51,18 @@ CREATE TABLE IF NOT EXISTS filament (
     color_hex_code CHAR(7) NOT NULL
 );
 
--- Create Inventory table
+-- Alter Inventory table
+ALTER TABLE inventory
+DROP COLUMN manufacturer_id,
+DROP COLUMN filament_type,
+DROP COLUMN color_name,
+DROP COLUMN color_hex_code,
+ADD COLUMN filament_id INTEGER REFERENCES filament(id);
+
+-- Create Inventory table (new structure)
 CREATE TABLE IF NOT EXISTS inventory (
     id SERIAL PRIMARY KEY,
-    manufacturer_id INTEGER REFERENCES manufacturer(id),
-    filament_type VARCHAR(50),
-    color_name VARCHAR(50),
-    color_hex_code CHAR(7),
+    filament_id INTEGER REFERENCES filament(id),
     location VARCHAR(50)
 );
 ```
