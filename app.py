@@ -183,6 +183,9 @@ def add_inventory_item():
 
         # Debug logging
         app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
+        
+        # Additional debug logging to check the exact value of color_hex_code
+        app.logger.debug(f"Color hex code received: {color_hex_code}")
 
         # Debug logging
         app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
