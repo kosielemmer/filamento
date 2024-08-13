@@ -153,6 +153,17 @@ table {
     margin-bottom: 20px;
 }
 
+.column-filter {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    display: none;
+}
+
 
     
 .btn-large {
