@@ -3,6 +3,7 @@ from werkzeug.exceptions import HTTPException
 import os
 import psycopg2
 from psycopg2 import sql
+import logging
 
 def get_db_connection():
     conn = psycopg2.connect(
@@ -17,6 +18,9 @@ app = Flask(__name__)
 
 # Set a secret key for the application
 app.secret_key = 'your_secret_key_here'  # Replace with a strong, random secret key
+
+# Set up logging
+app.logger.setLevel(logging.DEBUG)
 
 @app.errorhandler(Exception)
 def handle_exception(e):
@@ -177,6 +181,9 @@ def add_inventory_item():
         color_hex_code = request.form['color_hex_code']
         location = request.form['location']
 
+        # Debug logging
+        app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
+
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute(
@@ -187,9 +194,13 @@ def add_inventory_item():
         cur.close()
         conn.close()
 
+        # Debug logging
+        app.logger.debug(f"Inserted into database: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
+
         flash('Success', 'success')
         return redirect(url_for('select_manufacturer'))
     except Exception as e:
+        app.logger.error(f"Error adding inventory item: {str(e)}")
         flash(f"Error adding inventory item: {str(e)}", 'error')
         return redirect(url_for('select_manufacturer'))
 
