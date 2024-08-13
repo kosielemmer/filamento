@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Select a Manufacturer</h1>
-<div class="manufacturer-buttons">
+<div class="large-button-container">
 {% for manufacturer in manufacturers %}
     <a href="{{ url_for('select_filament', manufacturer_id=manufacturer.id) }}" class="btn btn-large">{{ manufacturer.name }}</a>
 {% else %}
