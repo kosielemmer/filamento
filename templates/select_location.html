@@ -19,7 +19,7 @@
                         <input type="hidden" name="location" value="{{ cell.location }}">
                         <button type="submit" 
                                 class="btn btn-medium {% if cell.status == 'occupied' %}btn-occupied{% else %}btn-empty{% endif %}"
-                                {% if cell.status == 'occupied' %}disabled{% endif %}>
+                                disabled="{{ cell.status == 'occupied' }}">
                             {{ cell.location }}
                             <br>
                             {{ cell.status }}
