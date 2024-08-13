@@ -1,195 +1,212 @@
+:root {
+    --martini-dark-blue: #000033;
+    --martini-light-blue: #0066cc;
+    --martini-red: #cc0000;
+    --martini-white: #ffffff;
+    --martini-gray: #cccccc;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgba(0, 0, 51, 0.9); /* Slightly transparent dark blue */
+    min-height: 100vh;
+    color: var(--martini-white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 3;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: var(--martini-white);
+    color: var(--martini-dark-blue);
+    position: relative;
 }
+
 .error {
     color: #dc3545;
     margin: 10px 0;
 }
 
-.container {
-    max-width: 428px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    min-height: 100vh;
-}
 h1 {
     text-align: center;
+    margin-bottom: 40px;
 }
+
+.style-section {
+    margin-bottom: 40px;
+}
+
+.style-section h2 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--martini-light-blue);
+    padding-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 20px;
-    margin: 5px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
-    color: white;
-    background-color: #007bff;
+    color: var(--martini-white);
+    background-color: var(--martini-light-blue);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    font-size: 16px;
+    width: 100px;
+    height: 80px;
+    position: relative;
+    z-index: 4;
 }
+
+.btn:hover {
+    background-color: var(--martini-red);
+    transform: translateY(-2px);
+}
+
 .btn-large {
     font-size: 18px;
-    padding: 15px 30px;
-}
-.btn-medium {
-    font-size: 16px;
-    padding: 10px 20px;
+    width: 55px;
+    height:55px;
 }
 .btn-small {
     font-size: 14px;
-    padding: 5px 10px;
+    width: 60px;
+    height: 60px;
 }
 .btn-red {
-    background-color: #dc3545;
+    background-color: var(--martini-red);
+}
+
+.btn-red:hover {
+    background-color: var(--martini-light-blue);
+}
+
+#special-medium-btn {
+    width: 90px;
+    height: 90px;
 }
 form {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
 }
+
 input[type="text"], input[type="color"], input[type="number"] {
     width: 100%;
     padding: 10px;
-    margin: 5px 0;
     box-sizing: border-box;
+    border: 1px solid var(--martini-gray);
+    border-radius: 5px;
 }
+
+.table-container {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
+    margin-bottom: 20px;
 }
 
-.color-sample {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ddd;
+
+    
+.btn-large {
+    width: 110px;
+    height: 110px;
+    background-color: transparent;
 }
 
-@media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-    
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    
-    tr { border: 1px solid #ccc; }
-    
-    td {
-        border: none;
-        position: relative;
-        padding-left: 50%;
-    }
-    
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-    }
-    
-    td:nth-of-type(1):before { content: "ID"; }
-    td:nth-of-type(2):before { content: "Manufacturer"; }
-    td:nth-of-type(3):before { content: "Type"; }
-    td:nth-of-type(4):before { content: "Color Name"; }
-    td:nth-of-type(5):before { content: "Color"; }
-}/* General improvements for responsiveness and accessibility */
-
-body {
-    font-family: Arial, sans-serif;
+.btn-small {
+    font-size: 14px;
+    width: 60px;
+    height: 60px;
 }
 
-.button {
-    padding: 10px 20px;
-    border: none;
+.btn-red {
+    background-color: var(--martini-red);
+}
+
+.btn-red:hover {
+    background-color: var(--martini-light-blue);
+}
+
+#special-medium-btn {
+    width: 120px;
+    height: 90px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input[type="text"], input[type="color"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--martini-gray);
     border-radius: 5px;
-    cursor: pointer;
 }
 
-.button-primary {
-    background-color: #007bff;
-    color: white;
+.table-container {
+    overflow-x: auto;
 }
 
-.button-secondary {
-    background-color: #6c757d;
-    color: white;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-.button-danger {
-    background-color: #dc3545;
-    color: white;
+th {
+    background-color: transparent;
 }
 
-.button-large {
-    font-size: 1.25rem;
+.location-grid-container {
+    margin-top: 20px;
 }
 
-.button-small {
-    font-size: 0.875rem;
-}
-
-/* Add more styles as needed */
-.grid-container {
+.location-grid {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.shelf-row {
+.grid-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.shelf-label {
-    flex: 0 0 60px;
-    font-weight: bold;
-}
-
-.position-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.grid-item {
-    padding: 10px;
-    text-align: center;
-}
-.location-grid {
-    display: grid;
-    grid-template-columns: 100px repeat(5, 1fr);
-    gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.grid-row {
-    display: contents;
 }
 
 .grid-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 80px;
     font-weight: bold;
 }
 
 .grid-item {
-    aspect-ratio: 1;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--martini-light-blue);
+    margin-right: 10px;
 }
