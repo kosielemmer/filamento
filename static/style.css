@@ -212,11 +212,11 @@ input[type="text"], input[type="color"], input[type="number"] {
 }
 
 .table-container {
-    overflow-x: visible;
+    overflow-x: hidden;
 }
 
 table {
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     margin-bottom: 20px;
     background-color: #eff2f4; /* Updated background color */
@@ -238,7 +238,7 @@ th {
     width: 100%;
     padding: 5px;
     margin-top: 5px;
-    background-color: #eff2f4; /* Updated background color */
+    background-color: #eff4f3; /* Updated background color */
     border: 1px solid var(--martini-gray);
     color: var(--martini-dark-blue);
 }
