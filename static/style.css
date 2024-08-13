@@ -342,7 +342,7 @@ input[type="text"], input[type="color"], input[type="number"] {
 
 .color-sample-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
     position: relative;
@@ -358,6 +358,7 @@ input[type="text"], input[type="color"], input[type="number"] {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 11;
+    margin-right: 10px;
 }
 
 #inventoryTable td:last-child {
