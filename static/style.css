@@ -232,6 +232,12 @@ th {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    max-width: 280px; /* Adjust this value to control the overall width */
+    max-width: 280px;
     margin: 0 auto;
+}
+
+.btn-large {
+    width: 120px;
+    height: 120px;
+    font-size: 18px;
 }
