@@ -337,5 +337,47 @@ def manage_filaments():
 
     return render_template('manage_filaments.html', manufacturers=manufacturers)
 
+@app.route('/manage_colors', methods=['GET', 'POST'])
+def manage_colors():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    if request.method == 'POST':
+        manufacturer_id = request.form['manufacturer_id']
+        filament_type = request.form['filament_type']
+        color_name = request.form['color_name']
+        color_hex_code = request.form['color_hex_code']
+
+        # Check for duplication
+        cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
+                    (manufacturer_id, filament_type, color_name))
+        existing_color = cur.fetchone()
+
+        if existing_color:
+            flash('This color already exists for the selected manufacturer and filament type!', 'warning')
+        else:
+            cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
+                        (manufacturer_id, filament_type, color_name, color_hex_code))
+            conn.commit()
+            flash('New color added successfully!', 'success')
+
+    cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
+    manufacturers = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return render_template('manage_colors.html', manufacturers=manufacturers)
+
+@app.route('/get_filament_types/<int:manufacturer_id>')
+def get_filament_types(manufacturer_id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type", (manufacturer_id,))
+    filament_types = [row[0] for row in cur.fetchall()]
+    cur.close()
+    conn.close()
+    return jsonify(filament_types)
+
 if __name__ == '__main__':
     app.run(debug=True)
