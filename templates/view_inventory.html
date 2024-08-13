@@ -10,7 +10,6 @@
                 <th>Filament Type</th>
                 <th>Color</th>
                 <th>Location</th>
-                <th>Color Sample</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +19,6 @@
                 <td>{{ item[1] }}</td>
                 <td>{{ item[2] }} ({{ item[3] }})</td>
                 <td>{{ item[4] }}</td>
-                <td><div class="color-sample-container"><div class="color-sample" style="background-color: {{ item[3] }}; opacity: 1;" title="{{ item[2] }}"></div>{{ item[3] }}</div></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -37,43 +35,12 @@ $(document).ready(function() {
         "pageLength": 25,
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "order": [[0, "asc"]],
-        "columnDefs": [
-            { "orderable": false, "targets": 4 }
-        ],
+        "columnDefs": [],
         "dom": '<"top"if>rt<"bottom"lp><"clear">',
         "language": {
             "search": "Filter:"
         },
-        "drawCallback": function(settings) {
-            // Re-apply color sample styles after each draw
-            $('.color-sample').each(function() {
-                var color = $(this).css('background-color');
-                $(this).css({
-                    'background-color': color,
-                    'border': '1px solid ' + (isLightColor(color) ? '#000' : '#fff'),
-                    'opacity': '1'
-                });
-            });
-        }
     });
-
-    // Function to determine if a color is light or dark
-    function isLightColor(color) {
-        var r, g, b, hsp;
-        if (color.match(/^rgb/)) {
-            color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
-            r = color[1];
-            g = color[2];
-            b = color[3];
-        } else {
-            color = +("0x" + color.slice(1).replace(color.length < 5 && /./g, '$&$&'));
-            r = color >> 16;
-            g = color >> 8 & 255;
-            b = color & 255;
-        }
-        hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
-        return hsp > 127.5;
-    }
 });
 </script>
 {% endblock %}

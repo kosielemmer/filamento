@@ -16,7 +16,7 @@
     {% if colors %}
       {% for color in colors %}
         <button type="submit" name="filament_id" value="{{ color[0] }}" class="btn btn-medium btn-color" style="background-color: {{ color[2] }};" data-color="{{ color[2] }}">
-          <span class="button-text">{{ color[1] }}<br>({{ color[2] }})</span>
+          <span class="button-text">{{ color[1] }}</span>
         </button>
       {% endfor %}
     {% else %}
