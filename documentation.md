@@ -73,15 +73,6 @@ This application is designed to manage a filament inventory for 3D printing. It 
    - Navigate to the inventory page (`view_inventory.html`)
    - Use built-in sorting and filtering options
 
-## Redundant Files
-
-The following files are currently not in use in the main workflow and may be considered redundant:
-
-1. `select_shelf.html`
-2. `select_position.html`
-3. `filaments.html`
-
-These files were likely part of a previous workflow that has since been updated. They are retained in the repository for reference or potential future use, but are not actively used in the current application flow.
 
 ## Database Structure
 
@@ -95,8 +86,6 @@ Detailed table structures can be found in the README.md file.
 
 ## Future Improvements
 
-1. Implement user authentication
-2. Add more detailed reporting features
-3. Integrate with external inventory management systems
+1. Integrate with external inventory management systems
 
 For more detailed information about setup, configuration, and usage, please refer to the README.md file in the repository.
