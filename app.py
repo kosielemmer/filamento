@@ -111,23 +111,33 @@ def select_color():
         flash(f"Error in select_color: {str(e)}", 'error')
         return redirect(url_for('select_filament', manufacturer_id=manufacturer_id))
 
-@app.route('/select_location/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>')
-def select_location(manufacturer_id, filament_type, color_name, color_hex_code):
+@app.route('/select_location/<int:filament_id>')
+def select_location(filament_id):
     try:
         # Fetch current inventory status
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute("SELECT location FROM inventory")
         occupied_locations = [row[0] for row in cur.fetchall()]
+        
+        # Fetch filament details
+        cur.execute("SELECT manufacturer_id, type, color_name, color_hex_code FROM filament WHERE id = %s", (filament_id,))
+        filament = cur.fetchone()
         cur.close()
         conn.close()
 
-        return render_template('select_location.html', 
-                               manufacturer_id=manufacturer_id, 
-                               filament_type=filament_type, 
-                               color_name=color_name, 
-                               color_hex_code=color_hex_code,
-                               occupied_locations=occupied_locations)
+        if filament:
+            manufacturer_id, filament_type, color_name, color_hex_code = filament
+            return render_template('select_location.html', 
+                                   filament_id=filament_id,
+                                   manufacturer_id=manufacturer_id, 
+                                   filament_type=filament_type, 
+                                   color_name=color_name, 
+                                   color_hex_code=color_hex_code,
+                                   occupied_locations=occupied_locations)
+        else:
+            flash('Filament not found.', 'error')
+            return redirect(url_for('select_manufacturer'))
     except Exception as e:
         app.logger.error(f"Error in select_location: {str(e)}")
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
@@ -218,10 +228,11 @@ def view_inventory():
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("""
-        SELECT m.name, i.filament_type, i.color_name, i.color_hex_code, i.location 
+        SELECT m.name, f.type, f.color_name, f.color_hex_code, i.location 
         FROM inventory i 
-        JOIN manufacturer m ON i.manufacturer_id = m.id 
-        ORDER BY m.name, i.filament_type, i.color_name;
+        JOIN filament f ON i.filament_id = f.id
+        JOIN manufacturer m ON f.manufacturer_id = m.id 
+        ORDER BY m.name, f.type, f.color_name;
     """)
     inventory = cur.fetchall()
     cur.close()
