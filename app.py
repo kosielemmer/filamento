@@ -261,15 +261,15 @@ def view_inventory():
     cur.close()
     conn.close()
 
-@app.route('/data_maintenance')
-def data_maintenance():
-    return render_template('data_maintenance.html')
-    
     # Debug: Print color information
     for item in inventory:
         print(f"Color: {item[2]}, Hex: {item[3]}")
     
     return render_template('view_inventory.html', inventory=inventory)
+
+@app.route('/data_maintenance')
+def data_maintenance():
+    return render_template('data_maintenance.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
