@@ -219,7 +219,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background-color: var(--martini-white);
+    background-color: #e6e6f0; /* Light gray complementary to dark blue */
     color: var(--martini-dark-blue);
 }
 
@@ -232,6 +232,15 @@ th, td {
 th {
     background-color: var(--martini-light-blue);
     color: var(--martini-white);
+}
+
+.column-filter {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    background-color: #f0f0f5; /* Slightly lighter than the table background */
+    border: 1px solid var(--martini-gray);
+    color: var(--martini-dark-blue);
 }
 
 .color-sample {

@@ -6,11 +6,11 @@
     <table id="inventoryTable">
         <thead>
             <tr>
-                <th>Manufacturer <input type="text" class="column-filter" data-column="0"></th>
-                <th>Filament Type <input type="text" class="column-filter" data-column="1"></th>
-                <th>Color <input type="text" class="column-filter" data-column="2"></th>
+                <th>Manufacturer <select class="column-filter" data-column="0"></select></th>
+                <th>Filament Type <select class="column-filter" data-column="1"></select></th>
+                <th>Color <select class="column-filter" data-column="2"></select></th>
                 <th>Color Sample</th>
-                <th>Location <input type="text" class="column-filter" data-column="4"></th>
+                <th>Location <select class="column-filter" data-column="4"></select></th>
             </tr>
         </thead>
         <tbody>
@@ -39,10 +39,23 @@ $(document).ready(function() {
         "info": false
     });
 
-    $('.column-filter').on('keyup change', function() {
-        table.column($(this).data('column'))
-            .search(this.value)
-            .draw();
+    // Populate dropdowns
+    table.columns().every(function() {
+        var column = this;
+        var select = $('<select><option value=""></option></select>')
+            .appendTo($(column.header()).find('.column-filter').empty())
+            .on('change', function() {
+                var val = $.fn.dataTable.util.escapeRegex(
+                    $(this).val()
+                );
+                column
+                    .search(val ? '^' + val + '$' : '', true, false)
+                    .draw();
+            });
+
+        column.data().unique().sort().each(function(d, j) {
+            select.append('<option value="' + d + '">' + d + '</option>')
+        });
     });
 });
 </script>
