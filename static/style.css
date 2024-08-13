@@ -124,9 +124,11 @@ table {
 
     
 .btn-large {
-    width: 110px;
-    height: 110px;
-    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    background-color: var(--martini-light-blue);
+    font-size: 24px;
+    margin: 20px;
 }
 
 .btn-small {
@@ -205,4 +207,22 @@ th {
     justify-content: center;
     border: 1px solid var(--martini-light-blue);
     margin-right: 10px;
+}
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.home-content h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
