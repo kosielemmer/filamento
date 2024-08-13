@@ -293,6 +293,8 @@ input[type="text"], input[type="color"], input[type="number"] {
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
+    z-index: 10;
 }
 
 .color-sample {
@@ -302,6 +304,13 @@ input[type="text"], input[type="color"], input[type="number"] {
     display: inline-block;
     border: 1px solid var(--martini-dark-blue);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 11;
+}
+
+#inventoryTable td:last-child {
+    position: relative;
+    z-index: 9;
 }
 
 .table-container {
