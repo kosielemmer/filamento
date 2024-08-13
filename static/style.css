@@ -288,14 +288,20 @@ input[type="text"], input[type="color"], input[type="number"] {
     background-color: #eff2f4; /* Updated background color */
 }
 
+.color-sample-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .color-sample {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     display: inline-block;
-    border: 1px solid var(--martini-white);
-    position: relative;
-    z-index: 1;
+    border: 1px solid var(--martini-dark-blue);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .table-container {
