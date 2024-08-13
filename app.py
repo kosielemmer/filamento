@@ -91,16 +91,15 @@ def select_color():
     if request.method == 'POST':
         manufacturer_id = request.form.get('manufacturer_id', type=int)
         filament_type = request.form.get('filament_type')
-        color_name = request.form.get('color_name')
-        color_hex_code = request.form.get('color_hex_code')
-        return redirect(url_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code))
+        filament_id = request.form.get('filament_id')
+        return redirect(url_for('select_location', filament_id=filament_id))
     else:
         manufacturer_id = request.args.get('manufacturer_id', type=int)
         filament_type = request.args.get('filament_type')
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute("SELECT DISTINCT color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
+        cur.execute("SELECT id, color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
         colors = cur.fetchall()
         cur.close() 
         conn.close()
