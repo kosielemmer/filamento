@@ -16,7 +16,7 @@
     {% if colors %}
       {% for color in colors %}
         <button type="submit" name="color_name" value="{{ color[0] }}" class="btn btn-medium btn-color" style="background-color: {{ color[1] }};" data-color="{{ color[1] }}">
-          <span class="button-text">{{ color[0] }}</span>
+          <span class="button-text">{{ color[0] }}<br>({{ color[1] }})</span>
         </button>
         <input type="hidden" name="color_hex_code" value="{{ color[1] }}">
       {% endfor %}
