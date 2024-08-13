@@ -8,21 +8,19 @@
 
 <div class="location-grid-container">
     <div class="location-grid">
-        {% for row in grid %}
+        {% for shelf in range(1, 9) %}
+            <div class="shelf-label">Shelf {{ shelf }}</div>
             <div class="grid-row">
-                {% for cell in row %}
+                {% for position in ['LF', 'LB', 'RF', 'RB'] %}
+                    {% set location = shelf|string + '-' + position %}
                     <form action="{{ url_for('add_inventory_item') }}" method="post" style="display: inline;">
                         <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
                         <input type="hidden" name="filament_type" value="{{ filament_type }}">
                         <input type="hidden" name="color_name" value="{{ color_name }}">
                         <input type="hidden" name="color_hex_code" value="{{ color_hex_code }}">
-                        <input type="hidden" name="location" value="{{ cell.location }}">
-                        <button type="submit" 
-                                class="btn btn-medium {% if cell.status == 'occupied' %}btn-occupied{% else %}btn-empty{% endif %}"
-                                disabled="{{ cell.status == 'occupied' }}">
-                            {{ cell.location }}
-                            <br>
-                            {{ cell.status }}
+                        <input type="hidden" name="location" value="{{ location }}">
+                        <button type="submit" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
+                            {{ position }}
                         </button>
                     </form>
                 {% endfor %}
