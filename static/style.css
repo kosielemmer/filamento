@@ -231,6 +231,18 @@ input[type="text"], input[type="color"], input[type="number"] {
     color: var(--martini-dark-blue);
 }
 
+.bottom-button-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--martini-dark-blue);
+    z-index: 1000;
+}
+
 #inventoryTable th, #inventoryTable td {
     padding: 10px;
     text-align: left;

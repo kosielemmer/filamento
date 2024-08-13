@@ -29,7 +29,6 @@
         </tbody>
     </table>
 </div>
-<a href="{{ url_for('index') }}" class="btn btn-small">Back to Main Page</a>
 
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -63,4 +62,7 @@ $(document).ready(function() {
     });
 });
 </script>
+<div class="bottom-button-container">
+    <a href="{{ url_for('index') }}" class="btn btn-small">Main Menu</a>
+</div>
 {% endblock %}
