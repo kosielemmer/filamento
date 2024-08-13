@@ -222,13 +222,20 @@ th {
 
 .location-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-    max-width: 600px;
+    max-width: 750px;
 }
 
 .grid-row {
     display: contents;
+}
+
+.shelf-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
 .btn-occupied {
