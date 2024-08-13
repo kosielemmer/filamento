@@ -12,10 +12,10 @@
 <form id="colorForm" action="{{ url_for('select_color') }}" method="post">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">
-    <div class="color-buttons">
+    <div class="medium-button-container">
     {% if colors %}
       {% for color in colors %}
-        <button type="submit" name="color_name" value="{{ color[0] }}" class="btn btn-color" style="background-color: {{ color[1] }};">
+        <button type="submit" name="color_name" value="{{ color[0] }}" class="btn btn-medium btn-color" style="background-color: {{ color[1] }};">
           {{ color[0] }}
           <input type="hidden" name="color_hex_code" value="{{ color[1] }}">
         </button>
