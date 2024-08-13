@@ -206,6 +206,11 @@ def view_inventory():
     inventory = cur.fetchall()
     cur.close()
     conn.close()
+    
+    # Debug: Print color information
+    for item in inventory:
+        print(f"Color: {item[2]}, Hex: {item[3]}")
+    
     return render_template('view_inventory.html', inventory=inventory)
 
 if __name__ == '__main__':
