@@ -18,9 +18,9 @@
             <tr>
                 <td>{{ item[0] }}</td>
                 <td>{{ item[1] }}</td>
-                <td>{{ item[2] }}</td>
+                <td>{{ item[2] }} ({{ item[3] }})</td>
                 <td>{{ item[4] }}</td>
-                <td><div class="color-sample-container"><div class="color-sample" style="background-color: {{ item[3] }}; opacity: 1;" title="{{ item[2] }}"></div></div></td>
+                <td><div class="color-sample-container"><div class="color-sample" style="background-color: {{ item[3] }}; opacity: 1;" title="{{ item[2] }}"></div>{{ item[3] }}</div></td>
             </tr>
             {% endfor %}
         </tbody>
