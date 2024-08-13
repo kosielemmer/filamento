@@ -14,11 +14,8 @@
                 <div class="grid-row">
                     {% for position in ['LF', 'LB'] %}
                         {% set location = shelf|string + '-' + position %}
-                        <button type="submit" name="location" value="{{ location }}" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
+                        <button type="submit" name="location" value="{{ location }}" class="btn btn-small">
                             {{ position }}
-                            {% if location in occupied_locations %}
-                                <br>({{ occupied_locations[location] }})
-                            {% endif %}
                         </button>
                     {% endfor %}
                     <div class="shelf-label">Shelf {{ shelf }}</div>
