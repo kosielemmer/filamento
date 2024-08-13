@@ -6,7 +6,7 @@
     --martini-gray: #cccccc;
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Saira Semi Condensed', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--martini-dark-blue);
