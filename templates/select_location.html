@@ -13,10 +13,7 @@
                 {% for position in ['LF', 'LB'] %}
                     {% set location = shelf|string + '-' + position %}
                     <form action="{{ url_for('add_inventory_item') }}" method="post" style="display: inline;">
-                        <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
-                        <input type="hidden" name="filament_type" value="{{ filament_type }}">
-                        <input type="hidden" name="color_name" value="{{ color_name }}">
-                        <input type="hidden" name="color_hex_code" value="{{ color_hex_code }}">
+                        <input type="hidden" name="filament_id" value="{{ filament_id }}">
                         <input type="hidden" name="location" value="{{ location }}">
                         <button type="submit" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
                             {{ position }}
