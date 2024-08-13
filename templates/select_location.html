@@ -42,7 +42,24 @@
     </div>
 </div>
 
-<div class="navigation-buttons">
-    <a href="{{ url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type) }}" class="btn btn-small">Back to Color Selection</a>
-</div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div id="flash-message" class="flash-message">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+      setTimeout(function() {
+        flashMessage.style.display = 'none';
+        window.location.href = "{{ url_for('select_manufacturer') }}";
+      }, 500);
+    }
+  });
+</script>
+
 {% endblock %}

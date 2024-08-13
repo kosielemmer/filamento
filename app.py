@@ -187,8 +187,8 @@ def add_inventory_item():
         cur.close()
         conn.close()
 
-        flash('Inventory item added successfully!', 'success')
-        return redirect(url_for('view_inventory'))
+        flash('Success', 'success')
+        return redirect(url_for('select_manufacturer'))
     except Exception as e:
         flash(f"Error adding inventory item: {str(e)}", 'error')
         return redirect(url_for('select_manufacturer'))
