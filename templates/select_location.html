@@ -2,42 +2,44 @@
 
 {% block content %}
 <h1>Select Location</h1>
-<h2>For {{ color_name }} {{ filament_type }}</h2>
+<h2>For {{ manufacturer_name }} {{ color_name }} {{ filament_type }}</h2>
 <div style="background-color: #{{ color_hex_code }}; width: 50px; height: 50px; display: inline-block; vertical-align: middle; margin-right: 10px;"></div>
 <span style="vertical-align: middle;">Color: #{{ color_hex_code }}</span>
 
-<div class="location-grid-container">
-    <div class="location-grid">
-        {% for shelf in range(1, 9) %}
-            <div class="grid-row">
-                {% for position in ['LF', 'LB'] %}
-                    {% set location = shelf|string + '-' + position %}
-                    <form action="{{ url_for('add_inventory_item') }}" method="post" style="display: inline;">
-                        <input type="hidden" name="filament_id" value="{{ filament_id }}">
-                        <input type="hidden" name="location" value="{{ location }}">
-                        <button type="submit" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
-                            {{ position }}
-                        </button>
-                    </form>
-                {% endfor %}
-                <div class="shelf-label">Shelf {{ shelf }}</div>
-                {% for position in ['RF', 'RB'] %}
-                    {% set location = shelf|string + '-' + position %}
-                    <form action="{{ url_for('add_inventory_item') }}" method="post" style="display: inline;">
-                        <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
-                        <input type="hidden" name="filament_type" value="{{ filament_type }}">
-                        <input type="hidden" name="color_name" value="{{ color_name }}">
-                        <input type="hidden" name="color_hex_code" value="{{ color_hex_code }}">
-                        <input type="hidden" name="location" value="{{ location }}">
-                        <button type="submit" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
-                            {{ position }}
-                        </button>
-                    </form>
-                {% endfor %}
-            </div>
-        {% endfor %}
+<form action="{{ url_for('select_location', filament_id=filament_id) }}" method="post">
+    <input type="hidden" name="filament_id" value="{{ filament_id }}">
+    <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" required>
     </div>
-</div>
+    <div class="location-grid-container">
+        <div class="location-grid">
+            {% for shelf in range(1, 9) %}
+                <div class="grid-row">
+                    {% for position in ['LF', 'LB'] %}
+                        {% set location = shelf|string + '-' + position %}
+                        <button type="submit" name="location" value="{{ location }}" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
+                            {{ position }}
+                            {% if location in occupied_locations %}
+                                <br>({{ occupied_locations[location] }})
+                            {% endif %}
+                        </button>
+                    {% endfor %}
+                    <div class="shelf-label">Shelf {{ shelf }}</div>
+                    {% for position in ['RF', 'RB'] %}
+                        {% set location = shelf|string + '-' + position %}
+                        <button type="submit" name="location" value="{{ location }}" class="btn btn-small" {% if location in occupied_locations %}disabled{% endif %}>
+                            {{ position }}
+                            {% if location in occupied_locations %}
+                                <br>({{ occupied_locations[location] }})
+                            {% endif %}
+                        </button>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</form>
 
 {% with messages = get_flashed_messages() %}
   {% if messages %}
