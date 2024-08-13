@@ -63,7 +63,8 @@ ADD COLUMN filament_id INTEGER REFERENCES filament(id);
 CREATE TABLE IF NOT EXISTS inventory (
     id SERIAL PRIMARY KEY,
     filament_id INTEGER REFERENCES filament(id),
-    location VARCHAR(50)
+    location VARCHAR(50),
+    quantity INTEGER DEFAULT 1
 );
 ```
 
