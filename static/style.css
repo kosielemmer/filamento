@@ -232,12 +232,15 @@ th {
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    max-width: 280px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
 }
 
 .btn-large {
-    width: 120px;
+    width: 100%;
     height: 120px;
     font-size: 18px;
+    max-width: 140px;
+    justify-self: center;
 }
