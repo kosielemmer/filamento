@@ -124,21 +124,13 @@ table {
 
     
 .btn-large {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* This creates a square aspect ratio */
+    width: 110px;
+    height: 110px;
     background-color: var(--martini-light-blue);
     font-size: 24px;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-large span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -238,14 +230,8 @@ th {
     gap: 20px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     padding: 20px;
     box-sizing: border-box;
-}
-
-@media (min-width: 428px) { /* iPhone 13 Pro Max width */
-    .button-container {
-        max-width: 428px;
-        margin: 0 auto;
-    }
+    max-width: 280px; /* Adjust this value to control the overall width */
+    margin: 0 auto;
 }
