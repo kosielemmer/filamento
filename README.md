@@ -1,5 +1,5 @@
-Filament Inventory Application
-==============================
+Filament Inventory Application v1.2
+===================================
 
 ## Overview
 
