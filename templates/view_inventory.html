@@ -20,7 +20,7 @@
                 <td>{{ item[1] }}</td>
                 <td>{{ item[2] }}</td>
                 <td>{{ item[3] }}</td>
-                <td><div class="color-sample-container"><div class="color-sample" style="background-color: {{ item[4] }};" title="{{ item[2] }}"></div></div></td>
+                <td><div class="color-sample-container"><div class="color-sample" style="background-color: {{ item[4] }}; opacity: 1;" title="{{ item[2] }}"></div></div></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -47,10 +47,11 @@ $(document).ready(function() {
         "drawCallback": function(settings) {
             // Re-apply color sample styles after each draw
             $('.color-sample').each(function() {
-                var color = $(this).attr('style').match(/background-color: (.*?);/)[1];
+                var color = $(this).css('background-color');
                 $(this).css({
                     'background-color': color,
-                    'border': '1px solid ' + (isLightColor(color) ? '#000' : '#fff')
+                    'border': '1px solid ' + (isLightColor(color) ? '#000' : '#fff'),
+                    'opacity': '1'
                 });
             });
         }
