@@ -115,9 +115,22 @@ def select_location(filament_id):
     try:
         if request.method == 'POST':
             location = request.form.get('location')
+            quantity = request.form.get('quantity', 1)
             conn = get_db_connection()
             cur = conn.cursor()
-            cur.execute("INSERT INTO inventory (filament_id, location) VALUES (%s, %s)", (filament_id, location))
+            
+            # Check if the filament already exists in the inventory at the given location
+            cur.execute("SELECT id, quantity FROM inventory WHERE filament_id = %s AND location = %s", (filament_id, location))
+            existing_item = cur.fetchone()
+            
+            if existing_item:
+                # Update the quantity if the item already exists
+                new_quantity = existing_item[1] + int(quantity)
+                cur.execute("UPDATE inventory SET quantity = %s WHERE id = %s", (new_quantity, existing_item[0]))
+            else:
+                # Insert a new item if it doesn't exist
+                cur.execute("INSERT INTO inventory (filament_id, location, quantity) VALUES (%s, %s, %s)", (filament_id, location, quantity))
+            
             conn.commit()
             cur.close()
             conn.close()
@@ -127,8 +140,8 @@ def select_location(filament_id):
             # Fetch current inventory status
             conn = get_db_connection()
             cur = conn.cursor()
-            cur.execute("SELECT location FROM inventory")
-            occupied_locations = [row[0] for row in cur.fetchall()]
+            cur.execute("SELECT location, SUM(quantity) FROM inventory GROUP BY location")
+            occupied_locations = {row[0]: row[1] for row in cur.fetchall()}
             
             # Fetch filament details
             cur.execute("SELECT manufacturer_id, type, color_name, color_hex_code FROM filament WHERE id = %s", (filament_id,))
