@@ -234,13 +234,13 @@ th {
 .large-button-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
-    max-width: 300px;
+    max-width: 340px;
     margin: 0 auto;
 }
 
