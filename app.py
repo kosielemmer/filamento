@@ -305,5 +305,37 @@ def manage_manufacturers():
     
     return render_template('manage_manufacturers.html', manufacturers=manufacturers)
 
+@app.route('/manage_filaments', methods=['GET', 'POST'])
+def manage_filaments():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    if request.method == 'POST':
+        manufacturer_id = request.form['manufacturer_id']
+        filament_type = request.form['filament_type']
+        color_name = request.form['color_name']
+        color_hex_code = request.form['color_hex_code']
+
+        # Check for duplication
+        cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
+                    (manufacturer_id, filament_type, color_name))
+        existing_filament = cur.fetchone()
+
+        if existing_filament:
+            flash('This filament already exists!', 'warning')
+        else:
+            cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
+                        (manufacturer_id, filament_type, color_name, color_hex_code))
+            conn.commit()
+            flash('New filament added successfully!', 'success')
+
+    cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
+    manufacturers = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return render_template('manage_filaments.html', manufacturers=manufacturers)
+
 if __name__ == '__main__':
     app.run(debug=True)
