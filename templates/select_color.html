@@ -15,10 +15,9 @@
     <div class="medium-button-container">
     {% if colors %}
       {% for color in colors %}
-        <button type="submit" name="color_name" value="{{ color[0] }}" class="btn btn-medium btn-color" style="background-color: {{ color[1] }};" data-color="{{ color[1] }}">
-          <span class="button-text">{{ color[0] }}<br>({{ color[1] }})</span>
+        <button type="submit" name="filament_id" value="{{ color[0] }}" class="btn btn-medium btn-color" style="background-color: {{ color[2] }};" data-color="{{ color[2] }}">
+          <span class="button-text">{{ color[1] }}<br>({{ color[2] }})</span>
         </button>
-        <input type="hidden" name="color_hex_code" value="{{ color[1] }}">
       {% endfor %}
     {% else %}
       <p>No colors available for this filament type.</p>
