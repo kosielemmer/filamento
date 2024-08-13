@@ -208,10 +208,31 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    background-color: var(--martini-white);
+    color: var(--martini-dark-blue);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--martini-gray);
 }
 
 th {
-    background-color: transparent;
+    background-color: var(--martini-light-blue);
+    color: var(--martini-white);
+}
+
+.color-sample {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-bottom: 20px;
 }
 
 .location-grid-container {
