@@ -8,22 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <nav>
-            <h2>Filament Inventory</h2>
-            <ul>
-                <li><a href="{{ url_for('index') }}" class="btn btn-small">Home</a></li>
-                <li><a href="{{ url_for('view_inventory') }}" class="btn btn-small">View Inventory</a></li>
-                <li><a href="{{ url_for('select_manufacturer') }}" class="btn btn-small">Add Filament</a></li>
-            </ul>
-        </nav>
         <main>
             {% block content %}
             <!-- Content will be injected here by other templates -->
             {% endblock %}
         </main>
-        <footer>
-            <a href="{{ url_for('index') }}" class="btn btn-small">Back to Homepage</a>
-        </footer>
     </div>
 </body>
 </html>
