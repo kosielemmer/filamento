@@ -27,6 +27,8 @@ body {
     overflow-y: auto;
     box-sizing: border-box;
     position: relative;
+    border: 2px solid var(--martini-light-blue);
+    border-radius: 40px;
 }
 
 .error {
