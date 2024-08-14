@@ -93,3 +93,34 @@ The application is currently in development, and features such as authentication
 ## Disclaimer
 
 This README is based on the provided `.aider.chat.history.md` file and summarizes the application's requirements and functionality as understood from the chat history.
+# Filament Inventory Management System
+
+This application is designed to manage a 3D printing filament inventory. It provides various screens for different functionalities:
+
+1. **Home Screen**: The main entry point of the application.
+
+2. **Select Manufacturer**: Allows users to choose a filament manufacturer.
+
+3. **Select Filament Type**: Users can select the type of filament (e.g., PLA, ABS).
+
+4. **Select Color**: Enables selection of filament color.
+
+5. **Select Location**: Users can specify where the filament is stored.
+
+6. **Select Shelf**: For choosing a specific shelf within a location.
+
+7. **Select Position**: Allows selection of a specific position on a shelf.
+
+8. **View Inventory**: Displays the current inventory of filaments.
+
+9. **Manage Manufacturers**: Interface for adding or editing manufacturer information.
+
+10. **Manage Colors**: Allows addition or modification of filament colors.
+
+11. **Manage Filaments**: Interface for managing filament types and properties.
+
+12. **Data Maintenance**: Provides options for maintaining the database.
+
+Each screen interacts with the database to fetch or update relevant information. The application uses SQLite as its database management system.
+
+For detailed information about the database design, please refer to the `database_design.json` file in this repository.
