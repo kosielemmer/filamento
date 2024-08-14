@@ -21,7 +21,4 @@ templates/select_color.html
 templates/select_filament_type.html
 templates/select_location.html
 templates/select_manufacturer.html
-templates/select_position.html
-templates/select_shelf.html
 templates/view_inventory.html
-tests/test_routes.py
