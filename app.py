@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from werkzeug.exceptions import HTTPException
 import os
 import psycopg2
@@ -17,19 +17,9 @@ def get_db_connection():
 
 app = Flask(__name__)
 
-# Set a secret key for the application
-app.secret_key = 'your_secret_key_here'  # Replace with a strong, random secret key
+# Remove secret key for open access
 
-# Set up logging
-app.logger.setLevel(logging.DEBUG)
-
-@app.errorhandler(Exception)
-def handle_exception(e):
-    # pass through HTTP errors
-    if isinstance(e, HTTPException):
-        return e
-    # now you're handling non-HTTP exceptions only
-    return render_template("error.html", error=str(e)), 500
+# Remove error handling and logging for open access
 
 
 @app.route('/')
@@ -380,4 +370,4 @@ def get_filament_types(manufacturer_id):
     return jsonify(filament_types)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
