@@ -14,21 +14,23 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container {
     width: 100%;
     height: 100%;
-    max-width: 428px; /* iPhone 13 Pro Max width */
-    max-height: 926px; /* iPhone 13 Pro Max height */
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 100vw;
+    max-height: 100vh;
     background-color: var(--martini-dark-blue);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     box-sizing: border-box;
     position: relative;
     border: 2px solid var(--martini-light-blue);
-    border-radius: 40px;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .error {
