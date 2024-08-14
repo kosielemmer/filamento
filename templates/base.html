@@ -52,7 +52,7 @@
 </head>
 <body>
     <div class="container">
-        {% if request.path != url_for('index') %}
+        {% if request.endpoint != 'index' %}
         <a href="{{ url_for('index') }}" class="btn btn-small btn-exit">Exit</a>
         {% endif %}
         <main>
