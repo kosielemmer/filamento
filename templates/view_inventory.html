@@ -36,14 +36,17 @@
 <script>
 $(document).ready(function() {
     $('#inventoryTable').DataTable({
-        "pageLength": 25,
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "pageLength": 50,
+        "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
         "order": [[0, "asc"]],
         "columnDefs": [],
         "dom": '<"top"if>rt<"bottom"lp><"clear">',
         "language": {
             "search": "Filter:"
         },
+        "scrollY": "calc(100vh - 250px)",
+        "scrollCollapse": true,
+        "paging": true,
         "autoWidth": false,
         "columns": [
             { "width": "25%" },

@@ -156,7 +156,7 @@ input[type="text"], input[type="color"], input[type="number"] {
 }
 
 .table-container {
-    overflow-x: auto;
+    overflow-x: hidden;
     max-width: 100%;
 }
 
@@ -166,6 +166,7 @@ table {
     margin-bottom: 20px;
     background-color: var(--martini-dark-blue);
     color: var(--martini-white);
+    table-layout: fixed;
 }
 
 .column-filter {
