@@ -8,7 +8,14 @@ import re
 import ipaddress
 
 # Configure logging
-logging.basicConfig(filename='app.log', level=logging.DEBUG)
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s: %(message)s',
+    handlers=[
+        logging.FileHandler('app.log'),
+        logging.StreamHandler()
+    ]
+)
 
 def get_db_connection():
     conn = psycopg2.connect(
