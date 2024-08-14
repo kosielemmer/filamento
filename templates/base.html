@@ -19,10 +19,22 @@
             z-index: 1000;
         }
         body {
-            padding-top: 40px;
+            padding-top: 50px;
         }
         .container {
             padding-top: 10px;
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .btn-exit {
+                top: 5px;
+                right: 5px;
+                padding: 3px 6px;
+                font-size: 12px;
+            }
+            body {
+                padding-top: 40px;
+            }
         }
     </style>
     <script>
