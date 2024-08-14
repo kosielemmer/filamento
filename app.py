@@ -1,11 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, abort
-from werkzeug.exceptions import HTTPException
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 import os
 import psycopg2
 from psycopg2 import sql
 import logging
-import re
-import ipaddress
 
 # Configure logging
 logging.basicConfig(
@@ -27,33 +24,10 @@ def get_db_connection():
     return conn
 
 app = Flask(__name__)
-
-# Remove secret key for open access
+app.config['SECRET_KEY'] = 'your_secret_key_here'  # Add this line to set a secret key
 
 # Configure logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG)
-
-# Remove error handling and logging for open access
-
-def is_allowed_ip(ip):
-    allowed_networks = [
-        ipaddress.IPv4Network('192.168.1.0/24'),
-        ipaddress.IPv4Network('172.24.0.0/16')
-    ]
-    client_ip = ipaddress.IPv4Address(ip)
-    return any(client_ip in network for network in allowed_networks)
-
-@app.before_request
-def restrict_access():
-    client_ip = request.remote_addr
-    if not is_allowed_ip(client_ip):
-        app.logger.error(f'403 error: Access denied for IP {client_ip}')
-        abort(403)  # Forbidden
-
-@app.errorhandler(403)
-def forbidden_error(e):
-    app.logger.error('403 error: %s', str(e))
-    return render_template('error.html', error='403 - Forbidden'), 403
 
 @app.route('/')
 def index():
