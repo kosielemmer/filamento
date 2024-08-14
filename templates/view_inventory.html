@@ -36,30 +36,37 @@
 <script>
 $(document).ready(function() {
     $('#inventoryTable').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+        "pageLength": 15,
+        "lengthChange": false,
         "order": [[0, "asc"]],
-        "columnDefs": [],
-        "dom": '<"top"if>rt<"bottom"lp><"clear">',
+        "dom": '<"top"f>rt<"bottom"p><"clear">',
         "language": {
-            "search": "Filter:"
+            "search": "Filter:",
+            "paginate": {
+                "next": "Next",
+                "previous": "Prev"
+            }
         },
-        "scrollY": "calc(100vh - 250px)",
+        "scrollY": "calc(100vh - 200px)",
         "scrollCollapse": true,
         "paging": true,
         "autoWidth": false,
         "columns": [
             { "width": "25%" },
             { "width": "25%" },
-            { "width": "25%" },
-            { "width": "25%" }
+            { "width": "35%" },
+            { "width": "15%" }
         ],
         "initComplete": function(settings, json) {
             this.api().columns().every(function() {
                 var column = this;
                 var header = $(column.header());
-                var columnWidth = header.width();
-                header.width(columnWidth);
+                header.html(header.text() + '<br><input type="text" placeholder="Filter" style="width:100%"/>');
+                $('input', header).on('keyup change', function() {
+                    if (column.search() !== this.value) {
+                        column.search(this.value).draw();
+                    }
+                });
             });
         }
     });
