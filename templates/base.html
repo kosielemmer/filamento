@@ -51,10 +51,10 @@
     </script>
 </head>
 <body>
+    {% if request.endpoint != 'index' %}
+    <a href="{{ url_for('index') }}" class="btn btn-small btn-exit">Exit</a>
+    {% endif %}
     <div class="container">
-        {% if request.endpoint != 'index' %}
-        <a href="{{ url_for('index') }}" class="btn btn-small btn-exit">Exit</a>
-        {% endif %}
         <main>
             {% block content %}
             <!-- Content will be injected here by other templates -->

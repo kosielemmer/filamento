@@ -295,10 +295,6 @@ input[type="text"], input[type="color"], input[type="number"] {
     background-color: #cc0000;
 }
 
-.top-right-button-container {
-    display: none;
-}
-
 #inventoryTable {
     width: 100%;
     border-collapse: separate;
