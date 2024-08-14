@@ -52,14 +52,16 @@
 </head>
 <body>
     <div class="container">
+        {% if request.path != url_for('index') %}
+        <div class="top-right-button-container">
+            <a href="{{ url_for('index') }}" class="btn btn-red btn-tiny">Exit</a>
+        </div>
+        {% endif %}
         <main>
             {% block content %}
             <!-- Content will be injected here by other templates -->
             {% endblock %}
         </main>
-        <div class="bottom-button-container">
-            <a href="{{ url_for('index') }}" class="btn btn-red btn-small">Exit to Main Menu</a>
-        </div>
     </div>
 </body>
 </html>
