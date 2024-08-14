@@ -280,7 +280,6 @@ def manage_manufacturers():
         new_manufacturer = request.form['manufacturer_name']
         cur.execute("INSERT INTO manufacturer (name) VALUES (%s)", (new_manufacturer,))
         conn.commit()
-        flash('New manufacturer added successfully!', 'success')
     
     cur.execute("SELECT * FROM manufacturer ORDER BY name")
     manufacturers = cur.fetchall()
@@ -307,12 +306,11 @@ def manage_filaments():
         existing_filament = cur.fetchone()
 
         if existing_filament:
-            flash('This filament already exists!', 'warning')
+            pass
         else:
             cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
                         (manufacturer_id, filament_type, color_name, color_hex_code))
             conn.commit()
-            flash('New filament added successfully!', 'success')
 
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
     manufacturers = cur.fetchall()
@@ -339,12 +337,11 @@ def manage_colors():
         existing_color = cur.fetchone()
 
         if existing_color:
-            flash('This color already exists for the selected manufacturer and filament type!', 'warning')
+            pass
         else:
             cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
                         (manufacturer_id, filament_type, color_name, color_hex_code))
             conn.commit()
-            flash('New color added successfully!', 'success')
 
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
     manufacturers = cur.fetchall()
