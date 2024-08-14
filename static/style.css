@@ -138,6 +138,13 @@ h1 {
 .container {
     position: relative;
     padding-bottom: 70px; /* Adjust this value to ensure enough space for the button */
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+main {
+    flex: 1;
 }
 
 #special-medium-btn {
