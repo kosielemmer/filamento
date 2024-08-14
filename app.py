@@ -36,8 +36,12 @@ logging.basicConfig(filename='app.log', level=logging.DEBUG)
 # Remove error handling and logging for open access
 
 def is_allowed_ip(ip):
-    allowed_network = ipaddress.IPv4Network('192.168.1.0/24')
-    return ipaddress.IPv4Address(ip) in allowed_network
+    allowed_networks = [
+        ipaddress.IPv4Network('192.168.1.0/24'),
+        ipaddress.IPv4Network('172.24.0.0/16')
+    ]
+    client_ip = ipaddress.IPv4Address(ip)
+    return any(client_ip in network for network in allowed_networks)
 
 @app.before_request
 def restrict_access():
