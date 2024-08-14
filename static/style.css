@@ -260,115 +260,96 @@ input[type="text"], input[type="color"], input[type="number"] {
     z-index: 1000;
 }
 
+#inventoryTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    background-color: var(--martini-white);
+    color: var(--martini-dark-blue);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 #inventoryTable th, #inventoryTable td {
-    padding: 10px;
+    padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid var(--martini-gray);
 }
 
 #inventoryTable th {
     background-color: var(--martini-light-blue);
     color: var(--martini-white);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     position: sticky;
     top: 0;
     z-index: 10;
 }
 
-#inventoryTable thead th {
-    border-top: 1px solid var(--martini-gray);
+#inventoryTable tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
 }
 
-#inventoryTable thead th:first-child {
-    border-left: 1px solid var(--martini-gray);
-}
-
-#inventoryTable thead th:last-child {
-    border-right: 1px solid var(--martini-gray);
-}
-
-#inventoryTable tbody td {
-    border-left: 1px solid var(--martini-gray);
-}
-
-#inventoryTable tbody td:last-child {
-    border-right: 1px solid var(--martini-gray);
-}
-
-#inventoryTable tbody tr:last-child td {
-    border-bottom: 1px solid var(--martini-gray);
+#inventoryTable tbody tr:hover {
+    background-color: #e9ecef;
 }
 
 .dataTables_wrapper .dataTables_filter input {
     margin-left: 0.5em;
-    background-color: #eff4f3;
-    border: 1px solid var(--martini-gray);
+    background-color: var(--martini-white);
+    border: 1px solid var(--martini-light-blue);
     color: var(--martini-dark-blue);
-    padding: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .dataTables_wrapper .dataTables_length select {
-    background-color: #eff4f3;
-    border: 1px solid var(--martini-gray);
+    background-color: var(--martini-white);
+    border: 1px solid var(--martini-light-blue);
     color: var(--martini-dark-blue);
-    padding: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_paginate {
-    margin-top: 10px;
-    color: var(--martini-white);
+    margin-top: 15px;
+    color: var(--martini-dark-blue);
+    font-size: 14px;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
-    color: var(--martini-white) !important;
+    color: var(--martini-dark-blue) !important;
+    border: 1px solid var(--martini-light-blue);
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 2px;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    background: var(--martini-light-blue) !important;
-    color: var(--martini-white) !important;
-    border: 1px solid var(--martini-light-blue) !important;
-}
-
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background: var(--martini-light-blue) !important;
     color: var(--martini-white) !important;
     border: 1px solid var(--martini-light-blue) !important;
 }
 
-input[type="text"], input[type="color"], input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid var(--martini-gray);
-    border-radius: 5px;
-    background-color: #eff2f4; /* Updated background color */
-}
-
 .color-sample-container {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    height: 100%;
-    position: relative;
-    z-index: 10;
+    gap: 10px;
 }
 
 .color-sample {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
     display: inline-block;
-    border: 1px solid var(--martini-dark-blue);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    position: relative;
-    z-index: 11;
-    margin-right: 10px;
-}
-
-#inventoryTable td:last-child {
-    position: relative;
-    z-index: 9;
+    border: 1px solid var(--martini-gray);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .table-container {
