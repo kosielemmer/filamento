@@ -266,17 +266,23 @@ input[type="text"], input[type="color"], input[type="number"] {
 }
 
 .top-right-button-container {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     z-index: 1000;
 }
 
-.btn-tiny {
-    font-size: 12px;
-    width: 40px;
+.btn-exit {
+    font-size: 14px;
+    width: 60px;
     height: 40px;
     padding: 5px;
+    background-color: var(--martini-red);
+    color: var(--martini-white);
+}
+
+.btn-exit:hover {
+    background-color: #ff0000;
 }
 
 #inventoryTable {
