@@ -7,6 +7,9 @@ import logging
 import re
 import ipaddress
 
+# Configure logging
+logging.basicConfig(filename='app.log', level=logging.DEBUG)
+
 def get_db_connection():
     conn = psycopg2.connect(
         host=os.getenv('DB_HOST', '192.168.1.12'),
