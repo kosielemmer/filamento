@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, abort
 from werkzeug.exceptions import HTTPException
 import os
 import psycopg2
 from psycopg2 import sql
 import logging
 import re
+import ipaddress
 
 def get_db_connection():
     conn = psycopg2.connect(
@@ -20,6 +21,16 @@ app = Flask(__name__)
 # Remove secret key for open access
 
 # Remove error handling and logging for open access
+
+def is_allowed_ip(ip):
+    allowed_network = ipaddress.IPv4Network('192.168.1.0/24')
+    return ipaddress.IPv4Address(ip) in allowed_network
+
+@app.before_request
+def restrict_access():
+    client_ip = request.remote_addr
+    if not is_allowed_ip(client_ip):
+        abort(403)  # Forbidden
 
 
 @app.route('/')
