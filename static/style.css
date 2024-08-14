@@ -11,14 +11,21 @@ body {
     padding: 0;
     background-color: var(--martini-dark-blue);
     color: var(--martini-white);
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
 }
 .container {
-    max-width: 800px;
+    width: 100%;
+    max-width: 428px; /* iPhone 13 Pro Max width */
+    height: 100%;
+    max-height: 926px; /* iPhone 13 Pro Max height */
     margin: 0 auto;
     padding: 20px;
     background-color: var(--martini-dark-blue);
-    min-height: 100vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .error {
@@ -52,7 +59,7 @@ h1 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -61,9 +68,9 @@ h1 {
     background-color: var(--martini-light-blue);
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-align: center;
-    font-size: 16px;
-    width: 100px;
-    height: 80px;
+    font-size: 14px;
+    width: 80px;
+    height: 60px;
     position: relative;
     z-index: 4;
 }
@@ -74,39 +81,28 @@ h1 {
 }
 
 .btn-large {
-    font-size: 18px;
-    width: 55px;
-    height:55px;
-}
-.btn-small {
-    font-size: 14px;
-    width: 60px;
-    height: 60px;
+    font-size: 16px;
+    width: 100px;
+    height: 80px;
 }
 
-.small-button-container {
+.btn-small {
+    font-size: 12px;
+    width: 50px;
+    height: 50px;
+}
+
+.small-button-container,
+.medium-button-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.medium-button-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 800px;
+    max-width: 388px; /* Adjusted for iPhone 13 Pro Max width */
     margin: 0 auto;
 }
 
@@ -156,7 +152,7 @@ input[type="text"], input[type="color"], input[type="number"] {
 }
 
 .table-container {
-    overflow-x: hidden;
+    overflow-x: auto;
     max-width: 100%;
 }
 
@@ -167,6 +163,13 @@ table {
     background-color: var(--martini-dark-blue);
     color: var(--martini-white);
     table-layout: fixed;
+    font-size: 12px;
+}
+
+table th,
+table td {
+    padding: 8px;
+    text-align: left;
 }
 
 .column-filter {
