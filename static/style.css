@@ -132,6 +132,12 @@ h1 {
     padding: 10px;
     background-color: transparent;
     z-index: 1000;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    padding-bottom: 70px; /* Adjust this value to ensure enough space for the button */
 }
 
 #special-medium-btn {
