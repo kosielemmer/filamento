@@ -31,6 +31,8 @@
     </div>
 </form>
 
+<a href="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" class="btn btn-small">Back</a>
+
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     <div id="flash-message" class="flash-message">
