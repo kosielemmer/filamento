@@ -28,7 +28,8 @@
                 </div>
                 <div class="form-group">
                     <label for="color_hex_code">Color Hex Code:</label>
-                    <input type="color" class="form-control" id="color_hex_code" name="color_hex_code" required>
+                    <input type="text" class="form-control" id="color_hex_code" name="color_hex_code" pattern="^#[0-9A-Fa-f]{6}$" placeholder="#RRGGBB" required>
+                    <small class="form-text text-muted">Enter a valid hex color code (e.g., #FF0000 for red)</small>
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Add Color</button>
             </form>
