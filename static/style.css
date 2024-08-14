@@ -11,14 +11,14 @@ body {
     padding: 0;
     background-color: var(--martini-dark-blue);
     color: var(--martini-white);
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .container {
     width: 100%;
-    max-width: 428px; /* iPhone 13 Pro Max width */
     height: 100%;
+    max-width: 428px; /* iPhone 13 Pro Max width */
     max-height: 926px; /* iPhone 13 Pro Max height */
     margin: 0 auto;
     padding: 20px;
@@ -26,6 +26,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     box-sizing: border-box;
+    position: relative;
 }
 
 .error {
