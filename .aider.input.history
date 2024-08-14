@@ -1396,3 +1396,24 @@
 
 # 2024-08-02 07:53:51.299139
 +give me the steps to accomplish what I just asked
+
+# 2024-08-14 04:04:30.043567
++why would I be getting 403 errors?
+
+# 2024-08-14 04:09:54.852186
++I am getting 403 errors on this app and you added logging before - how do I look at the logs
+
+# 2024-08-14 04:11:04.794582
++TTP/1.1" 403 -
++2024-08-14 04:10:38,926 ERROR: 403 error: Access denied for IP 172.24.144.1
++2024-08-14 04:10:38,927 ERROR: 403 error: 403 Forbidden: You don't have the permission to access the requested resource. It is either read-protected or not readable by the server.
++2024-08-14 04:10:38,927 INFO: 172.24.144.1 - - [14/Aug/2024 04:10:38] "GET /static/style.css HTTP/1.1" 403 -
+
+# 2024-08-14 04:18:35.918373
++there is too much space under headings - please check ALL template files
+
+# 2024-08-14 04:19:46.296760
++please make sure the border goes around the exit button on all screens
+
+# 2024-08-14 04:20:44.442293
++that was daft - the existing page border must contain ALL content - including the exit button

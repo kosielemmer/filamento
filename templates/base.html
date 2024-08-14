@@ -8,16 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        .btn-exit {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #ff0000;
-            color: white;
-            padding: 5px 10px;
-            font-size: 14px;
-            z-index: 1000;
-        }
+        
         body {
             padding-top: 50px;
         }
@@ -27,11 +18,15 @@
         }
         @media (max-width: 768px) {
             .btn-exit {
-                top: 5px;
-                right: 5px;
-                padding: 3px 6px;
-                font-size: 12px;
-            }
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            z-index: 1000;
+        }
             body {
                 padding-top: 40px;
             }
@@ -57,24 +52,24 @@
         }
         document.addEventListener('DOMContentLoaded', adjustTextColor);
 
-        function parseBarcode() {
-            var barcode = $('#barcode-input').val();
-            $.ajax({
-                url: '/parse_barcode',
-                type: 'POST',
-                data: {barcode: barcode},
-                success: function(response) {
-                    if (response.success) {
-                        $('#location').val(response.location);
-                    } else {
-                        alert('Error: ' + response.error);
-                    }
-                },
-                error: function() {
-                    alert('Error occurred while parsing barcode');
-                }
-            });
-        }
+        // function parseBarcode() {
+        //     var barcode = $('#barcode-input').val();
+        //     $.ajax({
+        //         url: '/parse_barcode',
+        //         type: 'POST',
+        //         data: {barcode: barcode},
+        //         success: function(response) {
+        //             if (response.success) {
+        //                 $('#location').val(response.location);
+        //             } else {
+        //                 alert('Error: ' + response.error);
+        //             }
+        //         },
+        //         error: function() {
+        //             alert('Error occurred while parsing barcode');
+        //         }
+        //     });
+        // }
     </script>
 </head>
 <body>

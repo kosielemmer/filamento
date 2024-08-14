@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Select Filament Type for {{ manufacturer_name }}</h1>
+<!-- <h1>Select Filament Type for {{ manufacturer_name }}</h1> -->
 <form id="filamentTypeForm" action="{{ url_for('select_filament_type', manufacturer_id=manufacturer_id) }}" method="post">
     <h2>Select Filament Type:</h2>
     <div class="medium-button-container">
