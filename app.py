@@ -164,19 +164,6 @@ def select_location(filament_id):
         app.logger.error(f"Error in select_location: {str(e)}")
         return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
 
-@app.route('/parse_barcode', methods=['POST'])
-def parse_barcode():
-    barcode = request.form.get('barcode', '')
-    # Assuming the barcode format is: SHELF-POSITION
-    # For example: A-01
-    pattern = r'^([A-Z])-(\d{2})$'
-    match = re.match(pattern, barcode)
-    if match:
-        shelf, position = match.groups()
-        location = f"{shelf}-{position}"
-        return jsonify({'success': True, 'location': location})
-    else:
-        return jsonify({'success': False, 'error': 'Invalid barcode format'})
 
 @app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
 def select_position(manufacturer_id, filament_type, color_name, color_hex_code, shelf):
