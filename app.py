@@ -20,6 +20,9 @@ app = Flask(__name__)
 
 # Remove secret key for open access
 
+# Configure logging
+logging.basicConfig(filename='app.log', level=logging.DEBUG)
+
 # Remove error handling and logging for open access
 
 def is_allowed_ip(ip):
@@ -30,8 +33,13 @@ def is_allowed_ip(ip):
 def restrict_access():
     client_ip = request.remote_addr
     if not is_allowed_ip(client_ip):
+        app.logger.error(f'403 error: Access denied for IP {client_ip}')
         abort(403)  # Forbidden
 
+@app.errorhandler(403)
+def forbidden_error(e):
+    app.logger.error('403 error: %s', str(e))
+    return render_template('error.html', error='403 - Forbidden'), 403
 
 @app.route('/')
 def index():
