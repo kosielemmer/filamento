@@ -77,7 +77,14 @@ async def select_filament_type_get(request: Request, manufacturer_id: int):
 
 @app.post('/select_filament_type/{manufacturer_id}')
 async def select_filament_type_post(request: Request, manufacturer_id: int, filament_type: str = Form(...)):
-    return RedirectResponse(url=f'/select_color?manufacturer_id={manufacturer_id}&filament_type={filament_type}', status_code=303)
+    try:
+        return RedirectResponse(url=f'/select_color?manufacturer_id={manufacturer_id}&filament_type={filament_type}', status_code=303)
+    except Exception as e:
+        app.logger.error(f"Error in select_filament_type_post: {str(e)}")
+        return templates.TemplateResponse('error.html', {
+            'request': request,
+            'error': f"An error occurred: {str(e)}"
+        })
 
 @app.get('/select_filament_type/{manufacturer_id}')
 async def select_filament_type_get(request: Request, manufacturer_id: int):
@@ -123,12 +130,9 @@ async def select_color_get(request: Request, manufacturer_id: int, filament_type
         cur.close() 
         conn.close()
         if not colors:
-            return templates.TemplateResponse('select_color.html', {
+            return templates.TemplateResponse('error.html', {
                 'request': request,
-                'manufacturer_id': manufacturer_id,
-                'filament_type': filament_type,
-                'colors': colors,
-                'warning': 'No colors found for this filament type.'
+                'error': f'No colors found for {filament_type} from manufacturer ID {manufacturer_id}.'
             })
         return templates.TemplateResponse('select_color.html', {
             'request': request,
@@ -137,7 +141,11 @@ async def select_color_get(request: Request, manufacturer_id: int, filament_type
             'colors': colors
         })
     except Exception as e:
-        return RedirectResponse(url=f'/select_filament/{manufacturer_id}', status_code=303)
+        app.logger.error(f"Error in select_color_get: {str(e)}")
+        return templates.TemplateResponse('error.html', {
+            'request': request,
+            'error': f"An error occurred: {str(e)}"
+        })
 
 @app.post('/select_color')
 async def select_color_post(request: Request, manufacturer_id: int = Form(...), filament_type: str = Form(...), filament_id: int = Form(...)):
