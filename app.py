@@ -396,6 +396,7 @@ async def get_filament_types(manufacturer_id: int):
     conn.close()
     return JSONResponse(content=filament_types)
 
+import uvicorn
 import socket
 
 def get_ip():
@@ -412,5 +413,5 @@ def get_ip():
 
 if __name__ == '__main__':
     host_ip = get_ip()
-    print(f"Access the application at: http://{host_ip}:5000")
-    app.run(host=host_ip, port=5000)
+    print(f"Access the application at: http://{host_ip}:8000")
+    uvicorn.run(app, host=host_ip, port=8000)
