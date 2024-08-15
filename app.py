@@ -11,6 +11,9 @@ import logging
 import re
 from typing import List
 
+app = FastAPI()
+templates = Jinja2Templates(directory="templates")
+
 # Configure logging
 logging.basicConfig(
     level=logging.DEBUG,
@@ -127,89 +130,92 @@ async def select_color_get(request: Request, manufacturer_id: int, filament_type
 async def select_color_post(request: Request, manufacturer_id: int = Form(...), filament_type: str = Form(...), filament_id: int = Form(...)):
     return RedirectResponse(url=f'/select_location/{filament_id}', status_code=303)
 
-@app.route('/select_location/<int:filament_id>', methods=['GET', 'POST'])
-def select_location(filament_id):
-    try:
-        if request.method == 'POST':
-            location = request.form.get('location')
-            quantity = request.form.get('quantity', 1)
-            conn = get_db_connection()
-            cur = conn.cursor()
-            
-            # Check if the filament already exists in the inventory at the given location
-            cur.execute("SELECT id, quantity FROM inventory WHERE filament_id = %s AND location = %s", (filament_id, location))
-            existing_item = cur.fetchone()
-            
-            if existing_item:
-                # Update the quantity if the item already exists
-                new_quantity = existing_item[1] + int(quantity)
-                cur.execute("UPDATE inventory SET quantity = %s WHERE id = %s", (new_quantity, existing_item[0]))
-            else:
-                # Insert a new item if it doesn't exist
-                cur.execute("INSERT INTO inventory (filament_id, location, quantity) VALUES (%s, %s, %s)", (filament_id, location, quantity))
-            
-            conn.commit()
-            cur.close()
-            conn.close()
-            flash('Inventory item added successfully.', 'success')
-            return redirect(url_for('index'))
-        else:
-            # Fetch current inventory status
-            conn = get_db_connection()
-            cur = conn.cursor()
-            cur.execute("SELECT location, SUM(quantity) FROM inventory GROUP BY location")
-            occupied_locations = {row[0]: row[1] for row in cur.fetchall()}
-            
-            # Fetch filament details
-            cur.execute("SELECT manufacturer_id, type, color_name, color_hex_code FROM filament WHERE id = %s", (filament_id,))
-            filament = cur.fetchone()
-            cur.close()
-            conn.close()
+from fastapi import Request, Form, HTTPException
+from fastapi.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
 
-            if filament:
-                manufacturer_id, filament_type, color_name, color_hex_code = filament
-                return render_template('select_location.html', 
-                                       filament_id=filament_id,
-                                       manufacturer_id=manufacturer_id, 
-                                       filament_type=filament_type, 
-                                       color_name=color_name, 
-                                       color_hex_code=color_hex_code,
-                                       occupied_locations=occupied_locations)
-            else:
-                flash('Filament not found.', 'error')
-                return redirect(url_for('select_manufacturer'))
+templates = Jinja2Templates(directory="templates")
+
+@app.post('/select_location/{filament_id}')
+async def select_location_post(request: Request, filament_id: int, location: str = Form(...), quantity: int = Form(1)):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        
+        # Check if the filament already exists in the inventory at the given location
+        cur.execute("SELECT id, quantity FROM inventory WHERE filament_id = %s AND location = %s", (filament_id, location))
+        existing_item = cur.fetchone()
+        
+        if existing_item:
+            # Update the quantity if the item already exists
+            new_quantity = existing_item[1] + int(quantity)
+            cur.execute("UPDATE inventory SET quantity = %s WHERE id = %s", (new_quantity, existing_item[0]))
+        else:
+            # Insert a new item if it doesn't exist
+            cur.execute("INSERT INTO inventory (filament_id, location, quantity) VALUES (%s, %s, %s)", (filament_id, location, quantity))
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+        return RedirectResponse(url=app.url_path_for('index'), status_code=303)
     except Exception as e:
         app.logger.error(f"Error in select_location: {str(e)}")
-        return render_template('error.html', error=f"Error in select_location: {str(e)}"), 500
+        raise HTTPException(status_code=500, detail=f"Error in select_location: {str(e)}")
 
-
-@app.route('/select_position/<int:manufacturer_id>/<filament_type>/<color_name>/<color_hex_code>/<int:shelf>')
-def select_position(manufacturer_id, filament_type, color_name, color_hex_code, shelf):
+@app.get('/select_location/{filament_id}')
+async def select_location_get(request: Request, filament_id: int):
     try:
-        return render_template('select_position.html', 
-                               manufacturer_id=manufacturer_id, 
-                               filament_type=filament_type, 
-                               color_name=color_name, 
-                               color_hex_code=color_hex_code, 
-                               shelf=shelf)
-    except Exception as e:
-        # Log the error for debugging
-        app.logger.error(f"Error in select_position: {str(e)}")
-        # Redirect to select_location with all necessary parameters
-        return redirect(url_for('select_location', 
-                                manufacturer_id=manufacturer_id, 
-                                filament_type=filament_type, 
-                                color_name=color_name, 
-                                color_hex_code=color_hex_code))
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT location, SUM(quantity) FROM inventory GROUP BY location")
+        occupied_locations = {row[0]: row[1] for row in cur.fetchall()}
+        
+        # Fetch filament details
+        cur.execute("SELECT manufacturer_id, type, color_name, color_hex_code FROM filament WHERE id = %s", (filament_id,))
+        filament = cur.fetchone()
+        cur.close()
+        conn.close()
 
-@app.route('/add_inventory', methods=['POST'])
-def add_inventory():
-    manufacturer_id = request.form['manufacturer_id']
-    filament_type = request.form['filament_type']
-    color_name = request.form['color_name']
-    color_hex_code = request.form['color_hex_code']
-    location = request.form['location']
-    
+        if filament:
+            manufacturer_id, filament_type, color_name, color_hex_code = filament
+            return templates.TemplateResponse('select_location.html', {
+                'request': request,
+                'filament_id': filament_id,
+                'manufacturer_id': manufacturer_id,
+                'filament_type': filament_type,
+                'color_name': color_name,
+                'color_hex_code': color_hex_code,
+                'occupied_locations': occupied_locations
+            })
+        else:
+            return RedirectResponse(url=app.url_path_for('select_manufacturer'), status_code=303)
+    except Exception as e:
+        app.logger.error(f"Error in select_location: {str(e)}")
+        return templates.TemplateResponse('error.html', {'request': request, 'error': f"Error in select_location: {str(e)}"})
+
+@app.get('/select_position/{manufacturer_id}/{filament_type}/{color_name}/{color_hex_code}/{shelf}')
+async def select_position(request: Request, manufacturer_id: int, filament_type: str, color_name: str, color_hex_code: str, shelf: int):
+    try:
+        return templates.TemplateResponse('select_position.html', {
+            'request': request,
+            'manufacturer_id': manufacturer_id,
+            'filament_type': filament_type,
+            'color_name': color_name,
+            'color_hex_code': color_hex_code,
+            'shelf': shelf
+        })
+    except Exception as e:
+        app.logger.error(f"Error in select_position: {str(e)}")
+        return RedirectResponse(url=app.url_path_for('select_location', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code), status_code=303)
+
+@app.post('/add_inventory')
+async def add_inventory(
+    manufacturer_id: int = Form(...),
+    filament_type: str = Form(...),
+    color_name: str = Form(...),
+    color_hex_code: str = Form(...),
+    location: str = Form(...)
+):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(
@@ -220,26 +226,22 @@ def add_inventory():
     cur.close()
     conn.close()
     
-    flash('Success', 'success')
-    return redirect(url_for('select_manufacturer'))
+    return RedirectResponse(url=app.url_path_for('select_manufacturer'), status_code=303)
 
-@app.route('/add_inventory_item', methods=['POST'])
-def add_inventory_item():
+@app.post('/add_inventory_item')
+async def add_inventory_item(
+    manufacturer_id: int = Form(...),
+    filament_type: str = Form(...),
+    color_name: str = Form(...),
+    color_hex_code: str = Form(...),
+    location: str = Form(...)
+):
     try:
-        manufacturer_id = request.form['manufacturer_id']
-        filament_type = request.form['filament_type']
-        color_name = request.form['color_name']
-        color_hex_code = request.form['color_hex_code']
-        location = request.form['location']
-
         # Debug logging
         app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
         
         # Additional debug logging to check the exact value of color_hex_code
         app.logger.debug(f"Color hex code received: {color_hex_code}")
-
-        # Debug logging
-        app.logger.debug(f"Received values: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
 
         conn = get_db_connection()
         cur = conn.cursor()
@@ -254,15 +256,10 @@ def add_inventory_item():
         # Debug logging
         app.logger.debug(f"Inserted into database: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
 
-        # Debug logging
-        app.logger.debug(f"Inserted into database: manufacturer_id={manufacturer_id}, filament_type={filament_type}, color_name={color_name}, color_hex_code={color_hex_code}, location={location}")
-
-        flash('Success', 'success')
-        return redirect(url_for('select_manufacturer'))
+        return RedirectResponse(url=app.url_path_for('select_manufacturer'), status_code=303)
     except Exception as e:
         app.logger.error(f"Error adding inventory item: {str(e)}")
-        flash(f"Error adding inventory item: {str(e)}", 'error')
-        return redirect(url_for('select_manufacturer'))
+        raise HTTPException(status_code=500, detail=f"Error adding inventory item: {str(e)}")
 
 @app.get('/view_inventory')
 async def view_inventory(request: Request):
