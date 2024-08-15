@@ -79,6 +79,16 @@ async def select_filament_type_get(request: Request, manufacturer_id: int):
 async def select_filament_type_post(request: Request, manufacturer_id: int, filament_type: str = Form(...)):
     return RedirectResponse(url=f'/select_color?manufacturer_id={manufacturer_id}&filament_type={filament_type}', status_code=303)
 
+@app.get('/select_filament_type/{manufacturer_id}')
+async def select_filament_type_get(request: Request, manufacturer_id: int):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
+    types = cur.fetchall()
+    cur.close()
+    conn.close()
+    return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
+
 @app.get('/select_shelf')
 async def select_shelf_get(request: Request, manufacturer_id: int, filament_type: str, color_name: str, color_hex_code: str):
     return templates.TemplateResponse('select_shelf.html', {
