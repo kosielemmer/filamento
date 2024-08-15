@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Form, HTTPException, Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import os
 import psycopg2
@@ -48,56 +49,56 @@ async def select_manufacturer(request: Request):
     conn.close()
     return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
 
-@app.route('/select_filament/<int:manufacturer_id>')
-def select_filament(manufacturer_id):
+@app.get('/select_filament/{manufacturer_id}')
+async def select_filament(request: Request, manufacturer_id: int):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
     types = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
+    return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
-@app.route('/select_filament_type/<int:manufacturer_id>', methods=['GET', 'POST'])
-def select_filament_type(manufacturer_id):
-    if request.method == 'POST':
-        filament_type = request.form['filament_type']
-        return redirect(url_for('select_color', manufacturer_id=manufacturer_id, filament_type=filament_type))
-    else:
-        conn = get_db_connection()
-        cur = conn.cursor()
-        cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
-        types = cur.fetchall()
-        cur.close()
-        conn.close()
-        return render_template('select_filament_type.html', manufacturer_id=manufacturer_id, types=types)
+@app.get('/select_filament_type/{manufacturer_id}')
+async def select_filament_type_get(request: Request, manufacturer_id: int):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
+    types = cur.fetchall()
+    cur.close()
+    conn.close()
+    return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
-@app.route('/select_shelf', methods=['GET', 'POST'])
-def select_shelf():
-    if request.method == 'POST':
-        manufacturer_id = request.form.get('manufacturer_id', type=int)
-        filament_type = request.form.get('filament_type')
-        color_name = request.form.get('color_name')
-        color_hex_code = request.form.get('color_hex_code')
-        shelf = request.form.get('shelf')
-        return redirect(url_for('select_position', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code, shelf=shelf))
-    else:
-        manufacturer_id = request.args.get('manufacturer_id', type=int)
-        filament_type = request.args.get('filament_type')
-        color_name = request.args.get('color_name')
-        color_hex_code = request.args.get('color_hex_code')
-        return render_template('select_shelf.html', manufacturer_id=manufacturer_id, filament_type=filament_type, color_name=color_name, color_hex_code=color_hex_code)
+@app.post('/select_filament_type/{manufacturer_id}')
+async def select_filament_type_post(request: Request, manufacturer_id: int, filament_type: str = Form(...)):
+    return RedirectResponse(url=f'/select_color?manufacturer_id={manufacturer_id}&filament_type={filament_type}', status_code=303)
 
-@app.route('/select_color', methods=['GET', 'POST'])
-def select_color():
-    if request.method == 'POST':
-        manufacturer_id = request.form.get('manufacturer_id', type=int)
-        filament_type = request.form.get('filament_type')
-        filament_id = request.form.get('filament_id')
-        return redirect(url_for('select_location', filament_id=filament_id))
-    else:
-        manufacturer_id = request.args.get('manufacturer_id', type=int)
-        filament_type = request.args.get('filament_type')
+@app.get('/select_shelf')
+async def select_shelf_get(request: Request, manufacturer_id: int, filament_type: str, color_name: str, color_hex_code: str):
+    return templates.TemplateResponse('select_shelf.html', {
+        'request': request,
+        'manufacturer_id': manufacturer_id,
+        'filament_type': filament_type,
+        'color_name': color_name,
+        'color_hex_code': color_hex_code
+    })
+
+@app.post('/select_shelf')
+async def select_shelf_post(
+    request: Request,
+    manufacturer_id: int = Form(...),
+    filament_type: str = Form(...),
+    color_name: str = Form(...),
+    color_hex_code: str = Form(...),
+    shelf: str = Form(...)
+):
+    return RedirectResponse(
+        url=f'/select_position/{manufacturer_id}/{filament_type}/{color_name}/{color_hex_code}/{shelf}',
+        status_code=303
+    )
+
+@app.get('/select_color')
+async def select_color_get(request: Request, manufacturer_id: int, filament_type: str):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
@@ -106,11 +107,25 @@ def select_color():
         cur.close() 
         conn.close()
         if not colors:
-            flash('No colors found for this filament type.', 'warning')
-        return render_template('select_color.html', manufacturer_id=manufacturer_id, filament_type=filament_type, colors=colors)
+            return templates.TemplateResponse('select_color.html', {
+                'request': request,
+                'manufacturer_id': manufacturer_id,
+                'filament_type': filament_type,
+                'colors': colors,
+                'warning': 'No colors found for this filament type.'
+            })
+        return templates.TemplateResponse('select_color.html', {
+            'request': request,
+            'manufacturer_id': manufacturer_id,
+            'filament_type': filament_type,
+            'colors': colors
+        })
     except Exception as e:
-        flash(f"Error in select_color: {str(e)}", 'error')
-        return redirect(url_for('select_filament', manufacturer_id=manufacturer_id))
+        return RedirectResponse(url=f'/select_filament/{manufacturer_id}', status_code=303)
+
+@app.post('/select_color')
+async def select_color_post(request: Request, manufacturer_id: int = Form(...), filament_type: str = Form(...), filament_id: int = Form(...)):
+    return RedirectResponse(url=f'/select_location/{filament_id}', status_code=303)
 
 @app.route('/select_location/<int:filament_id>', methods=['GET', 'POST'])
 def select_location(filament_id):
@@ -249,8 +264,8 @@ def add_inventory_item():
         flash(f"Error adding inventory item: {str(e)}", 'error')
         return redirect(url_for('select_manufacturer'))
 
-@app.route('/view_inventory')
-def view_inventory():
+@app.get('/view_inventory')
+async def view_inventory(request: Request):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("""
@@ -268,52 +283,64 @@ def view_inventory():
     for item in inventory:
         print(f"Color: {item[2]}, Hex: {item[3]}")
     
-    return render_template('view_inventory.html', inventory=inventory)
+    return templates.TemplateResponse('view_inventory.html', {'request': request, 'inventory': inventory})
 
-@app.route('/data_maintenance')
-def data_maintenance():
-    return render_template('data_maintenance.html')
+@app.get('/data_maintenance')
+async def data_maintenance(request: Request):
+    return templates.TemplateResponse('data_maintenance.html', {'request': request})
 
-@app.route('/manage_manufacturers', methods=['GET', 'POST'])
-def manage_manufacturers():
+@app.get('/manage_manufacturers')
+async def manage_manufacturers_get(request: Request):
     conn = get_db_connection()
     cur = conn.cursor()
-    
-    if request.method == 'POST':
-        new_manufacturer = request.form['manufacturer_name']
-        cur.execute("INSERT INTO manufacturer (name) VALUES (%s)", (new_manufacturer,))
-        conn.commit()
-    
     cur.execute("SELECT * FROM manufacturer ORDER BY name")
     manufacturers = cur.fetchall()
-    
     cur.close()
     conn.close()
-    
-    return render_template('manage_manufacturers.html', manufacturers=manufacturers)
+    return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
 
-@app.route('/manage_filaments', methods=['GET', 'POST'])
-def manage_filaments():
+@app.post('/manage_manufacturers')
+async def manage_manufacturers_post(request: Request, manufacturer_name: str = Form(...)):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("INSERT INTO manufacturer (name) VALUES (%s)", (manufacturer_name,))
+    conn.commit()
+    cur.execute("SELECT * FROM manufacturer ORDER BY name")
+    manufacturers = cur.fetchall()
+    cur.close()
+    conn.close()
+    return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
+
+@app.get('/manage_filaments')
+async def manage_filaments_get(request: Request):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
+    manufacturers = cur.fetchall()
+    cur.close()
+    conn.close()
+    return templates.TemplateResponse('manage_filaments.html', {'request': request, 'manufacturers': manufacturers})
+
+@app.post('/manage_filaments')
+async def manage_filaments_post(
+    request: Request,
+    manufacturer_id: int = Form(...),
+    filament_type: str = Form(...),
+    color_name: str = Form(...),
+    color_hex_code: str = Form(...)
+):
     conn = get_db_connection()
     cur = conn.cursor()
 
-    if request.method == 'POST':
-        manufacturer_id = request.form['manufacturer_id']
-        filament_type = request.form['filament_type']
-        color_name = request.form['color_name']
-        color_hex_code = request.form['color_hex_code']
+    # Check for duplication
+    cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
+                (manufacturer_id, filament_type, color_name))
+    existing_filament = cur.fetchone()
 
-        # Check for duplication
-        cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
-                    (manufacturer_id, filament_type, color_name))
-        existing_filament = cur.fetchone()
-
-        if existing_filament:
-            pass
-        else:
-            cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
-                        (manufacturer_id, filament_type, color_name, color_hex_code))
-            conn.commit()
+    if not existing_filament:
+        cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
+                    (manufacturer_id, filament_type, color_name, color_hex_code))
+        conn.commit()
 
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
     manufacturers = cur.fetchall()
@@ -321,30 +348,38 @@ def manage_filaments():
     cur.close()
     conn.close()
 
-    return render_template('manage_filaments.html', manufacturers=manufacturers)
+    return templates.TemplateResponse('manage_filaments.html', {'request': request, 'manufacturers': manufacturers})
 
-@app.route('/manage_colors', methods=['GET', 'POST'])
-def manage_colors():
+@app.get('/manage_colors')
+async def manage_colors_get(request: Request):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
+    manufacturers = cur.fetchall()
+    cur.close()
+    conn.close()
+    return templates.TemplateResponse('manage_colors.html', {'request': request, 'manufacturers': manufacturers})
+
+@app.post('/manage_colors')
+async def manage_colors_post(
+    request: Request,
+    manufacturer_id: int = Form(...),
+    filament_type: str = Form(...),
+    color_name: str = Form(...),
+    color_hex_code: str = Form(...)
+):
     conn = get_db_connection()
     cur = conn.cursor()
 
-    if request.method == 'POST':
-        manufacturer_id = request.form['manufacturer_id']
-        filament_type = request.form['filament_type']
-        color_name = request.form['color_name']
-        color_hex_code = request.form['color_hex_code']
+    # Check for duplication
+    cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
+                (manufacturer_id, filament_type, color_name))
+    existing_color = cur.fetchone()
 
-        # Check for duplication
-        cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
-                    (manufacturer_id, filament_type, color_name))
-        existing_color = cur.fetchone()
-
-        if existing_color:
-            pass
-        else:
-            cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
-                        (manufacturer_id, filament_type, color_name, color_hex_code))
-            conn.commit()
+    if not existing_color:
+        cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
+                    (manufacturer_id, filament_type, color_name, color_hex_code))
+        conn.commit()
 
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
     manufacturers = cur.fetchall()
@@ -352,17 +387,17 @@ def manage_colors():
     cur.close()
     conn.close()
 
-    return render_template('manage_colors.html', manufacturers=manufacturers)
+    return templates.TemplateResponse('manage_colors.html', {'request': request, 'manufacturers': manufacturers})
 
-@app.route('/get_filament_types/<int:manufacturer_id>')
-def get_filament_types(manufacturer_id):
+@app.get('/get_filament_types/{manufacturer_id}')
+async def get_filament_types(manufacturer_id: int):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type", (manufacturer_id,))
     filament_types = [row[0] for row in cur.fetchall()]
     cur.close()
     conn.close()
-    return jsonify(filament_types)
+    return JSONResponse(content=filament_types)
 
 import socket
 
