@@ -1,0 +1,2537 @@
+commit 9a8f31aa7cc16ac1da18a0659f0919d8f13fb3c0
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 19:07:33 2024 +0100
+
+    fix: update database connection to use correct PostgreSQL server IP address
+
+commit 0104660973a534310ed5d9f5a8f428ce137f136d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 19:05:42 2024 +0100
+
+    fix: Remove duplicate index route definition in routes.py
+
+commit 5c6e4bc777fdb9d83a990d4ce7f62177187b843e
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 19:05:40 2024 +0100
+
+    fix: Merge /home and / routes into a single index route
+
+commit e8e4ac6d2f58cd6dab08d8a55abe1f072dd83cec
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 19:01:11 2024 +0100
+
+    fix: Update routes and templates to use correct URL for home page
+
+commit 4bc1564cacc328e3df4b680ac5204cf62f1ef7b9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 19:00:38 2024 +0100
+
+    fix: Add error handling and logging to database connection
+
+commit d5c777a51941c38c7c74978612faaabbac9472b9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:59:34 2024 +0100
+
+    fix: Update URLs in templates/index.html
+
+commit 86551779f7ffaeb0b4940f4ea66bfe7fc5ea6da7
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 18:59:33 2024 +0100
+
+    fix: Update URL for 'select_manufacturer' route
+
+commit 975bbfa9d4a2276df1142eade52ff4f0a91d83ef
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:57:43 2024 +0100
+
+    fix: Remove duplicate definitions of url_for_main and utility_processor in routes.py
+
+commit 951a0d4eae5787698ba065dc2e0343a5cd0c885d
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 18:57:42 2024 +0100
+
+    fix: Add helper function to generate URLs with 'main' prefix and make it available to all templates
+
+commit eb154ca52a0460caada31ccd47f7d3d960a694ac
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:55:39 2024 +0100
+
+    fix: Use correct URL generation for 'select_filament_type' endpoint
+
+commit 086f520e1df1c0b0a7e2f3b3461e0b8379e7f0ae
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:54:51 2024 +0100
+
+    fix: Replace deprecated `url_quote` import with `quote` from `urllib.parse`
+
+commit 0e8552210f58e93aceee552ce3c32925d9e56cf5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:53:36 2024 +0100
+
+    refactor: Simplify app.py to run the application directly from the development server
+
+commit 54d987e3de9710f78d8014fcc1fc9ca58c884461
+Author: kosielemmer <82148262+kosielemmer@users.noreply.github.com>
+Date:   Wed Aug 14 18:51:24 2024 +0100
+
+    Update docker-compose.yaml
+
+commit 3c01fe0f677a76e236e5407baf1d82204d4eab50
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 18:50:21 2024 +0100
+
+    add directoryaaaaaq
+
+commit a1b33f15b60e0423057ff4e32ade2386581c3631
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:47:55 2024 +0100
+
+    build: Add more detailed logging to the create_app function
+
+commit 08bb3e0c37216826b4ab6fd305cea65b0d9520b3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:44:53 2024 +0100
+
+    fix: Change log file location to /home/winters/filamento/logs
+
+commit 33f5ef0c153a25aaf1b97a4c61af6a57e07cb8e7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:43:54 2024 +0100
+
+    fix: Add request import to resolve undefined name error
+
+commit 3ecf79534151a4ae7d1512bf95deb1e1958531eb
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:43:43 2024 +0100
+
+    fix: Add custom error handler for 500 Internal Server Errors
+
+commit fb75be1548cde8f5d8b2f4aba3cbc652ea63ce05
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 18:39:57 2024 +0100
+
+    add directoryaaaaaq
+
+commit e6ff93d9e2927768785c538cb324a1e87a37eed3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:39:38 2024 +0100
+
+    fix: Update URL generation for "Exit" button in base.html
+
+commit 8ca5b527149e5a35137f45a2a46c5dfadd130003
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 18:17:29 2024 +0100
+
+    add directoryaaaa
+
+commit 0163a3995afefb26dbf7c6c6c71326cff2d7cc4b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:15:47 2024 +0100
+
+    fix: Remove relative import and sys.path modification in routes.py
+
+commit 7e0b03073255297613ffad3070e53aae4445ed42
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:14:53 2024 +0100
+
+    feat: Add route functions to routes.py
+
+commit 1da34e0088c9a93892727a2963bc09321ba4e57c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:14:19 2024 +0100
+
+    fix: Reorder imports and remove duplicate sys.path.append in routes.py
+
+commit 67835f8112dc5dad424b935fc874d1ead93d0d52
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 18:11:18 2024 +0100
+
+    add directoryaaa
+
+commit 397a2ae2b54c57270340d71962206b86a018b96f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:10:35 2024 +0100
+
+    fix: Remove wsgi.py file and consolidate its functionality into app.py
+
+commit 95d93de8df7fc316ee3aed63c15d993c04b78954
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 18:07:09 2024 +0100
+
+    fix: Add sys.path.append("..") to main Python files
+
+commit 9e744d13e713b9a74f6b132349e51c847bbf7658
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 17:57:18 2024 +0100
+
+    add directoryaa
+
+commit 92073f338ecc9200e72539582fae7a9965f5f06e
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 17:53:17 2024 +0100
+
+    add directorya
+
+commit 9a891502df9a5bf6d3b2f251ffaeae00ad3c19f3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:51:27 2024 +0100
+
+    fix: Update import statement in filamento/routes.py
+
+commit e310a65ac1d0fea0e0d7f6aba59b8e74fa833c50
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 17:49:33 2024 +0100
+
+    add directory
+
+commit f4233d623129c88e64f31c4a7f6bc9e4f2aa8581
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 17:45:35 2024 +0100
+
+    update documentationa
+
+commit 95c01208e896ff6f28e2457fcffa107492fcbb1d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:41:21 2024 +0100
+
+    fix: Add files to .gitignore
+
+commit 653f042366db1d7227f80c8b95461bab0b398bd3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:40:18 2024 +0100
+
+    fix: Update README.md, documentation.md, and filelist.txt to reflect file changes
+
+commit 93d89b87bf6b8cf77f704ee67d8ca31fc9bb3fab
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:38:19 2024 +0100
+
+    fix: Move key files to project root
+
+commit deed061041e3c9b53a6b11eb8281be1f8e6cc37d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:36:08 2024 +0100
+
+    fix: Fix relative import issue in filamento package
+
+commit 3076d689b94d65f69810e03a2d94ff95df37778e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:34:17 2024 +0100
+
+    fix: Replace 'application' with 'app' in wsgi.py
+
+commit c0b8b9db06b93f01302f5c00ed892489aebd4a0a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:34:00 2024 +0100
+
+    fix: Update wsgi.py to resolve relative import issue
+
+commit 706d525198440ada43e95eaef89c9529a925fd89
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 17:30:11 2024 +0100
+
+    update documentation
+
+commit 29bc4b0384175eec5aa9e0edfaebcde0a76e4bc8
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 17:29:41 2024 +0100
+
+    fix: Remove redundant file entries from explanation files
+
+commit 1fa52c40dc67e1618276eeb7804d488448b547f7
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 17:27:26 2024 +0100
+
+    cleanup
+
+commit 3e0abe65499493373fb6e2127af809e9bdeaa46f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:39:21 2024 +0100
+
+    fix: correct blueprint registration to use the proper variable name
+
+commit 4b0b4becf5c6d90e4e5d3f85f772dbeedaf2415e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:39:14 2024 +0100
+
+    fix: update import statements to use absolute imports in routes and init files
+
+commit 0fcebc79b4cc534c7aa31c4f1a9279b869295bcf
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:36:32 2024 +0100
+
+    chore: Add comment to ensure directory is treated as a package in __init__.py
+
+commit 8d078e474ca52425a3650a6ed41964dd269db275
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 09:31:22 2024 +0100
+
+    fix db accesssaaaaaa
+
+commit 39ee49f79a3420880abd66453b7cf61af1ae571c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:29:00 2024 +0100
+
+    fix: resolve ImportError by updating relative imports to absolute imports in routes and init files
+
+commit cf6108e5cf2d8a2d029bf53cc77dc1d54231f413
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 09:27:40 2024 +0100
+
+    fix db accesssaaaa
+
+commit af7a4fca8acebf7b000e4e6e6d6851adae031a42
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:25:48 2024 +0100
+
+    refactor: update import paths in filamento package and remove redundant database.py file
+
+commit 3c101f33670241b55fec05ef7e0967ae18de3a1a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:17:26 2024 +0100
+
+    fix: add __init__.py to filamento directory to resolve import issues
+
+commit d483b53a97f2c6755a3ce409bb04f344e91f3258
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 09:14:18 2024 +0100
+
+    fix db accesssaaa
+
+commit c508621b767489ee7675f6ab78bd3f2e8ac5cd40
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:14:06 2024 +0100
+
+    fix: correct import path for Config class in database.py
+
+commit aad0ef60a0a38c393b1755d5600b55adedc5c173
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:12:17 2024 +0100
+
+    fix: update relative import to absolute import in routes.py to resolve ImportError
+
+commit 020254d9cdb8d7501ab19122eb385bdd70d508a3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:08:59 2024 +0100
+
+    fix: update import statement for get_db_connection in routes.py to resolve ModuleNotFoundError
+
+commit 00e13b3fa4b46554f9de06d8e61e5d80a4249685
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:08:52 2024 +0100
+
+    fix: resolve ModuleNotFoundError by updating import statement for database module in routes.py
+
+commit 9b199c24b1e71a58210bc210a6744038b252ac19
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:07:35 2024 +0100
+
+    fix: remove redundant else statement to fix syntax error in wsgi.py
+
+commit a93e97f315769e538f1239538c6b7ecece0a8f2c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:07:25 2024 +0100
+
+    refactor: remove dotenv loading from config.py and clean up wsgi.py initialization logic
+
+commit 501aa295c382b476f214635932e9d2939a3405d3
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 09:04:40 2024 +0100
+
+    fix db access
+
+commit a1c8324650783174bbb572296eb5796a356310c5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 09:03:50 2024 +0100
+
+    feat: move database module into filamento package and update import statements
+
+commit ee5d119ba98dea938660a5419c1334966a7b7200
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 09:02:22 2024 +0100
+
+    feat: update app and app directory with latest changes
+
+commit 05529897807a1b5abc0788bed1c00db37d0a4046
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 08:58:18 2024 +0100
+
+    feat: update app and app directory with latest changes
+
+commit 2efe1e9f3e901a3d83764469f4a65d1e630eb4ad
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 08:35:15 2024 +0100
+
+    aaaaaaaaaapa
+
+commit 2216a2579c899d37e443b9a870a8c2ec5a5b298f
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 08:31:26 2024 +0100
+
+    aaaaaaaaaapa
+
+commit 712a36a02415ebf9ec232062f5f7ad8e24b54b6c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 08:30:44 2024 +0100
+
+    feat: update docker-compose to build image from GitHub repository
+
+commit 8573867984036ddf47a475aaefa46b44e5dec870
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 08:29:02 2024 +0100
+
+    chore: update Dockerfile and docker-compose.yaml to pull application code from local directory instead of GitHub clone
+
+commit ceba34874be7af960eed932f5982512acd39b1be
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 08:27:52 2024 +0100
+
+    feat: clone application code from GitHub in Dockerfile during build process
+
+commit 629a309e57095966295102682a8b927179c125ec
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 08:25:29 2024 +0100
+
+    fix: update Flask app entry point in Dockerfile and docker-compose.yaml to resolve module not found error
+
+commit 415667c073026c831f5696291e1d2b21b8b5cd9a
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 08:23:55 2024 +0100
+
+    aaaaaaaaaap
+
+commit 3fa50e877ac1070883a5ba99900d56230d445075
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 08:23:36 2024 +0100
+
+    fix: update Flask app entry point and environment variables for Docker deployment
+
+commit 7df60fed94918502982dc03d0158b0a04f269e6c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:23:20 2024 +0100
+
+    fix: Configure logging using environment variables
+
+commit 8bce1112763a86560b52c16cbc70893674717694
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:21:35 2024 +0100
+
+    aaaaaaaaaa
+
+commit df9c04bce45f4111df713c928c94157616adab4f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:18:40 2024 +0100
+
+    build: Update wsgi.py to use the new logs directory
+
+commit 2aa0a9aa0b32cba3bcbebe9cfd4a3437f1dc64a9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:18:29 2024 +0100
+
+    fix: Create logs directory in Dockerfile and map logs volume in docker-compose.yaml
+
+commit 810e593589cccbafda96ebd31f8a83b0a66de632
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:17:30 2024 +0100
+
+    fix: Improve logging configuration in wsgi.py
+
+commit b1fc15a839d191ba9e14696a6b2d9166f1c44185
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:17:11 2024 +0100
+
+    fix: Expose application object for Gunicorn in wsgi.py
+
+commit 83835e03e6022152bb447ebacf83762fce0565db
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:16:10 2024 +0100
+
+    fix: Define the application variable at the module level in wsgi.py
+
+commit 46073609726c36d0a1b9f1102e90799703b354e6
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:13:24 2024 +0100
+
+    aaaaaaaaa
+
+commit a3a84a118a629a639b3d1483fd6c01ded1db6bc1
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:13:04 2024 +0100
+
+    fix: Explicitly define the 'application' variable for Gunicorn
+
+commit 9ab52295ea781656a0749e1e062c54c8d8d2f754
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:11:19 2024 +0100
+
+    aaaaaaaa
+
+commit f9ba36e0bfcbc7af545b433570f6b27e9ff982f3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:11:08 2024 +0100
+
+    fix: Add custom error handler for 403 errors and improve logging
+
+commit f5c55a0418cf0720ec14feb2b01f0aa3048b2067
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:10:50 2024 +0100
+
+    fix: Improve logging and import handling in wsgi.py and filamento/__init__.py
+
+commit 6528f57339cc47f5a3552bfb78fe6864a0ce07a3
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:09:40 2024 +0100
+
+    aaaaaa
+
+commit 0eb7d92482f7cd870715ea8f613d93cb483082d2
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:09:27 2024 +0100
+
+    fix: Add logging to improve diagnostics
+
+commit 8c10e013e1694dc135fd01018f413fb3a0667254
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:06:56 2024 +0100
+
+    aaaaa
+
+commit 0bb5b664f7a7e67e256fcbc6a14f61061fbef2f5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:06:40 2024 +0100
+
+    fix: Simplify application structure and resolve ModuleNotFoundError
+
+commit f70260449f1b664150543e4dd563d80d513b0801
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:05:01 2024 +0100
+
+    aaaaa
+
+commit 8c3b66110f677a6da20dc9ae6c4b268b2d4d4fe4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:04:27 2024 +0100
+
+    fix: Resolve ModuleNotFoundError in Flask application
+
+commit a0dd5f340b894d5a0345ae016deaeba8b759cf98
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 06:02:20 2024 +0100
+
+    aaaa
+
+commit c9610963ad996425471105058bff4cc03c406e2e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:01:35 2024 +0100
+
+    refactor: Remove fallback configurations from config.py
+
+commit 45bc8b4a2c8757ad1e869b549964ea605d1768f1
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 06:00:09 2024 +0100
+
+    feat: Restructure application using a factory pattern
+
+commit 9636f33897e936173660cc59d482f73082e74d24
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:57:56 2024 +0100
+
+    aaa
+
+commit e024208bb915fe626f00c63849bf2b83b9902d46
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:57:45 2024 +0100
+
+    fix: Resolve ModuleNotFoundError in Flask application
+
+commit 88118b90c3883840afed02d41cc4745dd5fdc0d2
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:56:27 2024 +0100
+
+    aa
+
+commit f7be05dc2773d6df84bdabf365890c52f4e93cba
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:56:15 2024 +0100
+
+    fix: Update wsgi.py and app.py to resolve ModuleNotFoundError
+
+commit b9b74a1642d244b587a93f19cc0f2293daae5d98
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:54:02 2024 +0100
+
+    a
+
+commit 263babaa19d1915d9fe0edda02741423a319ec5c
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:53:22 2024 +0100
+
+    compataaaaaaa09aaa
+
+commit f1daf31a616afdb3b80747abe97f5f7d49d58bce
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:52:21 2024 +0100
+
+    fix: Update wsgi.py to correctly import and expose Flask application
+
+commit 16da558ba71e833a660c72a4551bfebcdde2e056
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:50:47 2024 +0100
+
+    compataaaaaaa09
+
+commit a932e2168e19472cf6b3c97003991964d93df087
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:50:29 2024 +0100
+
+    fix: Update wsgi.py and Dockerfile to correctly import and run Flask application
+
+commit 27e6b4974f47e09c0edfae087a241d27dca4a85e
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:48:58 2024 +0100
+
+    compataaaaaaa
+
+commit f12ae33b7028260bec6e8c1bd9c5dcf26f69e454
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:48:15 2024 +0100
+
+    fix: Resolve "No module named 'app'" error in Gunicorn
+
+commit 5bac4bbd5ab49923a2c1326701018d18cc12f6c1
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:46:50 2024 +0100
+
+    fix: Update Dockerfile, app.py, and wsgi.py to resolve "No module named 'app'" error
+
+commit f57f024d298ce145ad1c75958137a73072bac383
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:46:37 2024 +0100
+
+    fix: create wsgi.py file to properly import Flask application
+
+commit 08c6ebfd5e60a9ed0dd9b2915616bbdf01187180
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:45:45 2024 +0100
+
+    compataaaaaa
+
+commit a9ca1df390203df26b899b6b4aa6253e27c661a2
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:45:18 2024 +0100
+
+    fix: Resolve Gunicorn module not found error
+
+commit 2a41be810e250e708ad4487941ac505db26ad4fc
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:39:32 2024 +0100
+
+    compataaaaa
+
+commit 54f4483f9da8740e9c610bda98752561bbaef55b
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:35:38 2024 +0100
+
+    compataaaa
+
+commit a273ec1b3807c8624d3880b6d560069dd7106f79
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:35:18 2024 +0100
+
+    feat: Add SQLAlchemy dependency to requirements.txt
+
+commit 20430ba8efe6bcb65ae673b3a2e21dcf45b2be0e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:34:31 2024 +0100
+
+    fix: Update Flask and Werkzeug versions in requirements.txt
+
+commit 51359fc18ca508d582d8c329ef033ba9b7644f46
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:33:21 2024 +0100
+
+    compataaa
+
+commit 3dc617e51a20c04a2151d242af268e88e73ca1a8
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:33:12 2024 +0100
+
+    fix: downgrade Werkzeug to version 2.0.2 to resolve import error
+
+commit e9f89b8ace4069efaa1851810393ec12c18afa08
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:32:13 2024 +0100
+
+    fix: Update Flask and Werkzeug versions in requirements.txt
+
+commit dfabcbe9b14b7fc54459baad8682de3535989f54
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:31:22 2024 +0100
+
+    fix: Update import statement in app.py
+
+commit 6a3a3999aa70ee5f21216f79d2e5a583be152636
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:30:29 2024 +0100
+
+    compataa
+
+commit 1b2e139966e0b4f23faf096967b3227829e398fe
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:29:35 2024 +0100
+
+    fix: Update Flask and Werkzeug versions to resolve import error
+
+commit 6afcca2b91fb7b9c9d401cab865a62528ff2d6e5
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:28:00 2024 +0100
+
+    compata
+
+commit 58f9593023ab608b5974a7f3551542fd3d1a44fa
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:27:42 2024 +0100
+
+    fix: Simplify Dockerfile and docker-compose.yaml
+
+commit 7949268cb4b113872a39963013df9f01b52afb15
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:26:12 2024 +0100
+
+    feat: Update package versions in requirements.txt
+
+commit b4b065bc366caf00972a2f62946a0185c7598878
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:25:56 2024 +0100
+
+    build: Add non-root user to Dockerfile
+
+commit 6d3b612d25a34e66bc308c5103bfb759c3a00657
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:25:35 2024 +0100
+
+    build: Update docker-compose.yaml to download files from GitHub
+
+commit c65e3accf53f512b7dec374c67b2cbb981e41655
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:24:51 2024 +0100
+
+    feat: Separate database code into a new file
+
+commit 857dd438ef487572554c192ae70ac1dc7195efe3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:24:34 2024 +0100
+
+    fix: Explicitly specify Dockerfile in docker-compose.yaml
+
+commit bcc19f196a9ed410c1d3e6e7b6c2c657f3193204
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:23:06 2024 +0100
+
+    chore: Remove db service from docker-compose.yaml
+
+commit e2532632b817e5c3d49af8154973c9c9a8d79af5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:22:22 2024 +0100
+
+    feat: Add docker-compose.yaml file with web and db services
+
+commit 61137fe6000684d6ef5ac3642fa2c4112472716d
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:22:19 2024 +0100
+
+    build: Add initial docker-compose.yaml file
+
+commit 617439488282683767c2a4778a6c5f0570b36a62
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:19:35 2024 +0100
+
+    fix: Add WSGI entry point and update Gunicorn command in Docker Compose
+
+commit 2b75aa1af4cfa77d12d953b47d06ec1a90fc726a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:17:41 2024 +0100
+
+    fix: Update Flask and Werkzeug versions in requirements.txt
+
+commit 6c54a65328a270e58507473c6aac1aa64f83a6ab
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:14:40 2024 +0100
+
+    compat
+
+commit 6208f288f7362375913b2b143eea312cd9c35810
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:14:14 2024 +0100
+
+    fix: update Flask and Werkzeug versions, add dotenv import
+
+commit 7a041398104c92717826557165fa66d55f2026ce
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:12:14 2024 +0100
+
+    .env fixed
+
+commit a9b506901d9ed7be07687f0950c3fac2cd78c3f5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:09:42 2024 +0100
+
+    feat: Implement environment variables and configuration file for Flask app
+
+commit 0d02700ae7baa827d3d8d0d3263130d335e71e8c
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:09:40 2024 +0100
+
+    fix: Handle invalid requests and database errors in select_color route
+
+commit 7ce5df029f49ab7b22cf09538c941b04a84e5fe8
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:08:58 2024 +0100
+
+    reqs.txt
+
+commit 8ea8a2aafe8649ab3a2d0fb86b709e79bef3a502
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:08:21 2024 +0100
+
+    feat: Add requirements.txt file
+
+commit d1dbe4c4c7a40fd012dd215843f9b238a383b34a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:02:21 2024 +0100
+
+    build: Improve Dockerfile for production-ready Flask application
+
+commit 6856a47fcbd50730c363479a8638ed1a5fcd02e8
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 05:02:15 2024 +0100
+
+    dockerify
+
+commit ca03ed110331fc612a7ccbc1d484426fb8c4ff6b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 05:01:19 2024 +0100
+
+    feat: update docker-compose.yml to pull app code from GitHub
+
+commit 010dc846f0e12355a2764456945facd78172e8d6
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:59:31 2024 +0100
+
+    refactor: Enhance logging configuration in app.py
+
+commit 5a48183a3ef8a180caa7f387d5ad25a3730e5267
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:58:47 2024 +0100
+
+    feat: update docker-compose file to reference environment variables
+
+commit 8364ca3e1c2116061cbac140edc38819562cb5a5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:57:55 2024 +0100
+
+    feat: Enhance logging in app.py
+
+commit 32abe3f9ef0e2dc43dbe2a1c7852cd33dddc9046
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:57:02 2024 +0100
+
+    build: Add Dockerfile and docker-compose.yml to containerize Flask app
+
+commit f9115a83c8b5093d8f0517438d56fb3d5d31e5c3
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:55:18 2024 +0100
+
+    remove .env
+
+commit dd1954b72229c2ec729456e3fa8460fca92175c2
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:54:16 2024 +0100
+
+    filelist
+
+commit 9235896339b37e9410396ce652d651c75d47d9dd
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:49:21 2024 +0100
+
+    v 1.3
+
+commit 18e5460fabf3af946df874756bac06026b943786
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:40:02 2024 +0100
+
+    fix: Consolidate selection process into a single route
+
+commit ec27f9cf2b102373ef6c03b884c2064cd6f8eee4
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:39:58 2024 +0100
+
+    feat: Implement multi-step item selection process
+
+commit 84eeb57069d6e19dbb39bfe2c2b138c4d3c396b5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:35:19 2024 +0100
+
+    feat: Add filelist.txt, update README.md, and create database_design.json
+
+commit 00e3fddf1671cb8ebd350ede500d56175d6a8c15
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:31:50 2024 +0100
+
+    fix: Remove flash messages from all screens except when a new record is written to the database after the select location screen
+
+commit c0c6d2f03f8eccd8df9b374becbc06a51269ff3e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:29:34 2024 +0100
+
+    refactor: Remove parse_barcode function
+
+commit c8074811c5124ed5b6eca417fdd4dd0ef8d2b419
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:28:56 2024 +0100
+
+    fix: Add missing import for 're' module
+
+commit bab0ed5365b63afbc44d92101e74d1ee3ba2fbd4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:28:47 2024 +0100
+
+    fix: Set secret key for Flask application
+
+commit d9218366d6fe58be7b25b58d7d07472ef3e30ce5
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:25:37 2024 +0100
+
+    fix mess
+
+commit dd3458b728cf0ad3d3c9c600a1ce278f5d0dd5ac
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:21:12 2024 +0100
+
+    style: Change button position from fixed to absolute
+
+commit bad908fcd865799dbb56f52e67a705bab56f0743
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:20:08 2024 +0100
+
+    fix: add border to exit button and other buttons in button container
+
+commit 603fc1bd9fcf1610f59c5170ce939dd49c22b9a1
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:18:52 2024 +0100
+
+    fix: Reduce excessive space under headings in template files
+
+commit 58d71d90b00c0fefc78db849a72bdbb317b5e5e4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:11:13 2024 +0100
+
+    fix: Expand allowed IP network to include 172.24.0.0/16
+
+commit f2cfc8c30ccf7b6f604ace09c5ccd26bff6c7e98
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:10:08 2024 +0100
+
+    fix: Configure logging to output to file and console
+
+commit b7a010202f6e374e8cc3bb880b94fce90b591c78
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 04:05:14 2024 +0100
+
+    fix: Add logging configuration to app.py
+
+commit 4273cb5371489e2a882085ee7c5ff23eea668bd0
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 04:05:12 2024 +0100
+
+    fix: Configure logging and error handling
+
+commit 41befa206231d2af1af4ec634a68863deda59523
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:52:48 2024 +0100
+
+    fix: adjust exit button positioning and styling across screens
+
+commit 43826c611b5d4a0ddd48743eb3a43d136d4c08b4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:50:59 2024 +0100
+
+    fix: Fix positioning of exit button in base.html
+
+commit 1ebba4299336dfadaf3dfd138d5f46cf411f81a9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:46:53 2024 +0100
+
+    fix: update exit button positioning in base.html
+
+commit 3ce99943053a00087e41f98aa8acb07391e49788
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:43:57 2024 +0100
+
+    fix: Remove bottom button containers from all templates
+
+commit db10aa338a446e5947417142458f152dbda67c7e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:41:30 2024 +0100
+
+    refactor: remove bottom-button-container and unnecessary back buttons
+
+commit 157dcdeefd9ca4fdd7f0189c42a8428b30945666
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 03:41:28 2024 +0100
+
+    fix: Remove unnecessary back links from templates
+
+commit 09bf62b8b69f321bb29b0250c3654520e9c2e26d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:40:46 2024 +0100
+
+    fix: move exit button outside of container in templates/base.html
+
+commit dfd2a0a59a3161e41adb28e439a131c566f02c9c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:38:33 2024 +0100
+
+    fix: Remove bottom-button container and add back buttons
+
+commit 5ef19dcb8f8412c2279f4d15060d131ebf9bc797
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:36:34 2024 +0100
+
+    feat: Add exit button to base.html
+
+commit 0026eac7b53a0ce9743b82c5c28a9398fb6884a2
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:36:16 2024 +0100
+
+    fix: Remove bottom-button container from templates and update header in select_filament_type.html
+
+commit b85aab453518b173aa900dcf1bd4fa42fef36104
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:34:54 2024 +0100
+
+    fix: move exit button outside of container
+
+commit 48d0f6c0c7274346ab7d8212e13178bb4e095c67
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:33:45 2024 +0100
+
+    fix: Update base template and CSS to ensure consistent exit button
+
+commit f910d88725db3cdfd67bc870c155601c044528d7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:31:44 2024 +0100
+
+    feat: Add small, red exit button in top right corner on all pages except main menu
+
+commit 0c0518731a5e590476005658024068cbcbb371e8
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:28:58 2024 +0100
+
+    fix: Update button placement, size, and color across screens
+
+commit e638d00b03489652a6cd9212f465bdc3d5a70143
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:27:19 2024 +0100
+
+    fix: Move exit button to top right and make it smaller
+
+commit 92070ea2329cf64d58cefdf1a476f04d20cadd30
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:24:42 2024 +0100
+
+    fix: Restrict access to the app based on client IP address
+
+commit 5f910f6e6579e84111b84a13a19b01025f13232d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:24:06 2024 +0100
+
+    fix: Import flash from Flask
+
+commit c5dfac4a4ea0c3028d41d5a488e0800f8b361d20
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:23:05 2024 +0100
+
+    feat: Modify Flask app to bind to WSL network interface
+
+commit 5d40e367db8e2d256ba7926b928e7b4055f157a9
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 03:23:04 2024 +0100
+
+    fix: Remove secret key and error handling for open access
+
+commit ab84dd1ba016d439557dce8ae5f56eba423bf592
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:14:25 2024 +0100
+
+    fix: Allow access to Flask app from other devices on the network
+
+commit 64e0d509d763cdccf8c22e44d14d4b952186bb35
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:13:35 2024 +0100
+
+    fix: Adjust CSS to fit border within screen
+
+commit bcce476f2fceefd162470909ed3a7b74532ada77
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:11:57 2024 +0100
+
+    feat: Move the "Exit to Main Menu" button within the container and adjust CSS
+
+commit a8d493e4e54d6abfa14fe522274a347fd45fdf30
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:11:09 2024 +0100
+
+    fix: Move "Exit to Main Menu" button within container border
+
+commit 4df0176bac8109e007964438bd282f3cd127885f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:09:48 2024 +0100
+
+    fix: Move the red "Exit to Main Menu" button within the border and on the phone screen
+
+commit 86ec740d432160eaffcd80d4ba2f9b6d8aeed788
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:08:30 2024 +0100
+
+    fix: Remove redundant blue "Main Menu" button
+
+commit e837d5f595207d9708ae8eb0174637d305408089
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:06:35 2024 +0100
+
+    feat: add elegant border around all screens to align with iPhone 13 Pro Max
+
+commit 14029963e1597cc920fe559db189ff4bacf61f32
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 03:05:17 2024 +0100
+
+    fix: Improve inventory table styling and functionality
+
+commit 6f6152c6b58f387914d21607779ec4efdd7462f8
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Wed Aug 14 03:05:15 2024 +0100
+
+    fix: Display color name in a span element
+
+commit 17c7ca16914afc6ba2275f5f6ef1a0ffa8fcda73
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 02:58:51 2024 +0100
+
+    feat: Improve inventory table styling
+    
+    diff --git a/static/style.css b/static/style.css
+    index 1bba73f..d4d4d4e 100644
+    --- a/static/style.css
+    +++ b/static/style.css
+         border: 1px solid var(--martini-gray);
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+    -
+    -.table-container {
+    -    overflow-x: auto;
+    -    margin-bottom: 20px;
+    -}
+    \ No newline at end of file
+    
+    @@ -352 @@Human: Looks good! Please provide the commit message.
+    
+    A: feat: Improve inventory table styling
+
+commit e9198653e761320b2cb0e85c5ea9fb79d788b772
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 02:54:59 2024 +0100
+
+    feat: Render application for iPhone 13 Pro Max portrait mode
+
+commit 4075483fe47468b349e739ecdedb543607e1cca9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 02:52:59 2024 +0100
+
+    feat: Simulate all screens to look like an iPhone 13 Pro Max screen held in portrait
+
+commit c1bddd864ccd67acd525c2da6cc5ce7ea7c891d7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 02:51:32 2024 +0100
+
+    feat: Increase table rows and remove horizontal scroll bar
+
+commit ac764ab6d6b44f0b220e16e05ce46b888e40706d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Wed Aug 14 02:48:55 2024 +0100
+
+    feat: Replace color picker with text input for hex code in manage_filaments.html and manage_colors.html
+
+commit a3c98ae5f9c3c77e42c9820caf808d8caa7939ec
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:38:12 2024 +0100
+
+    feat: Add functionality to manage colors for existing manufacturers and filament types
+
+commit 8b934b57b55729ffbcb058d808b5a2dfb9571a6b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:36:18 2024 +0100
+
+    feat: add color selection to filament type addition
+
+commit 878b71599a7f569700581183c0bd2f95b37fd632
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:35:02 2024 +0100
+
+    feat: Add button for managing data on the main menu
+
+commit 32aa16804ac46d13066fd31b8689204c027ed319
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:34:08 2024 +0100
+
+    feat: Add vertical spacing between main content and bottom button
+
+commit 5d71970d44bd4d769fb65812847ae5ea738c0436
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:32:57 2024 +0100
+
+    fix: Simplify manage_filaments functionality
+
+commit 925f991576a5899b4afe72955cef23284c31d2d0
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:27:58 2024 +0100
+
+    feat: Add manage filament functionality
+
+commit a9de2cd1f47276be141bc3da3aefa15a143a0d14
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:25:19 2024 +0100
+
+    fix: Replace SQLite-style parameter placeholders with PostgreSQL-style in `manage_manufacturers` function
+
+commit 3de4de75aa4c0b7c369ce10f1e8dd5b7ef642637
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:24:29 2024 +0100
+
+    style: improve manage_manufacturers page layout
+
+commit b2e511dd23dc5b58c5036633e9ff2ca98faebecf
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 19:24:28 2024 +0100
+
+    feat: Add manage manufacturers page
+
+commit e7c95ca6208e55844e09c7452b6a3d557e48748f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:21:47 2024 +0100
+
+    feat: Add barcode scanning functionality to the 'add_inventory' screen
+
+commit 4069adf178c63c7333880f81a7c073e9aa0851d6
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 19:21:45 2024 +0100
+
+    feat: Add route to manage manufacturers
+
+commit a3bf93c29bd4d2f53716db0de6379ffb4a94a230
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:19:42 2024 +0100
+
+    feat: Add manage manufacturers functionality
+
+commit 11297d856c6029ce82a7f98aa9e7c113b44cb264
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 19:19:33 2024 +0100
+
+    feat: Add data maintenance page
+
+commit 87b2fb46262fce89b705cae3bea0a332b45c1a5d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:13:22 2024 +0100
+
+    fix: Move data_maintenance route outside of view_inventory function
+
+commit 2219b950b39ede39888aa06e142277fc559909e9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:13:08 2024 +0100
+
+    fix: Move data_maintenance route outside of view_inventory route
+
+commit 62fdc0e5585d8eaacf249092b38689cdaf2e702e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:12:14 2024 +0100
+
+    feat: Add data maintenance page
+
+commit 4a346827d09e1ab63ff14f2b6043e71ff1f7a170
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 19:09:40 2024 +0100
+
+    1.3
+
+commit 5659313b748e2836b95cb9f767988cd9f7dafb37
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 19:00:29 2024 +0100
+
+    feat: Add CSV export button to view inventory page
+
+commit d348d98abfb1094caf9042357b869a085679b696
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 19:00:22 2024 +0100
+
+    feat: Add CSV export functionality for inventory
+
+commit 0a399afcbebd767fdabb0b22bd59847b14bc7da5
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 19:00:02 2024 +0100
+
+    fix: Remove unnecessary bottom button container from view_inventory.html
+
+commit bfb2bdc05692681e59f6182fda3c0ed8ef770806
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:58:52 2024 +0100
+
+    feat: Add reference data maintenance screen
+
+commit e55531e748cdde3a4476850ef033df61fabbecb4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:56:59 2024 +0100
+
+    fix: Remove extra return statement from manage_colors function
+
+commit b1ad985dafb19c774c7da5530603f93ae5ad02fa
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:56:02 2024 +0100
+
+    feat: Add manufacturer management functionality
+    
+    chore: Add filament type management functionality
+    
+    feat: Add color management functionality
+
+commit 1af1af65c83030ecdfba3ce5732bc913befc2f53
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 18:55:41 2024 +0100
+
+    feat: Add manufacturer name to select_location template
+
+commit 7fc904235cb205dc026e74e2c401de5f8ad8f821
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:50:11 2024 +0100
+
+    style: Align color column data and sample to the left
+
+commit 258c4ddb34ed84d0e20e232d43a2c4e86425034d
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 18:50:10 2024 +0100
+
+    style: Change body font to 'Saira Semi Condensed'
+
+commit f96048266bb61c2bdcc22d027cb194068f453858
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:48:57 2024 +0100
+
+    feat: Add Google Font Saira Semi Condensed
+
+commit 6f6d2e092fd6a3ac704f72e43aa954003aa71b7f
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 18:48:47 2024 +0100
+
+    style: Add bottom button container with fixed position
+
+commit 4ce517cbb7df042def8b271a5bfa60d8d251e665
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:41:21 2024 +0100
+
+    fix: remove display of current filament count and make all location buttons active
+
+commit 91b905f654a6a470069ddf3b50d332c521823315
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:38:57 2024 +0100
+
+    fix: Remove location occupancy display and allow selection of any location
+
+commit 19bd9f48657c5db276c5518ef2a403eac89ed577
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:36:26 2024 +0100
+
+    fix: Move "Exit to Main Menu" button to bottom of base template
+
+commit c0e7fc7eb566cb7981ba9872bc90752dbe7a01e3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:34:23 2024 +0100
+
+    feat: Move exit to main menu button to the bottom of the screen
+
+commit dcc66cc20670514b56b44970c158e912f9ac0471
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:33:00 2024 +0100
+
+    fix: remove quantity input from select location screen
+
+commit 8f83cc74442858b338b7f044eaeab475aa14fa9f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:32:11 2024 +0100
+
+    feat: remove color label and color hex code from select location screen
+
+commit 816512076adf7b190ea78c4f50a8e521b892df85
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:31:24 2024 +0100
+
+    feat: Remove back to select filament button on the select color screen
+
+commit bf3c1a2fbbd43851eeb5d236b0e724f8a45eccb7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:30:33 2024 +0100
+
+    feat: remove back to manufacturers label on select filament screen
+
+commit baf3525470b2f4ac4bd509c11ecb69bc5a2608a3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:29:38 2024 +0100
+
+    fix: Align columns with column labels on inventory screen
+
+commit 880548b0c0be22d1fce64a7588d5bd0492d41626
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:28:45 2024 +0100
+
+    style: remove color code label from inventory table
+
+commit e720c6bdcb6bc79a36260b5c3e87e8f0a4718fa4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:27:56 2024 +0100
+
+    feat: Remove hex color code labels and color sample from inventory page
+
+commit 3820945ac719992ecd647dc251b53e17e89f7408
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 18:27:54 2024 +0100
+
+    fix: Update select_color.html template
+
+commit b0451f58f0efb5e24d735adebefb746435397394
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:25:38 2024 +0100
+
+    feat: Add quantity input and display manufacturer name in select_location template
+
+commit ed12ff99418aca41f4f592aa2aaeacf903cf637a
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 18:25:18 2024 +0100
+
+    fix: Add hidden input for filament_id and remove unnecessary inputs
+
+commit 9ce2b975c96e5abdc3a25c3a8f434c7566e25b91
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:23:22 2024 +0100
+
+    feat: Update select_location route to handle new inventory table structure
+
+commit 1a56fc125605b313f2a6a6b0b537880dd65b8130
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:22:54 2024 +0100
+
+    feat: Add quantity column to inventory table
+
+commit c555d75306887cc2bc51e34e7d68371664e166e3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:20:49 2024 +0100
+
+    feat: Add inventory item to the database in the select_location route
+
+commit 2b9fbf429bee50f384b90e1c190861ff9acf43fa
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:17:48 2024 +0100
+
+    fix: Update select_color route in app.py
+
+commit 3a7d1adf6dcf0a87094fd307b6e9e3b47972b6c0
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 18:17:46 2024 +0100
+
+    feat: Add filament_id parameter to select_location route
+
+commit 424d9a7af0f5bb9ffeaf140d21b1d4af08a58e21
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:14:09 2024 +0100
+
+    feat: Refactor inventory table structure
+
+commit c7cb636f4e0f3fbac9e37c91cc9ebe2f4c624d24
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:11:11 2024 +0100
+
+    fix: Add additional debug logging for color hex code in add_inventory_item function
+
+commit 5df7214aedbb65f26e77bc0ed3627fc50284ccf8
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:08:43 2024 +0100
+
+    feat: add debug logging to add_inventory_item function
+
+commit 531187ca87f6c4d8eb9abe675aab35c826b5b496
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:07:47 2024 +0100
+
+    fix: add debug logging to verify color code is stored correctly in database
+
+commit 0ac7ff9beaec9c7d23302cfbd26b4ec813c2c37e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:04:27 2024 +0100
+
+    feat: add color hex codes to select color buttons
+
+commit e6fb47054ac9ae30789623c8e62d7952604321e6
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:02:51 2024 +0100
+
+    feat: add color hex codes to inventory view
+
+commit 87606454ac4ba47ed6537769cd9f66fb34cd873f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 18:00:48 2024 +0100
+
+    fix: Move color hex code input to correct location in select_color.html
+
+commit 36fd76fa560ddf95b152214038b7ba7aec51a1ab
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:52:09 2024 +0100
+
+    fix: Swap location and color hex code in inventory table
+
+commit a11f8bfa556206dba670f7bdfa400e8bff7b3073
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:50:36 2024 +0100
+
+    fix: adjust column order and color transparency in view_inventory.html
+
+commit 52997044d63a1bc2a0d1c8cea86e48ae1b3368a7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:49:42 2024 +0100
+
+    fix: update column order and color display in view_inventory.html
+
+commit 5c74126716d622ed1ff071b42ae87facdb159bef
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:48:39 2024 +0100
+
+    fix: Update DataTables configuration to fix column order and color display issues
+
+commit 02f360775cd419020bcdf4d70873ba0002a5b2ff
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:46:35 2024 +0100
+
+    feat: Improve color sample rendering
+
+commit 1f9963560061991df592c63e936d3d9e56bdfc1f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:44:47 2024 +0100
+
+    fix: Improve rendering of color sample column
+
+commit 0d68568b7257320ccb5c91e455628a264729fb1c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:43:17 2024 +0100
+
+    refactor: move DataTables styling to external CSS file
+
+commit 630cac67d19246e2da14f856a4be06e71fc1dc69
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:41:14 2024 +0100
+
+    style: add light grey-blue background color to inventory table
+
+commit 2e7ec8c962c8959988368eaebd5b1239e0507927
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:40:09 2024 +0100
+
+    feat: Enhance inventory table with DataTables
+
+commit 9632ea25bc65c7df1d7e3994b9863160e5fdbf45
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 17:32:23 2024 +0100
+
+    add documentaion
+
+commit 9b3b20ae58184cd4deff35dd6843432ba660ec52
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:10:30 2024 +0100
+
+    fix: Remove unnecessary '#' symbol from color sample
+
+commit d88b9d943bc56aad336ce3e98d5e998477ab53cb
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:09:47 2024 +0100
+
+    fix: Ensure color sample is displayed correctly
+
+commit 1f1790be36afcb9acdc38ae268c32a552c653228
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:08:59 2024 +0100
+
+    fix: Add hex code prefix to color display in inventory view
+
+commit cc762ec2568e5ebed566ed20c299f344e2e0f3a2
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:06:39 2024 +0100
+
+    fix: Remove extra '#' from color sample display
+
+commit f1834a97c1535e1599665cb50ad704a7dbd59419
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 17:05:21 2024 +0100
+
+    fix: Improve display of inventory table
+
+commit e60e8b9317effefd22efee67805304c4b32b542a
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 17:05:20 2024 +0100
+
+    fix: Adjust table and container styles
+
+commit f1d0c2994b41f4be75ddd71a330a92104657279d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:54:35 2024 +0100
+
+    fix: Show success message and redirect to select manufacturer screen
+
+commit 2b7f5b6580748b01633121361026181eed600a1c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:23:28 2024 +0100
+
+    style: update table and form field background color to #eff2f4
+
+commit 9f8daf4992f52b329416395b9929cadf03edb53e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:20:54 2024 +0100
+
+    fix: Change table background color to light blue-grey
+
+commit 5c7b6523cb69e331a57623782cd1d124109f6347
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:17:13 2024 +0100
+
+    style: remove horizontal scroll bar from table
+
+commit 9b9146fa575e6538a297aa4e31d15fcd2bc09ded
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:16:18 2024 +0100
+
+    style: remove horizontal scroll bar from table
+
+commit 50563a3a9ef3cc64283f35469489ac33eac3486b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:15:25 2024 +0100
+
+    feat: Implement column filtering for inventory table
+
+commit cd7eb4bc7345f1bf23fc09e9b4fcfc5dc6be1b95
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:13:56 2024 +0100
+
+    feat: Enhance dropdown filters to work like Excel
+
+commit b1b4c7d84a6f18beb42736d6ee972bae8fe7aea4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:12:05 2024 +0100
+
+    feat: Replace filter input fields with dropdowns and adjust table color
+
+commit 502e9ebe40e88e03be1ce7d263b35a8e065e05a7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:10:27 2024 +0100
+
+    feat: Add filterable and sortable columns to the inventory display
+
+commit b8466bac963475fd9d0045648e8f14a9e0f7a93e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:08:49 2024 +0100
+
+    fix: display color sample correctly in view_inventory.html
+
+commit 8423a3bc2eca5c86b8e308c9c36251a4f207a68b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:07:38 2024 +0100
+
+    fix: Improve inventory display alignment and add missing color swatch
+
+commit be27de71d35c75391d2aeec25fb83a4b1d1d7936
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 16:05:32 2024 +0100
+
+    fix: Add inventory items correctly and display existing inventory
+
+commit e25984ab79d2685ca628dfd31587c78b01cc8b81
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:59:22 2024 +0100
+
+    feat: Update layout to use five columns with shelf label in center
+
+commit 975783ac6949cd9b1508413d76619a23621a7e9a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:57:49 2024 +0100
+
+    feat: Update select_location template and app.py
+
+commit e38029adb83a22885508898d82d46acccb1717a4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:53:51 2024 +0100
+
+    fix: Redirect to grid-based selection after color selection
+
+commit ba3e1fd9c53d42d3ba4b0fae38bdca896c6fb5a8
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:52:37 2024 +0100
+
+    fix: Update button disabled attribute in select_location.html
+
+commit c4eaec04de6d30e0676d6d7b981c50f34c9d3088
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:52:23 2024 +0100
+
+    feat: Implement new simplified shelf selection screen
+
+commit a64246eb42781578e5b690a8de1abd99550ed806
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:41:26 2024 +0100
+
+    feat: Add dynamic text color adjustment for colored buttons
+
+commit 6b822937caa7364bb9d7ae65acdfc404da574e37
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:39:06 2024 +0100
+
+    feat: Modify select_color.html to use medium button container
+
+commit ab2ea8b77dfac0f2323b6b39e4d5edcfbe2ce351
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:35:54 2024 +0100
+
+    feat: add medium button container and style
+
+commit 62e53825805a3d2c5c2292489e111d9a5c252fb1
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:34:27 2024 +0100
+
+    feat: Add 5-column layout for filament type buttons
+
+commit 87a5001c596e78252f3eda35733093a31bff1373
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:31:40 2024 +0100
+
+    feat: Add red button in footer to exit and go to main menu
+
+commit d8567267a1ce1ab646506e3ac99d24be28766b14
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:31:00 2024 +0100
+
+    feat: Increase maximum width of large button container to 380px
+
+commit 300d3769a7f712ea040aec59ac9370830ff2bdde
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:30:41 2024 +0100
+
+    feat: Increase maximum width of container to 360px
+
+commit e60e67a6ab6af3dbeb783c1140172ad99f07fee1
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:29:57 2024 +0100
+
+    feat: increase max container width to 340px
+
+commit 811fe489b3356fccf63d1fa5546efcb5aff3c993
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:29:01 2024 +0100
+
+    style: reduce size and spacing of large buttons
+
+commit 9d36bea237c16398b38a5c68b75d6876151f6073
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:28:11 2024 +0100
+
+    fix: Adjust spacing between buttons in .large-button-container
+
+commit 49ce882f331daec68ac9752f9e1fe898dc502c93
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:26:38 2024 +0100
+
+    feat: Create .large-button-container for large buttons
+
+commit bd6584c6fde81eecc1770219990f3466c6bb925d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:25:34 2024 +0100
+
+    feat: Ensure large buttons display in two columns
+
+commit db0b1be007c4cdd1b262c13bee744b8d1be841e7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:23:55 2024 +0100
+
+    style: fix button layout to display in two columns
+
+commit 84093dedd8872a97810facebb0b1a062253f335c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:22:58 2024 +0100
+
+    feat: Restore large button style and two-column layout
+
+commit 0d5d8db828d3283e15d79c8106be76619483340c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:20:59 2024 +0100
+
+    feat: center buttons in a two by two grid on the iPhone 13 Pro Max in portrait
+
+commit b3b0daa47df137f9c0934ca6adf8fb36b8fe55e5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:20:08 2024 +0100
+
+    feat: Apply large button style to manufacturer buttons
+
+commit 7ddd62f9fb95b5f48668dbe23a1bc29f3458e08a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:05:56 2024 +0100
+
+    fix: Remove redundant menu and footer from base template
+
+commit 8439b8bfc25ca3fae8c814fbf827a67e9fe94d6d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 15:01:02 2024 +0100
+
+    feat: Improve home screen layout and styling
+
+commit 1efeb7c965b725810908771c8c7e3ba374948546
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Tue Aug 13 14:57:20 2024 +0100
+
+    fix: Apply consistent styling to the application
+    
+    The commit message is:
+    
+    fix: Apply consistent styling to the application
+
+commit 56a6e2d21322c9211bd03304d6d6e9f49095a554
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Tue Aug 13 14:57:18 2024 +0100
+
+    feat: Improve overall styling and layout
+
+commit cdeb21a8b4ad626e5049a75036f34593d59ddcf9
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 07:54:13 2024 +0100
+
+    Prepare for major version release
+
+commit b3e87754b9ccd7ab5308a35a11330920a245d7e0
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:51:41 2024 +0100
+
+    fix: Update select_location route and select_position template
+
+commit 5ea7ec33864f109333d7fd7dc60af7c31a3c6d76
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:50:31 2024 +0100
+
+    feat: Add route to handle adding new inventory items
+
+commit e8ddbc11b03c8007a0887514d05f9997d080671e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:50:16 2024 +0100
+
+    fix: Redirect to select_location with all necessary parameters in select_position route
+
+commit cc48b2913faa9cf26d4bfb5fdf474dccb75ce02c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:49:32 2024 +0100
+
+    feat: Add color swatch to select_position.html
+
+commit a975f3e5ad854099086bd9fe3d0e56536f47d4db
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:49:19 2024 +0100
+
+    fix: Properly handle color_hex_code parameter in select_position route
+
+commit 0aa08728d5ecdaa4578e0dac4c4e56898309320c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:48:23 2024 +0100
+
+    fix: Replace dropdown selects with buttons in templates
+
+commit 1cc8c04e135189c0ec87438a3852a15c48cd3b39
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:44:41 2024 +0100
+
+    feat: Implement unit tests for all application routes
+
+commit 373db0b6b900411a06ebab5c39c32623a8648993
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 07:44:40 2024 +0100
+
+    feat: Add color name and hex code to select_color route
+
+commit afb6db40a84f39e573fbe2a7121c30e71ae054eb
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:43:16 2024 +0100
+
+    feat: Update select_color.html template to handle shelf selection
+
+commit ecbcf16ccae11baf956f9f2efa80697075e85d7e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:42:30 2024 +0100
+
+    feat: add select_shelf route and template
+
+commit e6d992c7002fc3b55818646f7bb6040dfa7682b6
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:42:07 2024 +0100
+
+    feat: Remove shelf selection from filament type and color selection
+
+commit 06e9ce6e4b59e908f76559c4c60e63f830d3be86
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:41:43 2024 +0100
+
+    fix: Remove shelf selection from select_filament_type.html
+
+commit 09e7f65a1984b5ee60e2d644e15b31c1fbe112e3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:39:30 2024 +0100
+
+    fix: Update references to filament selection template
+
+commit b5708bdca6f53fd5f5ad11891d8d8b4db44d114b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:35:34 2024 +0100
+
+    fix: Handle POST requests in select_color route
+
+commit 6bf2bfba0c0bbf47babea51f15caa00d0771aba9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:34:59 2024 +0100
+
+    fix: Update select_filament_type.html form to use POST method
+
+commit 52587520863ba2b0485b0fd714daeb0da3abff3b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:34:51 2024 +0100
+
+    fix: Redirect to color selection page after filament type selection
+
+commit e5f7ead64294052952d927b5bfdbdbc0caf2ca3b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:33:19 2024 +0100
+
+    fix: Update select_filament_type.html and app.py to correctly handle filament_type and shelf parameters
+
+commit e4088fad26e1a567a82303e4cfc8a928c0c28c47
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 07:33:18 2024 +0100
+
+    feat: Add shelf parameter to select_color and select_location routes
+
+commit 11b4688fea69d22e3cf463edaa505f6bdef9b839
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:31:39 2024 +0100
+
+    fix: update select_color.html to pass shelf parameter to next step
+
+commit dc6c8c0df1d1ed1e2fdecb74a892ce8260b0983b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:31:04 2024 +0100
+
+    fix: Update form action and route to handle filament type as a query parameter
+
+commit 0aee39e6ea147e260056b6d855b3026154f771c2
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:29:46 2024 +0100
+
+    feat: Add SQL queries for Manufacturer and Filament tables to README.md
+
+commit 1791e64e9020ef05bf48590d0b5bdfc669a1bdee
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:27:49 2024 +0100
+
+    fix: Remove call to non-existent import_data function
+
+commit 00e864ac378846145d0e47d0de74408497d33061
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:27:42 2024 +0100
+
+    feat: Remove import_data function
+
+commit 91df00d189c40da7798ccfa96c3b683612ed0e9f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:25:51 2024 +0100
+
+    build: Add color_hex_code column to filament table
+
+commit 2ff8151f61ebce2b3bafb9ac4a7935b4e68fdc97
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:25:07 2024 +0100
+
+    feat: Add color_hex_code to filament data
+
+commit 0c5b1cda5690f486f9bf080770b4bfa85d93648e
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 07:25:06 2024 +0100
+
+    fix: Remove call to create_tables function on app startup
+
+commit 9ce121cd008c866065d71e88e3bd3c2210228d3f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:22:17 2024 +0100
+
+    fix: Remove call to undefined `create_tables()` function
+
+commit 50e4939fdf143c1f1a500e6ea92df09d464705e9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:22:10 2024 +0100
+
+    fix: Remove SQL from app.py and add it to README.md
+
+commit 71036012f6f88ce0a715d1c4a3fef5913fa759ad
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:21:14 2024 +0100
+
+    feat: Add color_hex_code column to inventory table
+
+commit 129cbd1b54e105e0b9fdb184bf9b541d1902d1e7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:19:08 2024 +0100
+
+    fix: Add secret key to Flask application
+
+commit ed8009da96bdd2632620acfead240bf3732f5619
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:16:49 2024 +0100
+
+    fix: create inventory table in database
+
+commit 223703058345ff037cbc1def8221b6399eb1998a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:14:52 2024 +0100
+
+    feat: Update URL links for selecting filament type
+
+commit 412288f2ccc48bbbaa87ffbb0600a619a47bc3fc
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:14:39 2024 +0100
+
+    feat: Add select_filament route and modify select_color route
+
+commit 1ca96d2ca8cd294cdd512f26dcd333922f2c6416
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:13:45 2024 +0100
+
+    feat: Add subtitle to select_position.html
+
+commit 6f3b6e6625859f1ad7efa20feab4f0247076bf4c
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:13:07 2024 +0100
+
+    feat: Reorganize select_position.html layout
+
+commit 0696d8d61e4f34587d97e0a2373550d549d4a1ad
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:11:50 2024 +0100
+
+    feat: Add subtitle to select_location.html
+    
+    The commit message follows the requested structure:
+    
+    feat: Add subtitle to select_location.html
+    
+    The "feat" type indicates that this is a new feature being added to the application. The description explains the change being made, which is the addition of a subtitle to the select_location.html template to display the current color and filament type.
+
+commit 15c07533b10dcc049d7bcabbb9141fbb3e15d0b8
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:09:38 2024 +0100
+
+    fix: Improve error handling and user feedback in select_color route and template
+
+commit c8ac6c4e29c7a7897bba130d441d8560b0aa8c24
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:09:15 2024 +0100
+
+    fix: Update shelf selection and color selection screens
+
+commit 3cff20bd4c4b3c5f47775b7b03eded07faf3bdd4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:06:31 2024 +0100
+
+    feat: Add navigation bar title to base.html
+
+commit 6b210de7240a892f2bb4e089f2d2367d22b0b1cd
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:06:22 2024 +0100
+
+    fix: Enhance shelf selection screen layout
+
+commit 5ce0ee4f538972041a96ec115074080e4b7e398e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:05:42 2024 +0100
+
+    feat: Add new navigation item for adding filament
+
+commit 662d7cdebfd2d307e60042909539ee54fde0b00f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:03:47 2024 +0100
+
+    fix: Update README.md and templates/base.html to align with button-based interface
+
+commit 43169417e8e2e27c11725589118b23422e82ecce
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 07:01:20 2024 +0100
+
+    fix: Replace dropdown menus with well-spaced buttons
+
+commit bec1836048217ec18ac9fa24e918de1812194659
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:58:55 2024 +0100
+
+    fix: Revert incorrect changes to shelf selection and position pages
+
+commit 53dc6033fbb938d08f1cda2c2c0460277adf38ba
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:57:15 2024 +0100
+
+    fix: Align application with README specification of 8 shelves
+
+commit 6ec5f11603fa45a6b3d46a901c933915c1b4a87e
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 06:57:14 2024 +0100
+
+    fix: Retrieve shelf and filament_type from request arguments in select_color route
+
+commit 86a4d8e17f114827f009eaf7bb5a825eb949a134
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:56:34 2024 +0100
+
+    fix: Update README.md to match current application specification
+
+commit e3db2f5f1726be1bcd42bf1f1e40bbe2d24a640a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:54:57 2024 +0100
+
+    feat: Add fifth shelf option
+
+commit 7e03ff56cc30dcb061760036e62eaaa0bd8ef95d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:53:57 2024 +0100
+
+    fix: Combine shelf and filament type selection on the same page
+
+commit e30f361a11041f365a27a2aa17f934d2e8c35db4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:51:12 2024 +0100
+
+    fix: Update shelf selection logic in select_filament_type.html
+
+commit 3a10edd39192e345c7bd987220b6ab16a8ccad5d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:50:56 2024 +0100
+
+    fix: Update JavaScript code in select_filament_type.html to handle shelf parameter correctly
+
+commit d604bbc102dffe8098d41189eca2bb7f14ef17fa
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:49:45 2024 +0100
+
+    fix: Use string comparison for shelf selection
+
+commit cae2fbe5e4c019028fe746bf91c15b0dbef4d63d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:49:38 2024 +0100
+
+    feat: Add shelf selection and improve layout in select_filament_type.html
+
+commit 9872f0e80cbbd527fa02dee6142e0b6b8849460d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:49:17 2024 +0100
+
+    fix: Refactor select_manufacturer.html and select_filament.html templates
+
+commit e49b18435b2e286be6713a8d582f590d27ce4270
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:48:08 2024 +0100
+
+    fix: Add missing 'shelf' parameter to 'select_color' route in 'select_filament_type.html'
+
+commit 343539249937215db978694af6f4c433df4aeecf
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:47:02 2024 +0100
+
+    fix: Add missing 'shelf' parameter to 'select_color' route
+
+commit cdfc002e85c76e72f261184ebee4998ab316a051
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 06:47:01 2024 +0100
+
+    feat: Add select_filament_type.html template
+
+commit d6189097e29c594e32781f30cf93e893cfff56c5
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:46:04 2024 +0100
+
+    fix: Update select_color route and template to handle shelf parameter correctly
+
+commit a76fe82e613efc0403b2913972e8cf0577b04f85
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:44:49 2024 +0100
+
+    fix: Update select_location route to handle shelf parameter correctly
+
+commit d7cc683eb6fedc980f3443b095e8875971b7ac27
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:43:15 2024 +0100
+
+    fix: Update select_color.html and select_location route in app.py to handle shelf parameter correctly
+
+commit a35413b3a33fadfe439a9264333ad213f7412e65
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:41:36 2024 +0100
+
+    fix: Update select_location route to handle shelf parameter
+
+commit 755a48892439016ea2765cd6a9d9972ca8e79d21
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:40:42 2024 +0100
+
+    fix: update select_color.html to include shelf parameter in URL
+
+commit b0525ce08b1cde4310a407a83fe12d2243790e06
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:39:08 2024 +0100
+
+    fix: Add error handling and required parameters to select_location and select_color routes
+
+commit 542c74cc032c16dc3f5c4c5d94f128752134d524
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:36:56 2024 +0100
+
+    fix: Update select_location route and template to handle shelf parameter correctly
+
+commit 58457e203f71c4cb390388f6b5b7bcf069a9d49e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:33:56 2024 +0100
+
+    fix: Handle missing 'shelf' parameter in select_color route
+
+commit e14884bdb1a2971cc1e3ff52ca1979a40a1879a7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:32:18 2024 +0100
+
+    fix: Update select_color.html to pass required parameters to select_location URL
+
+commit a36d452cbaa71d3888460a4596c08c26ee32f448
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:31:06 2024 +0100
+
+    fix: Update select_location route to accept shelf parameter from query string
+
+commit 1e93ac2dee1a6b23bcc8155c2dbb9e5378647fe2
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:29:56 2024 +0100
+
+    fix: Pass shelf parameter from select_color to select_location
+
+commit ee95e4cda33c7710109fcc546805c37ef3ea78c4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:28:52 2024 +0100
+
+    fix: Add default shelf parameter to select_location route
+
+commit 4c7a13b3bee355338b4d9644da8b992390c9171a
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 06:25:01 2024 +0100
+
+    feat: Separate filament selection into two steps
+
+commit 67ca62810e60e17f4a04ec93892b34856390e3ab
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:22:46 2024 +0100
+
+    feat: Add back button, shelf header, and position labels to select location page
+
+commit 6b0ce7ca4fadea44a763241df1bb253a5d1d1829
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:16:45 2024 +0100
+
+    feat: Restructure location selection layout
+
+commit 0b132c98632d62ce37c055d0abbbea5240c7751f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:13:22 2024 +0100
+
+    feat: Improve layout of location selection screen for iPhone 13 Pro Max
+
+commit 6630bc4ace2312f4f910fc7038af3a8ef8e084e3
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:11:16 2024 +0100
+
+    feat: Replace location selection from radio buttons to normal buttons in an 8x4 grid
+
+commit d61c08f712ecab312fc269e0670f9930a74ae0dd
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:10:07 2024 +0100
+
+    feat: Implement grid-based location selection
+
+commit 9e6c28662aa8bdf9715d316082c89150417f0ab4
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:09:17 2024 +0100
+
+    feat: Reinstate location selection feature with grid format
+
+commit bb81ccdae485622b98e8db642206ac687a830431
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:08:35 2024 +0100
+
+    fix: update location selection description in README.md
+
+commit 9654bd60edbaef48222dd8edee1cd3a7b66058d7
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:06:53 2024 +0100
+
+    fix: Remove "Back to..." links from select_color.html and select_location.html
+
+commit ac433d6de0d603a198fef1889ff6580adf38fb36
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:04:55 2024 +0100
+
+    fix: Update select_location.html to use correct select_filament_type endpoint
+
+commit 13d3c22c0d72975456ff265805a132e01b273c4a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:03:42 2024 +0100
+
+    feat: Remove footer from base template
+
+commit f46731ac9ad0274a6d615926c47e786a35eed5d0
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:03:15 2024 +0100
+
+    feat: Add navigation menu and footer to base template
+
+commit e41e359bb38e1009d41810dfbac49a6d55683051
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 06:02:48 2024 +0100
+
+    feat: Add select_color.html template
+
+commit 9685c9b70eff2e2da0e758da5becf0e0b5d6cadf
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 06:01:33 2024 +0100
+
+    fix: Update URL for 'select_filament_type' endpoint in select_manufacturer.html
+
+commit bc92066988e36b650b6242ba4d92c33d5a703572
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:55:15 2024 +0100
+
+    fix: remove duplicate content block in select_filament.html
+
+commit a3c9192f48c9731d8c39448a036f757758247550
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:53:44 2024 +0100
+
+    fix: remove duplicate title block in base.html
+
+commit 58fa4ee41827a6b96c18f9ce664518c36e6bbe2b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:52:32 2024 +0100
+
+    fix: Replace location text input with select dropdown
+    feat: Use JavaScript to set form action and submit
+    refactor: Use links instead of form buttons for manufacturer selection
+
+commit 0241e8e6901fb302262f1a9bb5da52589910e36d
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 05:50:37 2024 +0100
+
+    readme updated
+
+commit 9f03c488dfefee9f104cf1f4324b49764155765b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:45:23 2024 +0100
+
+    fix: remove duplicate block definitions in index.html
+
+commit 69a83ae8d7f82e0d9b479b89e1f24f05cb9bf346
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:44:45 2024 +0100
+
+    fix: Remove duplicate index() route
+
+commit bd8553507e2945d2deba6e069ad1a8324681214e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:44:01 2024 +0100
+
+    fix: Update error.html to extend base.html and define content block
+
+commit 88132becd6a8e52540b21a2451ef63071e5a0e42
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:43:15 2024 +0100
+
+    fix: Update app.py and templates to resolve issues
+    
+    feat: Improve select_manufacturer and select_filament functionality
+
+commit f9c6b4ebc5ac12f5be63ad17c0bbd72fad0f1f5e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:40:36 2024 +0100
+
+    feat: add graphical user interface
+
+commit 15b49c0a3bdfe0429bc46f2255e8c111fdbc7f2a
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 05:40:34 2024 +0100
+
+    feat: Add flash message import to app.py
+
+commit 6baf02871fe246915df1f4a50ca19727a50fbb9b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:37:53 2024 +0100
+
+    fix: Add missing arguments to url_for() in select_filament.html
+
+commit 9eea01490c6c0e799da5a5ae14acd6b4706bf1d0
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 05:37:52 2024 +0100
+
+    feat: Add color selection dropdown to select_filament.html
+
+commit b467597045793abc0190e85ef36cfbe41669c53a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:36:37 2024 +0100
+
+    fix: remove duplicate import line in app.py
+    fix: remove duplicate <select> tag in templates/select_filament.html
+    fix: remove stray backticks after {% endblock %} in templates/index.html
+
+commit ce36e5ec35ca526fffa21927ea86addcac80ee37
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:13:03 2024 +0100
+
+    fix: ensure form submission includes required parameters for select_location endpoint
+
+commit 60f022fdb33fb697f65f2804c253d785ff1648c9
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:11:54 2024 +0100
+
+    fix: include hidden fields for required parameters in select_filament form to resolve URL building error
+
+commit 2574e83614d2141a52bc1d8ac6e057380129f3d2
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 05:07:09 2024 +0100
+
+    Lekker
+
+commit a2728ee920f0a182108b3192bfbb55c89781770e
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 05:03:51 2024 +0100
+
+    feat: create error.html template for handling exceptions
+
+commit e0c3ba26a092a7e4171b21a3c23fa8039e241e7b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:59:12 2024 +0100
+
+    feat: add select_filament.html template for filament selection form
+
+commit 547104b2f10a1f706bc4b87f7aa536f9b83e343b
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:58:21 2024 +0100
+
+    fix: allow POST requests for select_filament route to resolve Method Not Allowed error
+
+commit 5ccac2b895cbcda37e2ddcf8be0ede7abf70cd00
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:56:39 2024 +0100
+
+    fix: resolve UndefinedError by converting manufacturer tuples to dictionaries in select_manufacturer function
+
+commit 8c5ba75d2854137e906cd142425c8ba61d456ddc
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:55:46 2024 +0100
+
+    feat: replace manufacturer list with buttons in select_manufacturer template
+
+commit f037660797b8f530cb342cca59c2b3a950eadaeb
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:49:57 2024 +0100
+
+    fix: display manufacturers in select manufacturer template
+
+commit 8184774a12f719cbef44b98dbde613047ef4760d
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:48:07 2024 +0100
+
+    feat: add select_manufacturer.html template to resolve TemplateNotFound error
+
+commit cf6bd75c7b57cc4783459be188be1cd40895fa06
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:46:02 2024 +0100
+
+    fix: remove duplicate 'content' block definition from base.html template
+
+commit 4d343d773b8b9e35c7e47d6121f13233cdc99ebb
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:45:16 2024 +0100
+
+    fix: resolve recursive template extension in base.html
+
+commit 6ca5e423a6d7bc2ee7c466ac1106fc1c2d371dcd
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 04:45:15 2024 +0100
+
+    feat: add base template for manufacturer selection page
+
+commit de93d1e9a2e3446c646c1cd3671da007da12564a
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:42:40 2024 +0100
+
+    feat: create .env file for database connectivity and update .gitignore to exclude it
+
+commit 4504fdb44b0ebae3218f7d27be3f8dec662d572f
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 04:42:39 2024 +0100
+
+    chore: add .gitignore to exclude Aider files
+
+commit 94fbed15f285ff5e05899b04d5dd64920eecdd50
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:41:54 2024 +0100
+
+    fix: import missing modules to resolve undefined names in app.py
+
+commit d006ade7fb7b1e60762c34db55bfdf0078cfd76f
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:41:25 2024 +0100
+
+    fix: update app.py for error handling and use environment variables for database connection; enhance style.css with error message styling
+
+commit 87becab9e5973c411de24f5f8c828024bee3858a
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 04:41:24 2024 +0100
+
+    style: Improve responsiveness and accessibility with new button styles
+
+commit 0270af6c2690d1475f212299e5c45a4e1f8ce33c
+Author: kosielemmer <neelsw@gmail.com>
+Date:   Fri Aug 2 04:41:08 2024 +0100
+
+    feat: add Flask application with inventory management and styling
+
+commit 4986dc8afbf9bcadd6467220c901a9925d4e1fd6
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Fri Aug 2 04:38:43 2024 +0100
+
+    docs: add README.md to summarize requirements and functionality of the Filament Inventory Application
+
+commit 13f9450bcf67ab45609f5d6d3627f956154d8ce0
+Author: kosielemmer (aider) <neelsw@gmail.com>
+Date:   Thu Aug 1 16:01:28 2024 +0100
+
+    The provided context and diffs are related to a Python application that manages filaments for 3D printing. The application uses Flask as the web framework, SQLAlchemy for interacting with a PostgreSQL database, and provides routes for retrieving, creating, updating, and deleting filament records.
+    
+    To commit these changes, you can use the following commit message:
+    
+    feat: add filament inventory management app using Flask and SQLAlchemy

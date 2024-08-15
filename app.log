@@ -216,3 +216,56 @@ INFO:werkzeug:172.24.144.1 - - [14/Aug/2024 04:09:12] "[31m[1mGET /static/styl
 2024-08-14 04:43:31,862 INFO: 172.24.144.1 - - [14/Aug/2024 04:43:31] "[32mPOST /select_color HTTP/1.1[0m" 302 -
 2024-08-14 04:43:32,091 INFO: 172.24.144.1 - - [14/Aug/2024 04:43:32] "GET /select_location/83 HTTP/1.1" 200 -
 2024-08-14 04:43:32,643 INFO: 172.24.144.1 - - [14/Aug/2024 04:43:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:08,991 INFO: 127.0.0.1 - - [15/Aug/2024 11:43:08] "[33mGET /home HTTP/1.1[0m" 404 -
+2024-08-15 11:43:35,013 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://172.24.159.212:5000
+2024-08-15 11:43:35,013 INFO: [33mPress CTRL+C to quit[0m
+2024-08-15 11:43:35,327 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:35] "GET / HTTP/1.1" 200 -
+2024-08-15 11:43:35,782 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:39,779 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:39] "GET /select_manufacturer HTTP/1.1" 200 -
+2024-08-15 11:43:40,014 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:41,713 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:41] "GET /select_filament/1 HTTP/1.1" 200 -
+2024-08-15 11:43:41,952 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:42,868 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:42] "[32mPOST /select_filament_type/1 HTTP/1.1[0m" 302 -
+2024-08-15 11:43:43,120 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:43] "GET /select_color?manufacturer_id=1&filament_type=ABS HTTP/1.1" 200 -
+2024-08-15 11:43:43,884 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:45,173 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:45] "[32mPOST /select_color HTTP/1.1[0m" 302 -
+2024-08-15 11:43:45,439 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:45] "GET /select_location/83 HTTP/1.1" 200 -
+2024-08-15 11:43:45,992 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:51,258 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:51] "[32mPOST /select_location/83 HTTP/1.1[0m" 302 -
+2024-08-15 11:43:51,447 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:51] "GET / HTTP/1.1" 200 -
+2024-08-15 11:43:51,901 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:43:55,308 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:55] "GET /view_inventory HTTP/1.1" 200 -
+2024-08-15 11:43:55,544 INFO: 172.24.144.1 - - [15/Aug/2024 11:43:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:44:00,963 INFO: 172.24.144.1 - - [15/Aug/2024 11:44:00] "GET / HTTP/1.1" 200 -
+2024-08-15 11:44:01,186 INFO: 172.24.144.1 - - [15/Aug/2024 11:44:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:19,472 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:19] "GET /select_manufacturer HTTP/1.1" 200 -
+2024-08-15 11:45:19,679 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:20,725 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:20] "GET /select_filament/1 HTTP/1.1" 200 -
+2024-08-15 11:45:20,956 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:22,282 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:22] "[32mPOST /select_filament_type/1 HTTP/1.1[0m" 302 -
+2024-08-15 11:45:22,514 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:22] "GET /select_color?manufacturer_id=1&filament_type=ABS HTTP/1.1" 200 -
+2024-08-15 11:45:22,724 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:25,002 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:25] "[32mPOST /select_color HTTP/1.1[0m" 302 -
+2024-08-15 11:45:25,230 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:25] "GET /select_location/83 HTTP/1.1" 200 -
+2024-08-15 11:45:25,438 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:34,346 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://172.24.159.212:5000
+2024-08-15 11:45:34,346 INFO: [33mPress CTRL+C to quit[0m
+2024-08-15 11:45:38,484 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:38] "GET /select_location/83 HTTP/1.1" 200 -
+2024-08-15 11:45:38,702 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:43,009 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:43] "GET / HTTP/1.1" 200 -
+2024-08-15 11:45:43,331 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:45,051 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:45] "GET /select_manufacturer HTTP/1.1" 200 -
+2024-08-15 11:45:45,259 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:46,393 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:46] "GET /select_filament/1 HTTP/1.1" 200 -
+2024-08-15 11:45:46,710 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:47,964 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:47] "[32mPOST /select_filament_type/1 HTTP/1.1[0m" 302 -
+2024-08-15 11:45:48,197 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:48] "GET /select_color?manufacturer_id=1&filament_type=ABS HTTP/1.1" 200 -
+2024-08-15 11:45:48,400 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:49,884 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:49] "[32mPOST /select_color HTTP/1.1[0m" 302 -
+2024-08-15 11:45:50,114 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:50] "GET /select_location/83 HTTP/1.1" 200 -
+2024-08-15 11:45:50,327 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 11:45:52,121 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:52] "[32mPOST /select_location/83 HTTP/1.1[0m" 302 -
+2024-08-15 11:45:52,343 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:52] "GET / HTTP/1.1" 200 -
+2024-08-15 11:45:52,565 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
