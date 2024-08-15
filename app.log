@@ -269,3 +269,9 @@ INFO:werkzeug:172.24.144.1 - - [14/Aug/2024 04:09:12] "[31m[1mGET /static/styl
 2024-08-15 11:45:52,121 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:52] "[32mPOST /select_location/83 HTTP/1.1[0m" 302 -
 2024-08-15 11:45:52,343 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:52] "GET / HTTP/1.1" 200 -
 2024-08-15 11:45:52,565 INFO: 172.24.144.1 - - [15/Aug/2024 11:45:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-08-15 12:09:26,642 ERROR: Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2024-08-15 12:11:21,961 DEBUG: Using selector: EpollSelector

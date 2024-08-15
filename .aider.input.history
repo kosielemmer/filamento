@@ -1417,3 +1417,34 @@
 
 # 2024-08-14 04:20:44.442293
 +that was daft - the existing page border must contain ALL content - including the exit button
+
+# 2024-08-15 11:56:57.123428
++please review attached files and tell me about the app
+
+# 2024-08-15 12:00:06.430300
++/add templates/base.html
+
+# 2024-08-15 12:04:30.664172
++please review files and tell me about the app
+
+# 2024-08-15 12:05:19.336091
++I want to refactor this to fastapi and get rid of flask - can you do that?
+
+# 2024-08-15 12:06:28.124427
++how do I run this app to test?
+
+# 2024-08-15 12:09:02.866279
++pp.py", line 1, in <module>
++    from fastapi import FastAPI, Request, Form, HTTPException, Depends
++ModuleNotFoundError: No module named 'fastapi'
+
+# 2024-08-15 12:10:00.895374
++  File "/mnt/c/users/kosie/code/filamento/app.py", line 416, in <module>
++    app.run(host=host_ip, port=5000)
++AttributeError: 'FastAPI' object has no attribute 'run'
+
+# 2024-08-15 12:10:56.111075
++hello?
+
+# 2024-08-15 12:12:32.493651
++I am using wsl - please tell me how I access the app and which firewall rules I  have to implement on windows
