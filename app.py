@@ -165,14 +165,12 @@ async def select_filament(request: Request, manufacturer_id: int):
     conn.close()
     return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
-from fastapi import Request, Form, HTTPException
 from fastapi.responses import RedirectResponse
-from fastapi.templating import Jinja2Templates
 
 templates = Jinja2Templates(directory="templates")
 
 @app.post('/select_location/{filament_id}', name="select_location_post")
-async def select_location_post(request: Request, filament_id: int, location: str = Form(...), quantity: int = Form(1)):
+async def select_location_post(request: Request, filament_id: int, location: str = Form(...), quantity: int = Form(...)):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
@@ -311,10 +309,6 @@ async def view_inventory(request: Request):
     cur.close()
     conn.close()
 
-    # Debug: Print color information
-    for item in inventory:
-        print(f"Color: {item[2]}, Hex: {item[3]}")
-    
     return templates.TemplateResponse('view_inventory.html', {'request': request, 'inventory': inventory})
 
 @app.get('/data_maintenance')
