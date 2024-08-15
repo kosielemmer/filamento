@@ -2,13 +2,6 @@
 
 {% block content %}
 <h1>Select Color for {{ filament_type }}</h1>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <div class="flash-message">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 <form id="colorForm" action="{{ url_for('select_color_post') }}" method="post">
     <input type="hidden" name="manufacturer_id" value="{{ manufacturer_id }}">
     <input type="hidden" name="filament_type" value="{{ filament_type }}">

@@ -11,6 +11,10 @@ import logging
 import re
 from typing import List
 
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
@@ -141,7 +145,7 @@ async def select_color_get(request: Request, manufacturer_id: int, filament_type
             'colors': colors
         })
     except Exception as e:
-        app.logger.error(f"Error in select_color_get: {str(e)}")
+        logger.error(f"Error in select_color_get: {str(e)}")
         return templates.TemplateResponse('error.html', {
             'request': request,
             'error': f"An error occurred: {str(e)}"
