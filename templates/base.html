@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        
         body {
             padding-top: 50px;
         }
@@ -51,30 +50,11 @@
             });
         }
         document.addEventListener('DOMContentLoaded', adjustTextColor);
-
-        // function parseBarcode() {
-        //     var barcode = $('#barcode-input').val();
-        //     $.ajax({
-        //         url: '/parse_barcode',
-        //         type: 'POST',
-        //         data: {barcode: barcode},
-        //         success: function(response) {
-        //             if (response.success) {
-        //                 $('#location').val(response.location);
-        //             } else {
-        //                 alert('Error: ' + response.error);
-        //             }
-        //         },
-        //         error: function() {
-        //             alert('Error occurred while parsing barcode');
-        //         }
-        //     });
-        // }
     </script>
 </head>
 <body>
-    {% if request.endpoint != 'index' %}
-    <a href="{{ url_for('index') }}" class="btn btn-small btn-exit">Exit</a>
+    {% if request.url.path != '/' %}
+    <a href="/" class="btn btn-small btn-exit">Exit</a>
     {% endif %}
     <div class="container">
         <main>

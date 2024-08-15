@@ -1,9 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
+from fastapi import FastAPI, Request, Form, HTTPException, Depends
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse, RedirectResponse
+from pydantic import BaseModel
 import os
 import psycopg2
 from psycopg2 import sql
 import logging
 import re
+from typing import List
 
 # Configure logging
 logging.basicConfig(
@@ -24,18 +29,16 @@ def get_db_connection():
     )
     return conn
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key_here'  # Add this line to set a secret key
+app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
-# Configure logging
-logging.basicConfig(filename='app.log', level=logging.DEBUG)
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/select_manufacturer')
-def select_manufacturer():
+@app.get("/select_manufacturer", response_class=HTMLResponse)
+async def select_manufacturer(request: Request):
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name;")
@@ -43,7 +46,7 @@ def select_manufacturer():
     manufacturers = [{'id': m[0], 'name': m[1]} for m in manufacturers]
     cur.close()
     conn.close()
-    return render_template('select_manufacturer.html', manufacturers=manufacturers)
+    return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
 
 @app.route('/select_filament/<int:manufacturer_id>')
 def select_filament(manufacturer_id):
