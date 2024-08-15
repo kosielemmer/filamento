@@ -171,7 +171,7 @@ from fastapi.templating import Jinja2Templates
 
 templates = Jinja2Templates(directory="templates")
 
-@app.post('/select_location/{filament_id}')
+@app.post('/select_location/{filament_id}', name="select_location_post")
 async def select_location_post(request: Request, filament_id: int, location: str = Form(...), quantity: int = Form(1)):
     try:
         conn = get_db_connection()
@@ -194,10 +194,10 @@ async def select_location_post(request: Request, filament_id: int, location: str
         conn.close()
         return RedirectResponse(url=app.url_path_for('index'), status_code=303)
     except Exception as e:
-        app.logger.error(f"Error in select_location: {str(e)}")
+        logger.error(f"Error in select_location: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error in select_location: {str(e)}")
 
-@app.get('/select_location/{filament_id}')
+@app.get('/select_location/{filament_id}', name="select_location_get")
 async def select_location_get(request: Request, filament_id: int):
     try:
         conn = get_db_connection()
