@@ -31,24 +31,5 @@
 </form>
 
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <div id="flash-message" class="flash-message">
-      {{ messages[0] }}
-    </div>
-  {% endif %}
-{% endwith %}
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var flashMessage = document.getElementById('flash-message');
-    if (flashMessage) {
-      setTimeout(function() {
-        flashMessage.style.display = 'none';
-        window.location.href = "{{ url_for('select_manufacturer') }}";
-      }, 500);
-    }
-  });
-</script>
 
 {% endblock %}

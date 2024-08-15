@@ -225,7 +225,7 @@ async def select_location_get(request: Request, filament_id: int):
         else:
             return RedirectResponse(url=app.url_path_for('select_manufacturer'), status_code=303)
     except Exception as e:
-        app.logger.error(f"Error in select_location: {str(e)}")
+        logger.error(f"Error in select_location: {str(e)}")
         return templates.TemplateResponse('error.html', {'request': request, 'error': f"Error in select_location: {str(e)}"})
 
 @app.get('/select_position/{manufacturer_id}/{filament_type}/{color_name}/{color_hex_code}/{shelf}')
