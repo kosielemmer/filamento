@@ -143,6 +143,16 @@ async def select_color_get(request: Request, manufacturer_id: int, filament_type
 async def select_color_post(request: Request, manufacturer_id: int = Form(...), filament_type: str = Form(...), filament_id: int = Form(...)):
     return RedirectResponse(url=f'/select_location/{filament_id}', status_code=303)
 
+@app.get('/select_filament/{manufacturer_id}')
+async def select_filament(request: Request, manufacturer_id: int):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
+    types = cur.fetchall()
+    cur.close()
+    conn.close()
+    return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
+
 from fastapi import Request, Form, HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
