@@ -413,5 +413,7 @@ def get_ip():
 
 if __name__ == '__main__':
     host_ip = get_ip()
+    print(f"WSL IP Address: {host_ip}")
     print(f"Access the application at: http://{host_ip}:8000")
-    uvicorn.run(app, host=host_ip, port=8000)
+    print("If accessing from Windows, you may need to use this IP address in your browser.")
+    uvicorn.run(app, host="0.0.0.0", port=8000)
