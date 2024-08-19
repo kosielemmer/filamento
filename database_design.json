@@ -1,0 +1,43 @@
+{
+  "tables": [
+    {
+      "name": "manufacturer",
+      "columns": [
+        {"name": "id", "type": "INTEGER", "constraints": ["PRIMARY KEY", "AUTOINCREMENT"]},
+        {"name": "name", "type": "TEXT", "constraints": ["NOT NULL", "UNIQUE"]}
+      ]
+    },
+    {
+      "name": "filament",
+      "columns": [
+        {"name": "id", "type": "INTEGER", "constraints": ["PRIMARY KEY", "AUTOINCREMENT"]},
+        {"name": "manufacturer_id", "type": "INTEGER", "constraints": ["NOT NULL"]},
+        {"name": "type", "type": "TEXT", "constraints": ["NOT NULL"]},
+        {"name": "color_name", "type": "TEXT", "constraints": ["NOT NULL"]},
+        {"name": "color_hex_code", "type": "TEXT", "constraints": ["NOT NULL"]}
+      ],
+      "foreign_keys": [
+        {
+          "column": "manufacturer_id",
+          "reference": {"table": "manufacturer", "column": "id"}
+        }
+      ]
+    },
+    {
+      "name": "inventory",
+      "columns": [
+        {"name": "id", "type": "INTEGER", "constraints": ["PRIMARY KEY", "AUTOINCREMENT"]},
+        {"name": "filament_id", "type": "INTEGER", "constraints": ["NOT NULL"]},
+        {"name": "location", "type": "TEXT", "constraints": ["NOT NULL"]},
+        {"name": "shelf", "type": "TEXT", "constraints": ["NOT NULL"]},
+        {"name": "position", "type": "TEXT", "constraints": ["NOT NULL"]}
+      ],
+      "foreign_keys": [
+        {
+          "column": "filament_id",
+          "reference": {"table": "filament", "column": "id"}
+        }
+      ]
+    }
+  ]
+}

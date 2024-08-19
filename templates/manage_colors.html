@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">Manage Colors</h1>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST" id="colorForm">
+                <div class="form-group">
+                    <label for="manufacturer_id">Select Manufacturer:</label>
+                    <select class="form-control" id="manufacturer_id" name="manufacturer_id" required>
+                        <option value="">Select a manufacturer</option>
+                        {% for manufacturer in manufacturers %}
+                        <option value="{{ manufacturer[0] }}">{{ manufacturer[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filament_type">Filament Type:</label>
+                    <select class="form-control" id="filament_type" name="filament_type" required disabled>
+                        <option value="">Select a filament type</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="color_name">Color Name:</label>
+                    <input type="text" class="form-control" id="color_name" name="color_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="color_hex_code">Color Hex Code:</label>
+                    <input type="text" class="form-control" id="color_hex_code" name="color_hex_code" pattern="^#[0-9A-Fa-f]{6}$" placeholder="#RRGGBB" required>
+                    <small class="form-text text-muted">Enter a valid hex color code (e.g., #FF0000 for red)</small>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Add Color</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('manufacturer_id').addEventListener('change', function() {
+    var manufacturerId = this.value;
+    var filamentTypeSelect = document.getElementById('filament_type');
+    
+    if (manufacturerId) {
+        // Enable the filament type dropdown
+        filamentTypeSelect.disabled = false;
+        
+        // Fetch filament types for the selected manufacturer
+        fetch('/get_filament_types/' + manufacturerId)
+            .then(response => response.json())
+            .then(data => {
+                filamentTypeSelect.innerHTML = '<option value="">Select a filament type</option>';
+                data.forEach(type => {
+                    var option = document.createElement('option');
+                    option.value = type;
+                    option.textContent = type;
+                    filamentTypeSelect.appendChild(option);
+                });
+            });
+    } else {
+        // Disable and reset the filament type dropdown
+        filamentTypeSelect.disabled = true;
+        filamentTypeSelect.innerHTML = '<option value="">Select a filament type</option>';
+    }
+});
+</script>
+{% endblock %}

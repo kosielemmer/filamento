@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Select Filament Type</h1>
+<form id="filamentTypeForm" action="{{ url_for('select_filament_type_post', manufacturer_id=manufacturer_id) }}" method="post">
+    <div class="medium-button-container">
+        {% for type in types %}
+            <button type="submit" name="filament_type" value="{{ type[0] }}" class="btn btn-medium">{{ type[0] }}</button>
+        {% endfor %}
+    </div>
+</form>
+{% endblock %}

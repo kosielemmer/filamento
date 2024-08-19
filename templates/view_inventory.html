@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Current Inventory</h1>
+<div class="table-container">
+    <table id="inventoryTable" class="display">
+        <thead>
+            <tr>
+                <th>Manufacturer</th>
+                <th>Type</th>
+                <th>Color</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventory %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>
+                    <div class="color-sample-container">
+                        <div class="color-sample" style="background-color: {{ item[3] }};" title="{{ item[2] }}"></div>
+                        <span>{{ item[2] }}</span>
+                    </div>
+                </td>
+                <td>{{ item[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#inventoryTable').DataTable({
+        "pageLength": 15,
+        "lengthChange": false,
+        "order": [[0, "asc"]],
+        "dom": '<"top"f>rt<"bottom"p><"clear">',
+        "language": {
+            "search": "Filter:",
+            "paginate": {
+                "next": "Next",
+                "previous": "Prev"
+            }
+        },
+        "scrollY": "calc(100vh - 200px)",
+        "scrollCollapse": true,
+        "paging": true,
+        "autoWidth": false,
+        "columns": [
+            { "width": "25%" },
+            { "width": "25%" },
+            { "width": "35%" },
+            { "width": "15%" }
+        ],
+        "initComplete": function(settings, json) {
+            this.api().columns().every(function() {
+                var column = this;
+                var header = $(column.header());
+                header.html(header.text() + '<br><input type="text" placeholder="Filter" style="width:100%"/>');
+                $('input', header).on('keyup change', function() {
+                    if (column.search() !== this.value) {
+                        column.search(this.value).draw();
+                    }
+                });
+            });
+        }
+    });
+});
+</script>
+{% endblock %}

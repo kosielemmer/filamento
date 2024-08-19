@@ -1,0 +1,6 @@
+.aider*
+.env
+.aider.chat.history.md
+.aider.input.history
+aider.config.yaml
+aider-openai.sh
