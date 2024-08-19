@@ -383,7 +383,7 @@ async def manage_filaments_post(
 
     return templates.TemplateResponse('manage_filaments.html', {'request': request, 'manufacturers': manufacturers})
 
-@app.get('/manage_colors', name="manage_colors")
+@app.get('/manage_colors', name="manage_colors_get")
 async def manage_colors_get(request: Request):
     conn = get_db_connection()
     cur = conn.cursor()
