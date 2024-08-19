@@ -1,2 +1,0 @@
-export OPEN_API_KEY=sk-None-q0FV44b8QTRIWPWvZNvGT3BlbkFJMT0mc85DVqkpDWe6Yc4X
-aider --gui
