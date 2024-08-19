@@ -322,7 +322,7 @@ async def view_inventory(request: Request):
 async def data_maintenance(request: Request):
     return templates.TemplateResponse('data_maintenance.html', {'request': request})
 
-@app.get('/manage_manufacturers')
+@app.get('/manage_manufacturers', name="manage_manufacturers")
 async def manage_manufacturers_get(request: Request):
     conn = get_db_connection()
     cur = conn.cursor()
