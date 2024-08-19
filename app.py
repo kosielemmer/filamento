@@ -12,7 +12,7 @@ import re
 from typing import List
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
@@ -50,6 +50,7 @@ async def index(request: Request):
 
 @app.get("/select_manufacturer", response_class=HTMLResponse)
 async def select_manufacturer(request: Request):
+    logger.info("Fetching manufacturers from database")
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT id, name FROM manufacturer ORDER BY name;")
@@ -57,16 +58,19 @@ async def select_manufacturer(request: Request):
     manufacturers = [{'id': m[0], 'name': m[1]} for m in manufacturers]
     cur.close()
     conn.close()
+    logger.info(f"Found {len(manufacturers)} manufacturers: {manufacturers}")
     return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
 
 @app.get('/select_filament/{manufacturer_id}')
 async def select_filament(request: Request, manufacturer_id: int):
+    logger.info(f"Fetching filament types for manufacturer_id: {manufacturer_id}")
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
     types = cur.fetchall()
     cur.close()
     conn.close()
+    logger.info(f"Found filament types: {types}")
     return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
 @app.get('/select_filament_type/{manufacturer_id}')
@@ -127,13 +131,16 @@ async def select_shelf_post(
 @app.get('/select_color')
 async def select_color_get(request: Request, manufacturer_id: int, filament_type: str):
     try:
+        logger.info(f"Fetching colors for manufacturer_id: {manufacturer_id}, filament_type: {filament_type}")
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute("SELECT id, color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
         colors = cur.fetchall()
         cur.close() 
         conn.close()
+        logger.info(f"Found colors: {colors}")
         if not colors:
+            logger.warning(f'No colors found for {filament_type} from manufacturer ID {manufacturer_id}.')
             return templates.TemplateResponse('error.html', {
                 'request': request,
                 'error': f'No colors found for {filament_type} from manufacturer ID {manufacturer_id}.'
