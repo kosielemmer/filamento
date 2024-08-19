@@ -344,7 +344,7 @@ async def manage_manufacturers_post(request: Request, manufacturer_name: str = F
     conn.close()
     return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
 
-@app.get('/manage_filaments')
+@app.get('/manage_filaments', name="manage_filaments")
 async def manage_filaments_get(request: Request):
     conn = get_db_connection()
     cur = conn.cursor()
