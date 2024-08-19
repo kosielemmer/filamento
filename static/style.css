@@ -55,7 +55,7 @@ h1 {
 }
 
 .style-section {
-    margin10px;
+    margin: 10px;
 }
 
 .style-section h2 {
@@ -131,7 +131,7 @@ h3, h4, h5, h6 {
 .btn-medium {
     font-size: 14px;
     width: 75px;
-    px;
+    height: 60px;
 }
 
 .btn-red {
@@ -194,8 +194,9 @@ input[type="text"], input[type="color"], input[type="number"] {
 
 #inventoryTable th {
     background-color: var(--martini-light-blue);
-    color: var(--martini-white);
+    color: var(--martini-light-blue);
     font-weight: 600;
+	
     text-transform: uppercase;
     letter-spacing: 0.5px;
     position: sticky;
@@ -203,7 +204,8 @@ input[type="text"], input[type="color"], input[type="number"] {
     z-index: 10;
 }
 
-#inventoryTable tbody tr:hoverd-color: rgba(255, 255, 255, 0.1);
+#inventoryTable tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dataTables_wrapper .dataTables_filter,
@@ -212,6 +214,7 @@ input[type="text"], input[type="color"], input[type="number"] {
 .dataTables_wrapper .dataTables_paginate {
     font-size: 12px;
     margin: 5px 0;
+	color: var(--martini-dark-blue);
 }
 
 .dataTables_wrapper .dataTables_filter input,
@@ -247,38 +250,41 @@ input[type="text"], input[type="color"], input[type="number"] {
 
 .btn-exit {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 12px;
-    width: 50px;
-    height: 25px;
-    padding: 3px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
     background-color: var(--martini-red);
     color: var(--martini-white);
-    border: 1px solid var(--martini-light-blue);
-    border-radius: 5px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     text-decoration: none;
+    font-size: 18px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    z-index: 1000;
 }
 
-.btn-
+.btn-exit:hover {
     background-color: #cc0000;
 }
 
 .location-grid-container {
-    margin-top: 15px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
 
 .location-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
     max-width: var(--mobile-width);
+    width: 100%;
+    padding: 10px;
+}
+
+.grid-row {
+    display: contents;
 }
 
 .shelf-label {
@@ -286,7 +292,8 @@ input[type="text"], input[type="color"], input[type="number"] {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
+    grid-column: 3;
 }
 
 .btn-occupied {

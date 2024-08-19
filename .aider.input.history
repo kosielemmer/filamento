@@ -1448,3 +1448,30 @@
 
 # 2024-08-15 12:12:32.493651
 +I am using wsl - please tell me how I access the app and which firewall rules I  have to implement on windows
+
+# 2024-08-15 16:23:20.891881
++diffs only please - don't change functionality and don't add security or authentication
+
+# 2024-08-15 16:30:27.962713
++diffs only please - don't change functionality and don't add security or authentication
++
++
+
+# 2024-08-15 16:34:46.456392
++I need your help to refine the formatting of this web app - formatting only - don't add anything - I am happy with the rest.  We will look at each function or file in turn and then you must propose changes/.  Please acknowledge.
+
+# 2024-08-15 16:51:54.544216
++I need your help to refine the formatting of this web app - formatting only - don't add anything - I am happy with the rest. We will look at each function or file in turn and then you must propose changes/. Please acknowledge.
+
+# 2024-08-15 16:53:01.059764
++I need your help to refine the formatting of this web app - formatting only - don't add anything - I am happy with the rest. We will look at each function or file in turn and then you must propose changes/. Please acknowledge.
+
+# 2024-08-15 16:53:55.759910
++looking at the select location file please tell me how it is rendered.  And please at no time mess with the viewport settings
+
+# 2024-08-15 16:58:49.230685
++I don't see any change.  let me make it clearer.  Using the same button format used at the moment.  there should be four columns of buttons.  There should be eight rows.  Each row must look like this
++[Left Back] [Left front] *shelf number* [right front] [right back].  Please acknowledge before changing anything.
+
+# 2024-08-15 17:00:51.538325
++idiot - you aren't changing anything - just forget about it - I will do it myself

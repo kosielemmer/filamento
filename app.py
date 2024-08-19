@@ -190,7 +190,7 @@ async def select_location_post(request: Request, filament_id: int, location: str
         conn.commit()
         cur.close()
         conn.close()
-        return RedirectResponse(url=app.url_path_for('index'), status_code=303)
+        return RedirectResponse(url=app.url_path_for('select_manufacturer'), status_code=303)
     except Exception as e:
         logger.error(f"Error in select_location: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error in select_location: {str(e)}")

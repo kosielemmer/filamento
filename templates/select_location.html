@@ -1,36 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Select Location for {{ manufacturer_name }} {{ filament_type }}</h1>
-<div style="background-color: #{{ color_hex_code }}; width: 50px; height: 50px; display: inline-block; vertical-align: middle; margin-right: 10px;"></div>
+  <div style="background-color: #{{ color_hex_code }}; width: 50px; height: 50px; display: inline-block; vertical-align: middle; margin-right: 10px;"></div>
 
-
-<form action="{{ url_for('select_location_post', filament_id=filament_id) }}" method="post">
+  <form action="{{ url_for('select_location_post', filament_id=filament_id) }}" method="post">
     <input type="hidden" name="filament_id" value="{{ filament_id }}">
     <input type="hidden" name="quantity" value="1">
     <div class="location-grid-container">
-        <div class="location-grid">
-            {% for shelf in range(1, 9) %}
-                <div class="grid-row">
-                    {% for position in ['LF', 'LB'] %}
-                        {% set location = shelf|string + '-' + position %}
-                        <button type="submit" name="location" value="{{ location }}" class="btn btn-small">
-                            {{ position }}
-                        </button>
-                    {% endfor %}
-                    <div class="shelf-label">Shelf {{ shelf }}</div>
-                    {% for position in ['RF', 'RB'] %}
-                        {% set location = shelf|string + '-' + position %}
-                        <button type="submit" name="location" value="{{ location }}" class="btn btn-small">
-                            {{ position }}
-                        </button>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
+      <div class="location-grid">
+        {% for shelf in range(1, 9) %}
+          {% for position in ['LB', 'LF'] %}
+            {% set location = shelf|string + '-' + position %}
+            <button type="submit" name="location" value="{{ location }}" class="btn btn-small">
+              {{ position }}
+            </button>
+          {% endfor %}
+          <div class="shelf-label">Shelf {{ shelf }}</div>
+          {% for position in ['RF', 'RB'] %}
+            {% set location = shelf|string + '-' + position %}
+            <button type="submit" name="location" value="{{ location }}" class="btn btn-small">
+              {{ position }}
+            </button>
+          {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-</form>
-
-
-
+  </form>
 {% endblock %}

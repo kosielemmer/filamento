@@ -17,4 +17,18 @@
     {% endif %}
     </div>
 </form>
+
+<script>
+  function setContrastingTextColor(button) {
+    var bgColor = button.style.backgroundColor;
+    var rgb = bgColor.match(/\d+/g);
+    var brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+    button.style.color = brightness > 125 ? 'black' : 'white';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.btn-color');
+    buttons.forEach(setContrastingTextColor);
+  });
+</script>
 {% endblock %}
