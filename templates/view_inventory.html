@@ -62,7 +62,7 @@ $(document).ready(function() {
             this.api().columns().every(function() {
                 var column = this;
                 var select = $('<select style="width:100%"><option value=""></option></select>')
-                    .appendTo($(column.header()))
+                    .appendTo($('<div>').appendTo($(column.header()).empty()))
                     .on('change', function() {
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
@@ -76,6 +76,11 @@ $(document).ready(function() {
                 column.data().unique().sort().each(function(d, j) {
                     select.append('<option value="'+d+'">'+d+'</option>')
                 });
+            });
+
+            $('#inventoryTable thead tr').clone(true).appendTo('#inventoryTable thead');
+            $('#inventoryTable thead tr:eq(1) th').each(function(i) {
+                $(this).html('');
             });
         }
     });
