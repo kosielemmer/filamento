@@ -61,12 +61,20 @@ $(document).ready(function() {
         "initComplete": function(settings, json) {
             this.api().columns().every(function() {
                 var column = this;
-                var header = $(column.header());
-                header.html(header.text() + '<br><input type="text" placeholder="Filter" style="width:100%"/>');
-                $('input', header).on('keyup change', function() {
-                    if (column.search() !== this.value) {
-                        column.search(this.value).draw();
-                    }
+                var select = $('<select style="width:100%"><option value=""></option></select>')
+                    .appendTo($(column.header()))
+                    .on('change', function() {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search(val ? '^'+val+'$' : '', true, false)
+                            .draw();
+                    });
+ 
+                column.data().unique().sort().each(function(d, j) {
+                    select.append('<option value="'+d+'">'+d+'</option>')
                 });
             });
         }
