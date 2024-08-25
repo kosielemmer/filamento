@@ -438,8 +438,8 @@ def get_ip():
 
 if __name__ == '__main__':
     host_ip = get_ip()
-    port = 8000
-    while port < 8020:  # Try ports 8000 to 8019
+    port = 8001
+    while port < 8021:  # Try ports 8001 to 8020
         try:
             print(f"Attempting to start server on port {port}")
             uvicorn.run(app, host="0.0.0.0", port=port)
@@ -448,7 +448,7 @@ if __name__ == '__main__':
             print(f"Port {port} is in use, trying next port")
             port += 1
     else:
-        print("Unable to find an available port. Please close some applications and try again.")
+        print("Unable to find an available port between 8001 and 8020. Please close some applications and try again.")
     
     if port < 8020:
         print(f"Server IP Address: {host_ip}")
