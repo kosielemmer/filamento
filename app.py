@@ -88,6 +88,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 templates.env.globals["url_for"] = app.url_path_for
 
+def custom_url_for(name: str, **path_params: Any) -> str:
+    return app.url_path_for(name, **path_params)
+
+templates.env.globals["url_for"] = custom_url_for
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "version": __version__}
@@ -96,8 +101,8 @@ async def health_check():
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/select_manufacturer", response_class=HTMLResponse, name="select_manufacturer")
-async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
+@app.get("/select_manufacturer", response_class=HTMLResponse, name="select_manufacturer_get")
+async def select_manufacturer_get(request: Request, db: Session = Depends(get_db)):
     try:
         logger.info("Fetching manufacturers from database")
         manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
