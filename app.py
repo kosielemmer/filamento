@@ -7,7 +7,7 @@ import logging
 import re
 from typing import List
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, func
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, func, sql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 
@@ -23,6 +23,9 @@ SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_P
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
+def get_db_connection():
+    return engine.connect()
 
 # Define SQLAlchemy models
 class Manufacturer(Base):
