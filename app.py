@@ -458,3 +458,33 @@ if __name__ == '__main__':
     print("\nTo remove the port forwarding when you're done:")
     print("   netsh interface portproxy delete v4tov4 listenport=8000 listenaddress=0.0.0.0")
     uvicorn.run(app, host="0.0.0.0", port=8000)
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# Setup templates
+templates = Jinja2Templates(directory="templates")
+
+# Setup static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Database setup (replace with your actual database URL)
+DATABASE_URL = "postgresql://user:password@localhost/dbname"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Root route
+@app.get("/")
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+# Add more routes and functionality here
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
