@@ -74,9 +74,46 @@ These commands will create the Manufacturer, Filament, and Inventory tables with
 
 The application requires a configuration file to connect to the database and the Spoolman API for exporting data.
 
+## Development Setup
+
+1. Ensure you have Python 3.7+ installed on your system.
+
+2. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+3. Create a virtual environment:
+   ```
+   python -m venv venv
+   ```
+
+4. Activate the virtual environment:
+   - On Windows:
+     ```
+     venv\Scripts\activate
+     ```
+   - On macOS and Linux:
+     ```
+     source venv/bin/activate
+     ```
+
+5. Install the required packages:
+   ```
+   pip install -r requirements.txt
+   ```
+
 ## Usage
 
-To run the application, ensure that you have Python and Flask installed, and then execute the `app.py` script. The web interface can be accessed via a web browser.
+To run the application:
+
+1. Ensure your virtual environment is activated.
+2. Execute the `app.py` script:
+   ```
+   python app.py
+   ```
+3. Access the web interface via a web browser at the URL provided in the console output.
 
 ## Customization
 
