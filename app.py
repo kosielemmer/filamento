@@ -438,11 +438,15 @@ import socket
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        # doesn't even have to be reachable
-        s.connect(('10.255.255.255', 1))
+        # Try to get a non-local IP
+        s.connect(('8.8.8.8', 80))
         IP = s.getsockname()[0]
     except Exception:
-        IP = '127.0.0.1'
+        # If that fails, fall back to local IP detection
+        try:
+            IP = socket.gethostbyname(socket.gethostname())
+        except Exception:
+            IP = '127.0.0.1'
     finally:
         s.close()
     return IP
@@ -452,21 +456,23 @@ if __name__ == '__main__':
     port = 8001
     while port < 8021:  # Try ports 8001 to 8020
         try:
-            print(f"Attempting to start server on port {port}")
-            uvicorn.run(app, host="0.0.0.0", port=port)
+            print(f"Attempting to start server on {host_ip}:{port}")
+            uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
             break
-        except OSError:
-            print(f"Port {port} is in use, trying next port")
+        except OSError as e:
+            print(f"Port {port} is in use, trying next port. Error: {e}")
             port += 1
     else:
         print("Unable to find an available port between 8001 and 8020. Please close some applications and try again.")
     
-    if port < 8020:
-        print(f"Server IP Address: {host_ip}")
-        print(f"Uvicorn running on http://{host_ip}:{port}")
+    if port < 8021:
+        print(f"\nServer started successfully!")
+        print(f"Local access URL: http://localhost:{port}")
+        print(f"Network access URL: http://{host_ip}:{port}")
         print("\nTo access the application from other devices on your network:")
         print(f"1. Make sure they are connected to the same network")
         print(f"2. Open a web browser and go to: http://{host_ip}:{port}")
+        print("\nPress CTRL+C to stop the server.")
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
