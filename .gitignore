@@ -6,3 +6,4 @@ aider.config.yaml
 aider-openai.shgit
 # Ignore the entire venv directory
 venv/
+venvforfilamento/

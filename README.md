@@ -3,7 +3,16 @@ Filament Inventory Application
 
 ## Overview
 
-This application is designed to manage a filament inventory for 3D printing. It interfaces with a PostgreSQL database and provides a web interface for users to interact with the inventory. The application is written in Python and uses Flask as the web framework.
+This application is designed to manage a filament inventory for 3D printing. It interfaces with a PostgreSQL database and provides a web interface for users to interact with the inventory. The application is written in Python and uses FastAPI as the web framework.
+
+## Version
+
+Current version: 2.6
+
+### Changelog
+
+- Version 2.6: [Add a brief description of changes in this version]
+- Version 2.5: Improved network accessibility for FastAPI application
 
 
 ## Ground rules

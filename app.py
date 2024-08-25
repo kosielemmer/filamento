@@ -7,7 +7,7 @@ import socket
 from fastapi import FastAPI, Request, Form, HTTPException, Depends
 from fastapi.responses import JSONResponse
 
-__version__ = "2.5"
+__version__ = "2.6"
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse

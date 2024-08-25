@@ -12,7 +12,7 @@
                     <select class="form-control" id="manufacturer_id" name="manufacturer_id" required>
                         <option value="">Select a manufacturer</option>
                         {% for manufacturer in manufacturers %}
-                        <option value="{{ manufacturer[0] }}">{{ manufacturer[1] }}</option>
+                        <option value="{{ manufacturer.id }}">{{ manufacturer.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
