@@ -42,9 +42,11 @@ def get_db_connection():
     return engine.connect()
 
 # Define SQLAlchemy models
+from sqlalchemy import Column, Integer, String, Sequence
+
 class Manufacturer(Base):
     __tablename__ = "manufacturer"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, Sequence('manufacturer_id_seq'), primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
 
 class Filament(Base):
@@ -327,13 +329,31 @@ async def data_maintenance(request: Request):
 @app.get('/manage_manufacturers', name="manage_manufacturers")
 async def manage_manufacturers_get(request: Request, db: Session = Depends(get_db)):
     manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
-    return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
+    return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers, 'error': None})
+
+from sqlalchemy.exc import IntegrityError
 
 @app.post('/manage_manufacturers')
 async def manage_manufacturers_post(request: Request, manufacturer_name: str = Form(...), db: Session = Depends(get_db)):
-    new_manufacturer = Manufacturer(name=manufacturer_name)
-    db.add(new_manufacturer)
-    db.commit()
+    try:
+        new_manufacturer = Manufacturer(name=manufacturer_name)
+        db.add(new_manufacturer)
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        return templates.TemplateResponse('manage_manufacturers.html', {
+            'request': request, 
+            'manufacturers': db.query(Manufacturer).order_by(Manufacturer.name).all(),
+            'error': 'A manufacturer with this name already exists.'
+        })
+    except Exception as e:
+        db.rollback()
+        return templates.TemplateResponse('manage_manufacturers.html', {
+            'request': request, 
+            'manufacturers': db.query(Manufacturer).order_by(Manufacturer.name).all(),
+            'error': f'An error occurred: {str(e)}'
+        })
+    
     manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
     return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
 
