@@ -11,6 +11,12 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, func,
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 # Load environment variables
 load_dotenv()
 
@@ -19,10 +25,6 @@ logger.debug(f"DB_USER: {os.getenv('DB_USER')}")
 logger.debug(f"DB_PASSWORD: {'*' * len(os.getenv('DB_PASSWORD', ''))}") # Don't log actual password
 logger.debug(f"DB_HOST: {os.getenv('DB_HOST')}")
 logger.debug(f"DB_DATABASE: {os.getenv('DB_DATABASE')}")
-
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 # Database setup
 SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST', 'localhost')}/{os.getenv('DB_DATABASE')}"
