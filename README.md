@@ -78,13 +78,13 @@ The application requires a configuration file to connect to the database and the
 
 1. Ensure you have Python 3.7+ installed on your system.
 
-2. Clone the repository:
+2. If you haven't already, clone the repository:
    ```
    git clone <repository-url>
    cd <repository-directory>
    ```
 
-3. Create a virtual environment:
+3. Create a virtual environment in the repository directory:
    ```
    python -m venv venv
    ```
@@ -103,6 +103,8 @@ The application requires a configuration file to connect to the database and the
    ```
    pip install -r requirements.txt
    ```
+
+6. You're now ready to start development within the virtual environment!
 
 ## Usage
 
