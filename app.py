@@ -35,7 +35,7 @@ load_dotenv()
 
 # Database setup
 SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT', '5432')}/{os.getenv('DB_DATABASE')}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
@@ -48,7 +48,7 @@ from sqlalchemy import Column, Integer, String, Sequence
 class Manufacturer(Base):
     __tablename__ = "manufacturer"
     id = Column(Integer, Sequence('manufacturer_id_seq'), primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
+    name = Column(String(100), unique=True, index=True)
 
 class Filament(Base):
     __tablename__ = "filament"
@@ -77,6 +77,8 @@ def get_db():
 async def lifespan(app: FastAPI):
     # Startup
     logger.info("Application is starting up")
+    Base.metadata.create_all(bind=engine)
+    logger.info("Database tables created")
     yield
     # Shutdown
     logger.info("Application is shutting down")
@@ -95,11 +97,15 @@ async def index(request: Request):
 
 @app.get("/select_manufacturer", response_class=HTMLResponse)
 async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
-    logger.info("Fetching manufacturers from database")
-    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
-    manufacturers = [{'id': m.id, 'name': m.name} for m in manufacturers]
-    logger.info(f"Found {len(manufacturers)} manufacturers: {manufacturers}")
-    return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
+    try:
+        logger.info("Fetching manufacturers from database")
+        manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
+        manufacturers = [{'id': m.id, 'name': m.name} for m in manufacturers]
+        logger.info(f"Found {len(manufacturers)} manufacturers: {manufacturers}")
+        return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
+    except Exception as e:
+        logger.error(f"Error fetching manufacturers: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching manufacturers: {str(e)}")
 
 @app.get('/select_filament/{manufacturer_id}')
 async def select_filament(request: Request, manufacturer_id: int, db: Session = Depends(get_db)):
