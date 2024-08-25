@@ -435,16 +435,11 @@ def get_ip():
 
 if __name__ == '__main__':
     host_ip = get_ip()
-    print(f"WSL IP Address: {host_ip}")
+    print(f"Server IP Address: {host_ip}")
     print(f"Uvicorn running on http://{host_ip}:8000")
-    print("\nTo access the application from your Windows host or other devices on your network:")
-    print("1. Open PowerShell as Administrator on your Windows host")
-    print("2. Run the following command to set up port forwarding:")
-    print(f"   netsh interface portproxy add v4tov4 listenport=8000 listenaddress=0.0.0.0 connectport=8000 connectaddress={host_ip}")
-    print("3. Access the application using your Windows host's IP address:")
-    print("   http://<Windows_Host_IP>:8000")
-    print("\nTo remove the port forwarding when you're done:")
-    print("   netsh interface portproxy delete v4tov4 listenport=8000 listenaddress=0.0.0.0")
+    print("\nTo access the application from other devices on your network:")
+    print(f"1. Make sure they are connected to the same network")
+    print(f"2. Open a web browser and go to: http://{host_ip}:8000")
     uvicorn.run(app, host="0.0.0.0", port=8000)
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
