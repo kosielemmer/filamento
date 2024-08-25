@@ -185,3 +185,6 @@ This application is designed to manage a 3D printing filament inventory. It prov
 Each screen interacts with the database to fetch or update relevant information. The application uses SQLite as its database management system.
 
 For detailed information about the database design, please refer to the `database_design.json` file in this repository.
+## Important Note
+
+Do not use port 8000 as it is used by another service.
