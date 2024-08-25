@@ -482,19 +482,10 @@ def get_ip():
 
 if __name__ == '__main__':
     host_ip = get_ip()
-    port = 8001
-    while port < 8101:  # Try ports 8001 to 8100
-        try:
-            print(f"Attempting to start server on {host_ip}:{port}")
-            uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
-            break
-        except OSError as e:
-            print(f"Port {port} is in use, trying next port. Error: {e}")
-            port += 1
-    else:
-        print("Unable to find an available port between 8001 and 8100. Please close some applications and try again.")
-    
-    if port < 8101:
+    port = 8090
+    print(f"Attempting to start server on {host_ip}:{port}")
+    try:
+        uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
         print(f"\nServer started successfully!")
         print(f"Local access URL: http://localhost:{port}")
         print(f"Network access URL: http://{host_ip}:{port}")
@@ -502,6 +493,9 @@ if __name__ == '__main__':
         print(f"1. Make sure they are connected to the same network")
         print(f"2. Open a web browser and go to: http://{host_ip}:{port}")
         print("\nPress CTRL+C to stop the server.")
+    except OSError as e:
+        print(f"Unable to start server on port {port}. Error: {e}")
+        print("Please ensure the port is not in use and try again.")
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
