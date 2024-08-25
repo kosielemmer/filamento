@@ -1,17 +1,18 @@
-from fastapi import FastAPI, Request, Form, HTTPException, Depends
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 import os
 import logging
 import re
 from typing import List
+import socket
+
+from fastapi import FastAPI, Request, Form, HTTPException, Depends
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, func, sql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
-
-import logging
+import uvicorn
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -94,13 +95,9 @@ async def select_filament(request: Request, manufacturer_id: int, db: Session = 
     return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
 @app.get('/select_filament_type/{manufacturer_id}')
-async def select_filament_type_get(request: Request, manufacturer_id: int):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
-    types = cur.fetchall()
-    cur.close()
-    conn.close()
+async def select_filament_type_get(request: Request, manufacturer_id: int, db: Session = Depends(get_db)):
+    types = db.query(Filament.type).filter(Filament.manufacturer_id == manufacturer_id).distinct().order_by(Filament.type).all()
+    types = [t[0] for t in types]
     return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
 @app.post('/select_filament_type/{manufacturer_id}')
@@ -108,21 +105,11 @@ async def select_filament_type_post(request: Request, manufacturer_id: int, fila
     try:
         return RedirectResponse(url=f'/select_color?manufacturer_id={manufacturer_id}&filament_type={filament_type}', status_code=303)
     except Exception as e:
-        app.logger.error(f"Error in select_filament_type_post: {str(e)}")
+        logger.error(f"Error in select_filament_type_post: {str(e)}")
         return templates.TemplateResponse('error.html', {
             'request': request,
             'error': f"An error occurred: {str(e)}"
         })
-
-@app.get('/select_filament_type/{manufacturer_id}')
-async def select_filament_type_get(request: Request, manufacturer_id: int):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
-    types = cur.fetchall()
-    cur.close()
-    conn.close()
-    return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
 @app.get('/select_shelf')
 async def select_shelf_get(request: Request, manufacturer_id: int, filament_type: str, color_name: str, color_hex_code: str):
