@@ -93,7 +93,7 @@ async def health_check():
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/select_manufacturer", response_class=HTMLResponse, name="select_manufacturer")
+@app.get("/select_manufacturer", response_class=HTMLResponse)
 async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
     logger.info("Fetching manufacturers from database")
     manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
