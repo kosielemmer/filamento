@@ -1,14 +1,15 @@
-from fastapi import FastAPI, Request, Form, HTTPException
+from fastapi import FastAPI, Request, Form, HTTPException, Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 import os
-import psycopg2
-from psycopg2 import sql
 import logging
 import re
 from typing import List
 from dotenv import load_dotenv
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session
 
 # Load environment variables
 load_dotenv()
@@ -17,49 +18,54 @@ load_dotenv()
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
+# Database setup
+SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}/{os.getenv('DB_DATABASE')}"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
 
-# Configure logging
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s %(levelname)s: %(message)s',
-    handlers=[
-        logging.FileHandler('app.log'),
-        logging.StreamHandler()
-    ]
-)
+# Define SQLAlchemy models
+class Manufacturer(Base):
+    __tablename__ = "manufacturer"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
 
-def get_db_connection():
-    conn = psycopg2.connect(
-        host=os.getenv('DB_HOST', '192.168.1.12'),
-        database=os.getenv('DB_DATABASE', 'filamento'),
-        user=os.getenv('DB_USER', 'filamento'),
-        password=os.getenv('DB_PASSWORD', 'filamento')
-    )
-    return conn
+class Filament(Base):
+    __tablename__ = "filament"
+    id = Column(Integer, primary_key=True, index=True)
+    manufacturer_id = Column(Integer, ForeignKey("manufacturer.id"))
+    type = Column(String)
+    color_name = Column(String)
+    color_hex_code = Column(String)
+
+class Inventory(Base):
+    __tablename__ = "inventory"
+    id = Column(Integer, primary_key=True, index=True)
+    filament_id = Column(Integer, ForeignKey("filament.id"))
+    location = Column(String)
+    quantity = Column(Integer)
+
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
-
-# Add this line to make the static files available
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/select_manufacturer", response_class=HTMLResponse)
-async def select_manufacturer(request: Request):
+async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
     logger.info("Fetching manufacturers from database")
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT id, name FROM manufacturer ORDER BY name;")
-    manufacturers = cur.fetchall()
-    manufacturers = [{'id': m[0], 'name': m[1]} for m in manufacturers]
-    cur.close()
-    conn.close()
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
+    manufacturers = [{'id': m.id, 'name': m.name} for m in manufacturers]
     logger.info(f"Found {len(manufacturers)} manufacturers: {manufacturers}")
     return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
 

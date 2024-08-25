@@ -104,7 +104,15 @@ The application requires a configuration file to connect to the database and the
    pip install -r requirements.txt
    ```
 
-6. You're now ready to start development within the virtual environment!
+6. Create a `.env` file in the project root and add your database configuration:
+   ```
+   DB_HOST=your_host
+   DB_DATABASE=your_database
+   DB_USER=your_username
+   DB_PASSWORD=your_password
+   ```
+
+7. You're now ready to start development within the virtual environment!
 
 ## Usage
 
@@ -115,7 +123,12 @@ To run the application:
    ```
    python app.py
    ```
-3. Access the web interface via a web browser at the URL provided in the console output.
+3. The application will print instructions for accessing it, including:
+   - The WSL IP address
+   - How to set up port forwarding from Windows
+   - How to access the application from your network
+
+4. Follow the printed instructions to access the web interface via a web browser.
 
 ## Customization
 
