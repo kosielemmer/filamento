@@ -12,10 +12,11 @@ RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
 # Create a non-root user and switch to it
 RUN adduser --disabled-password --gecos '' appuser
+RUN chown -R appuser:appuser /app
 USER appuser
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "0.0.0.0:8080"]
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "0.0.0.0:8080", "--access-logfile", "-", "--error-logfile", "-"]

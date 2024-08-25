@@ -3,11 +3,11 @@ import logging
 import re
 from typing import List
 import socket
+import asyncio
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, Form, HTTPException, Depends
 from fastapi.responses import JSONResponse
-
-__version__ = "2.6"
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
@@ -17,29 +17,27 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 import uvicorn
 
+__version__ = "2.7"
+
 # Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("app.log"),
+        logging.StreamHandler()
+    ]
+)
 logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
 
-# Debug logging for environment variables
-logger.debug(f"DB_USER: {os.getenv('DB_USER')}")
-logger.debug(f"DB_PASSWORD: {'*' * len(os.getenv('DB_PASSWORD', ''))}") # Don't log actual password
-logger.debug(f"DB_HOST: {os.getenv('DB_HOST')}")
-logger.debug(f"DB_DATABASE: {os.getenv('DB_DATABASE')}")
-
 # Database setup
 SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT', '5432')}/{os.getenv('DB_DATABASE')}"
-try:
-    engine = create_engine(SQLALCHEMY_DATABASE_URL)
-    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base = declarative_base()
-    logger.info(f"Database connection established successfully. URL: {SQLALCHEMY_DATABASE_URL}")
-except Exception as e:
-    logger.error(f"Failed to connect to the database. Error: {str(e)}")
-    raise
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
 
 def get_db_connection():
     return engine.connect()
@@ -75,9 +73,21 @@ def get_db():
     finally:
         db.close()
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    logger.info("Application is starting up")
+    yield
+    # Shutdown
+    logger.info("Application is shutting down")
+
+app = FastAPI(lifespan=lifespan)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "version": __version__}
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
