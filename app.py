@@ -5,6 +5,9 @@ from typing import List
 import socket
 
 from fastapi import FastAPI, Request, Form, HTTPException, Depends
+from fastapi.responses import JSONResponse
+
+__version__ = "2.5"
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
@@ -431,6 +434,10 @@ async def get_filament_types(manufacturer_id: int, db: Session = Depends(get_db)
     filament_types = db.query(Filament.type).filter(Filament.manufacturer_id == manufacturer_id).distinct().order_by(Filament.type).all()
     filament_types = [t[0] for t in filament_types]
     return JSONResponse(content=filament_types)
+
+@app.get("/version")
+async def get_version():
+    return JSONResponse(content={"version": __version__})
 
 import uvicorn
 import socket
