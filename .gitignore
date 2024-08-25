@@ -4,5 +4,5 @@
 .aider.input.history
 aider.config.yaml
 aider-openai.shgit
-venv*
-/venv 
+# Ignore the entire venv directory
+/venv/
