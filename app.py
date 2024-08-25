@@ -14,15 +14,26 @@ from sqlalchemy.orm import sessionmaker, Session, relationship
 # Load environment variables
 load_dotenv()
 
+# Debug logging for environment variables
+logger.debug(f"DB_USER: {os.getenv('DB_USER')}")
+logger.debug(f"DB_PASSWORD: {'*' * len(os.getenv('DB_PASSWORD', ''))}") # Don't log actual password
+logger.debug(f"DB_HOST: {os.getenv('DB_HOST')}")
+logger.debug(f"DB_DATABASE: {os.getenv('DB_DATABASE')}")
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 # Database setup
-SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}/{os.getenv('DB_DATABASE')}"
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST', 'localhost')}/{os.getenv('DB_DATABASE')}"
+try:
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    Base = declarative_base()
+    logger.info(f"Database connection established successfully. URL: {SQLALCHEMY_DATABASE_URL}")
+except Exception as e:
+    logger.error(f"Failed to connect to the database. Error: {str(e)}")
+    raise
 
 def get_db_connection():
     return engine.connect()
