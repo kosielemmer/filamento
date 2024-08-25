@@ -338,13 +338,8 @@ async def manage_manufacturers_post(request: Request, manufacturer_name: str = F
     return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.get('/manage_filaments', name="manage_filaments")
-async def manage_filaments_get(request: Request):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
-    manufacturers = cur.fetchall()
-    cur.close()
-    conn.close()
+async def manage_filaments_get(request: Request, db: Session = Depends(get_db)):
+    manufacturers = db.query(Manufacturer.id, Manufacturer.name).order_by(Manufacturer.name).all()
     return templates.TemplateResponse('manage_filaments.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.post('/manage_filaments')
@@ -353,26 +348,27 @@ async def manage_filaments_post(
     manufacturer_id: int = Form(...),
     filament_type: str = Form(...),
     color_name: str = Form(...),
-    color_hex_code: str = Form(...)
+    color_hex_code: str = Form(...),
+    db: Session = Depends(get_db)
 ):
-    conn = get_db_connection()
-    cur = conn.cursor()
-
     # Check for duplication
-    cur.execute("SELECT * FROM filament WHERE manufacturer_id = %s AND type = %s AND color_name = %s", 
-                (manufacturer_id, filament_type, color_name))
-    existing_filament = cur.fetchone()
+    existing_filament = db.query(Filament).filter(
+        Filament.manufacturer_id == manufacturer_id,
+        Filament.type == filament_type,
+        Filament.color_name == color_name
+    ).first()
 
     if not existing_filament:
-        cur.execute("INSERT INTO filament (manufacturer_id, type, color_name, color_hex_code) VALUES (%s, %s, %s, %s)",
-                    (manufacturer_id, filament_type, color_name, color_hex_code))
-        conn.commit()
+        new_filament = Filament(
+            manufacturer_id=manufacturer_id,
+            type=filament_type,
+            color_name=color_name,
+            color_hex_code=color_hex_code
+        )
+        db.add(new_filament)
+        db.commit()
 
-    cur.execute("SELECT id, name FROM manufacturer ORDER BY name")
-    manufacturers = cur.fetchall()
-
-    cur.close()
-    conn.close()
+    manufacturers = db.query(Manufacturer.id, Manufacturer.name).order_by(Manufacturer.name).all()
 
     return templates.TemplateResponse('manage_filaments.html', {'request': request, 'manufacturers': manufacturers})
 
