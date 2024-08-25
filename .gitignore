@@ -3,4 +3,5 @@
 .aider.chat.history.md
 .aider.input.history
 aider.config.yaml
-aider-openai.shgit 
+aider-openai.shgit
+venv* 
