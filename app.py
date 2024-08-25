@@ -1,9 +1,7 @@
-from fastapi import FastAPI, Request, Form, HTTPException, Depends
+from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 import os
 import psycopg2
 from psycopg2 import sql
