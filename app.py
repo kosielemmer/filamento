@@ -83,7 +83,7 @@ templates = Jinja2Templates(directory="templates")
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/select_manufacturer", response_class=HTMLResponse)
+@app.get("/select_manufacturer", response_class=HTMLResponse, name="select_manufacturer")
 async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
     logger.info("Fetching manufacturers from database")
     manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
