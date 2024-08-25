@@ -7,9 +7,9 @@ import logging
 import re
 from typing import List
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, func
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, relationship
 
 # Load environment variables
 load_dotenv()
@@ -70,14 +70,10 @@ async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("select_manufacturer.html", {"request": request, "manufacturers": manufacturers})
 
 @app.get('/select_filament/{manufacturer_id}')
-async def select_filament(request: Request, manufacturer_id: int):
+async def select_filament(request: Request, manufacturer_id: int, db: Session = Depends(get_db)):
     logger.info(f"Fetching filament types for manufacturer_id: {manufacturer_id}")
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type;", (manufacturer_id,))
-    types = cur.fetchall()
-    cur.close()
-    conn.close()
+    types = db.query(Filament.type).filter(Filament.manufacturer_id == manufacturer_id).distinct().order_by(Filament.type).all()
+    types = [t[0] for t in types]
     logger.info(f"Found filament types: {types}")
     return templates.TemplateResponse('select_filament_type.html', {'request': request, 'manufacturer_id': manufacturer_id, 'types': types})
 
@@ -137,15 +133,13 @@ async def select_shelf_post(
     )
 
 @app.get('/select_color')
-async def select_color_get(request: Request, manufacturer_id: int, filament_type: str):
+async def select_color_get(request: Request, manufacturer_id: int, filament_type: str, db: Session = Depends(get_db)):
     try:
         logger.info(f"Fetching colors for manufacturer_id: {manufacturer_id}, filament_type: {filament_type}")
-        conn = get_db_connection()
-        cur = conn.cursor()
-        cur.execute("SELECT id, color_name, color_hex_code FROM filament WHERE manufacturer_id = %s AND type = %s ORDER BY color_name;", (manufacturer_id, filament_type))
-        colors = cur.fetchall()
-        cur.close() 
-        conn.close()
+        colors = db.query(Filament.id, Filament.color_name, Filament.color_hex_code).filter(
+            Filament.manufacturer_id == manufacturer_id,
+            Filament.type == filament_type
+        ).order_by(Filament.color_name).all()
         logger.info(f"Found colors: {colors}")
         if not colors:
             logger.warning(f'No colors found for {filament_type} from manufacturer ID {manufacturer_id}.')
@@ -310,19 +304,16 @@ async def add_inventory_item(
         raise HTTPException(status_code=500, detail=f"Error adding inventory item: {str(e)}")
 
 @app.get('/view_inventory')
-async def view_inventory(request: Request):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("""
-        SELECT m.name, f.type, f.color_name, f.color_hex_code, i.location 
-        FROM inventory i 
-        JOIN filament f ON i.filament_id = f.id
-        JOIN manufacturer m ON f.manufacturer_id = m.id 
-        ORDER BY m.name, f.type, f.color_name;
-    """)
-    inventory = cur.fetchall()
-    cur.close()
-    conn.close()
+async def view_inventory(request: Request, db: Session = Depends(get_db)):
+    inventory = db.query(
+        Manufacturer.name,
+        Filament.type,
+        Filament.color_name,
+        Filament.color_hex_code,
+        Inventory.location
+    ).join(Filament, Inventory.filament_id == Filament.id
+    ).join(Manufacturer, Filament.manufacturer_id == Manufacturer.id
+    ).order_by(Manufacturer.name, Filament.type, Filament.color_name).all()
 
     return templates.TemplateResponse('view_inventory.html', {'request': request, 'inventory': inventory})
 
@@ -331,25 +322,16 @@ async def data_maintenance(request: Request):
     return templates.TemplateResponse('data_maintenance.html', {'request': request})
 
 @app.get('/manage_manufacturers', name="manage_manufacturers")
-async def manage_manufacturers_get(request: Request):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM manufacturer ORDER BY name")
-    manufacturers = cur.fetchall()
-    cur.close()
-    conn.close()
+async def manage_manufacturers_get(request: Request, db: Session = Depends(get_db)):
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
     return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.post('/manage_manufacturers')
-async def manage_manufacturers_post(request: Request, manufacturer_name: str = Form(...)):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("INSERT INTO manufacturer (name) VALUES (%s)", (manufacturer_name,))
-    conn.commit()
-    cur.execute("SELECT * FROM manufacturer ORDER BY name")
-    manufacturers = cur.fetchall()
-    cur.close()
-    conn.close()
+async def manage_manufacturers_post(request: Request, manufacturer_name: str = Form(...), db: Session = Depends(get_db)):
+    new_manufacturer = Manufacturer(name=manufacturer_name)
+    db.add(new_manufacturer)
+    db.commit()
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
     return templates.TemplateResponse('manage_manufacturers.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.get('/manage_filaments', name="manage_filaments")
@@ -431,13 +413,9 @@ async def manage_colors_post(
     return templates.TemplateResponse('manage_colors.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.get('/get_filament_types/{manufacturer_id}')
-async def get_filament_types(manufacturer_id: int):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT DISTINCT type FROM filament WHERE manufacturer_id = %s ORDER BY type", (manufacturer_id,))
-    filament_types = [row[0] for row in cur.fetchall()]
-    cur.close()
-    conn.close()
+async def get_filament_types(manufacturer_id: int, db: Session = Depends(get_db)):
+    filament_types = db.query(Filament.type).filter(Filament.manufacturer_id == manufacturer_id).distinct().order_by(Filament.type).all()
+    filament_types = [t[0] for t in filament_types]
     return JSONResponse(content=filament_types)
 
 import uvicorn
