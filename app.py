@@ -359,7 +359,7 @@ async def manage_manufacturers_post(request: Request, manufacturer_name: str = F
 
 @app.get('/manage_filaments', name="manage_filaments")
 async def manage_filaments_get(request: Request, db: Session = Depends(get_db)):
-    manufacturers = db.query(Manufacturer.id, Manufacturer.name).order_by(Manufacturer.name).all()
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
     return templates.TemplateResponse('manage_filaments.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.post('/manage_filaments')
@@ -394,7 +394,7 @@ async def manage_filaments_post(
 
 @app.get('/manage_colors', name="manage_colors_get")
 async def manage_colors_get(request: Request, db: Session = Depends(get_db)):
-    manufacturers = db.query(Manufacturer.id, Manufacturer.name).order_by(Manufacturer.name).all()
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
     return templates.TemplateResponse('manage_colors.html', {'request': request, 'manufacturers': manufacturers})
 
 @app.post('/manage_colors')
