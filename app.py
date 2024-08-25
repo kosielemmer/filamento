@@ -86,6 +86,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+templates.env.globals["url_for"] = app.url_path_for
 
 @app.get("/health")
 async def health_check():
@@ -95,7 +96,7 @@ async def health_check():
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/select_manufacturer", response_class=HTMLResponse)
+@app.get("/select_manufacturer", response_class=HTMLResponse, name="select_manufacturer")
 async def select_manufacturer(request: Request, db: Session = Depends(get_db)):
     try:
         logger.info("Fetching manufacturers from database")
