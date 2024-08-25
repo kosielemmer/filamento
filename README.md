@@ -187,4 +187,4 @@ Each screen interacts with the database to fetch or update relevant information.
 For detailed information about the database design, please refer to the `database_design.json` file in this repository.
 ## Important Note
 
-Do not use port 8000 as it is used by another service.
+Note: The application will attempt to start on port 8090. Please ensure this port is available.
