@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: yourdockerhubusername/your-app-name:latest
     ports:
       - "8000:8000"
     environment:
