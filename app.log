@@ -275,3 +275,5 @@ You can install "python-multipart" with:
 pip install python-multipart
 
 2024-08-15 12:11:21,961 DEBUG: Using selector: EpollSelector
+2024-08-25 17:05:02,135 - __main__ - INFO - Application is starting up
+2024-08-25 17:05:02,165 - __main__ - INFO - Database tables created
