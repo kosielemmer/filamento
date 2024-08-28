@@ -34,5 +34,8 @@ USER appuser
 # Make port 8090 available to the world outside this container
 EXPOSE 8090
 
+# Set the Python path to include the current directory
+ENV PYTHONPATH=/app
+
 # Run the application with Uvicorn
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8090", "--workers", "4"]
