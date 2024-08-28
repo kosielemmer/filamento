@@ -113,6 +113,10 @@ async def select_manufacturer_get(request: Request, db: Session = Depends(get_db
         logger.error(f"Error fetching manufacturers: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error fetching manufacturers: {str(e)}")
 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "version": __version__}
+
 @app.get('/select_filament/{manufacturer_id}')
 async def select_filament(request: Request, manufacturer_id: int, db: Session = Depends(get_db)):
     logger.info(f"Fetching filament types for manufacturer_id: {manufacturer_id}")
