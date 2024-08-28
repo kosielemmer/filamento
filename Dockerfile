@@ -36,12 +36,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY . .
 
-# Create a data directory for persistent storage
-RUN mkdir /data && chown -R appuser:appuser /data
-
-# Create a non-root user and switch to it
+# Create a non-root user
 RUN useradd -m -s /bin/bash appuser
-RUN chown -R appuser:appuser /app
+
+# Create a data directory for persistent storage
+RUN mkdir /data && chown -R appuser:appuser /data /app
+
+# Switch to non-root user
 USER appuser
 
 # Make port 8090 available to the world outside this container
