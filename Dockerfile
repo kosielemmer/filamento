@@ -27,6 +27,8 @@ COPY requirements.txt .
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt gunicorn uvicorn
 
+
+
 # Copy the current directory contents into the container at /app
 COPY . .
 
@@ -39,4 +41,4 @@ USER appuser
 EXPOSE 8090
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "0.0.0.0:8090", "--access-logfile", "-", "--error-logfile", "-"]
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app", "--bind", "0.0.0.0:8090", "--access-logfile", "-", "--error-logfile", "-", "python", "app.py"]
