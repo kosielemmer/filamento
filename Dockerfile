@@ -11,15 +11,11 @@ WORKDIR /app
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pip and virtualenv
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir virtualenv
-
-# Create and activate virtual environment
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+# Install pip and upgrade it
+RUN pip install --no-cache-dir --upgrade pip
 
 # Copy the requirements file into the container
 COPY requirements.txt .
