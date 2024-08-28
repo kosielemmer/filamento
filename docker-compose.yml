@@ -5,7 +5,7 @@ services:
     build: .
     image: filament-inventory-app:latest
     ports:
-      - "8090:8090"
+      - "0.0.0.0:8090:8090"
     environment:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
