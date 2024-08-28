@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables
-IMAGE_NAME="your-dockerhub-username/filament-inventory-app"
+IMAGE_NAME="kosielemmer/filamento"
 TAG="latest"
 LOG_FILE="docker_build.log"
 
