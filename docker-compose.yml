@@ -2,11 +2,16 @@ version: '3.8'
 
 services:
   web:
-    image: yourdockerhubusername/your-app-name:latest
+    build: .
+    image: filament-inventory-app:latest
     ports:
-      - "8080:8080"
+      - "8090:8090"
     environment:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT:-5432}
       - DB_DATABASE=${DB_DATABASE}
+    volumes:
+      - ./app:/app
+    restart: unless-stopped
