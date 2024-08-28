@@ -1,3 +1,12 @@
+# Dockerfile for Filament Inventory Application
+# Objectives:
+# 1. Create a lightweight and secure container for the application
+# 2. Ensure all dependencies are properly installed
+# 3. Set up the correct environment for running the app
+# 4. Optimize for performance and resource usage
+
+# Last change: Added comments explaining objectives and last change (current commit)
+
 # Use an official Python runtime as a parent image
 FROM python:3.9.16-slim-buster
 
