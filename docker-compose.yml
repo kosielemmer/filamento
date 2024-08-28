@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: filament-inventory-app:latest
     ports:
       - "0.0.0.0:8090:8090"
@@ -15,3 +17,10 @@ services:
     volumes:
       - ./app:/app
     restart: unless-stopped
+
+  build_logger:
+    image: bash:latest
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: ["bash", "build_and_log.sh"]
