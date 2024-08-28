@@ -40,7 +40,7 @@ COPY . .
 RUN mkdir /data && chown -R appuser:appuser /data
 
 # Create a non-root user and switch to it
-RUN adduser --disabled-password --gecos '' appuser
+RUN useradd -m -s /bin/bash appuser
 RUN chown -R appuser:appuser /app
 USER appuser
 
