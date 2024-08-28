@@ -4,8 +4,9 @@
 # 2. Ensure all dependencies are properly installed
 # 3. Set up the correct environment for running the app
 # 4. Optimize for performance and resource usage
+# 5. Create a data directory for persistent storage
 
-# Last change: Added comments explaining objectives and last change (2024-08-28 12:34:56 UTC)
+# Last change: Added data directory for persistent storage (2024-08-28 14:45:00 UTC)
 
 # Use an official Python runtime as a parent image
 FROM python:3.9.16-slim-buster
@@ -34,6 +35,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY . .
+
+# Create a data directory for persistent storage
+RUN mkdir /data && chown -R appuser:appuser /data
 
 # Create a non-root user and switch to it
 RUN adduser --disabled-password --gecos '' appuser

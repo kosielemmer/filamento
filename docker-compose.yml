@@ -16,11 +16,8 @@ services:
       - DB_DATABASE=${DB_DATABASE}
     volumes:
       - ./app:/app
+      - filament_data:/data
     restart: unless-stopped
 
-  build_logger:
-    image: bash:latest
-    volumes:
-      - .:/workspace
-    working_dir: /workspace
-    command: ["bash", "build_and_log.sh"]
+volumes:
+  filament_data:
