@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()
-
+#this is good now
 # Database setup
 DB_USER = os.getenv('DB_USER')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
