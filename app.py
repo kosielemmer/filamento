@@ -288,6 +288,39 @@ async def get_filament_types(manufacturer_id: int, db: Session = Depends(get_db)
     filament_types = [t[0] for t in filament_types]
     return JSONResponse(content=filament_types)
 
+@app.get('/manage_colors', name="manage_colors")
+async def manage_colors_get(request: Request, db: Session = Depends(get_db)):
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
+    return templates.TemplateResponse('manage_colors.html', {'request': request, 'manufacturers': manufacturers})
+
+@app.post('/manage_colors')
+async def manage_colors_post(
+    request: Request,
+    manufacturer_id: int = Form(...),
+    filament_type: str = Form(...),
+    color_name: str = Form(...),
+    color_hex_code: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    existing_filament = db.query(Filament).filter(
+        Filament.manufacturer_id == manufacturer_id,
+        Filament.type == filament_type,
+        Filament.color_name == color_name
+    ).first()
+
+    if not existing_filament:
+        new_filament = Filament(
+            manufacturer_id=manufacturer_id,
+            type=filament_type,
+            color_name=color_name,
+            color_hex_code=color_hex_code
+        )
+        db.add(new_filament)
+        db.commit()
+
+    manufacturers = db.query(Manufacturer).order_by(Manufacturer.name).all()
+    return templates.TemplateResponse('manage_colors.html', {'request': request, 'manufacturers': manufacturers})
+
 @app.get("/version")
 async def get_version():
     return JSONResponse(content={"version": __version__})
