@@ -55,4 +55,4 @@ WORKDIR /app
 ENV PYTHONPATH=/app
 
 # Run the application with Uvicorn
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8090", "--workers", "4"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8090", "--workers", "4", "--reload"]
