@@ -31,15 +31,6 @@ else
     exit 1
 fi
 
-# Tag the Docker image
-log_message "Tagging Docker image"
-if docker tag filament-inventory-app:latest kosielemmer/filamento:latest 2>&1 | tee -a "$LOG_FILE"; then
-    log_message "Docker image tagged successfully"
-else
-    log_message "Failed to tag Docker image. Please check $LOG_FILE for details"
-    exit 1
-fi
-
 # Push the Docker image to DockerHub
 log_message "Pushing Docker image to DockerHub"
 if docker push kosielemmer/filamento:latest 2>&1 | tee -a "$LOG_FILE"; then
@@ -49,4 +40,4 @@ else
     exit 1
 fi
 
-log_message "Build, tag, and push process completed"
+log_message "Build and push process completed"
