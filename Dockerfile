@@ -34,7 +34,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
-COPY . .
+COPY . /app
 
 # Create a non-root user
 RUN useradd -m -s /bin/bash appuser
@@ -47,6 +47,9 @@ USER appuser
 
 # Make port 8090 available to the world outside this container
 EXPOSE 8090
+
+# Set the working directory
+WORKDIR /app
 
 # Set the Python path to include the current directory
 ENV PYTHONPATH=/app

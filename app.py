@@ -12,7 +12,6 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, func,
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 from sqlalchemy.exc import IntegrityError
-import uvicorn
 
 __version__ = "2.8"
 
@@ -292,6 +291,3 @@ async def get_filament_types(manufacturer_id: int, db: Session = Depends(get_db)
 @app.get("/version")
 async def get_version():
     return JSONResponse(content={"version": __version__})
-
-if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=8090, log_level="info")
