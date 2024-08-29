@@ -13,7 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 from sqlalchemy.exc import IntegrityError
 
-__version__ = "2.8"
+__version__ = "3.0"
 
 # Configure logging
 logging.basicConfig(

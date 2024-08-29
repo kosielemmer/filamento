@@ -7,10 +7,12 @@ This application is designed to manage a filament inventory for 3D printing. It 
 
 ## Version
 
-Current version: 2.6
+Current version: 3.0
 
 ### Changelog
 
+- Version 3.0: Major update with improved functionality and bug fixes
+- Version 2.8: Added version endpoint and minor improvements
 - Version 2.6: [Add a brief description of changes in this version]
 - Version 2.5: Improved network accessibility for FastAPI application
 
