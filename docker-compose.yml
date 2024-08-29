@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   web:
@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     image: filament-inventory-app:latest
     ports:
-      - "0.0.0.0:8090:8090"
+      - "8090:8090"
     environment:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
