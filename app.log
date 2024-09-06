@@ -292,3 +292,17 @@ pip install python-multipart
 2024-09-06 16:59:42,210 - __main__ - INFO - Found 15 manufacturers: [{'id': 13, 'name': '3d Printz'}, {'id': 1, 'name': 'Bambulabs'}, {'id': 15, 'name': 'Colorfabb'}, {'id': 7, 'name': 'Eryone'}, {'id': 4, 'name': 'eSun'}, {'id': 8, 'name': 'Formfutura'}, {'id': 9, 'name': 'Hatchbox'}, {'id': 5, 'name': 'Igus'}, {'id': 6, 'name': 'Ooznest'}, {'id': 3, 'name': 'Overture'}, {'id': 12, 'name': 'PLA MAX'}, {'id': 11, 'name': 'Prima Filament'}, {'id': 14, 'name': 'Protopasta'}, {'id': 2, 'name': 'Sunlu'}, {'id': 10, 'name': 'Voxelab'}]
 2024-09-06 16:59:43,960 - __main__ - INFO - Fetching filament types for manufacturer_id: 1
 2024-09-06 16:59:43,962 - __main__ - INFO - Found filament types: ['ABS', 'ABS GF', 'ASA', 'PA6-CF', 'PA6-GF', 'PAHT-CF', 'PC', 'PETG Basic', 'PETG-CF', 'PETG Translucent', 'PLA Aero', 'PLA Basic', 'PLA-CF', 'PLA Galaxy', 'PLA Glow', 'PLA Matte', 'PVA', 'TPU 95A']
+2024-09-06 17:21:41,694 - __main__ - INFO - Application is starting up
+2024-09-06 17:21:41,711 - __main__ - INFO - Database tables created
+2024-09-06 17:21:47,107 - __main__ - INFO - Fetching manufacturers from database
+2024-09-06 17:21:47,113 - __main__ - INFO - Found 15 manufacturers: [{'id': 13, 'name': '3d Printz'}, {'id': 1, 'name': 'Bambulabs'}, {'id': 15, 'name': 'Colorfabb'}, {'id': 7, 'name': 'Eryone'}, {'id': 4, 'name': 'eSun'}, {'id': 8, 'name': 'Formfutura'}, {'id': 9, 'name': 'Hatchbox'}, {'id': 5, 'name': 'Igus'}, {'id': 6, 'name': 'Ooznest'}, {'id': 3, 'name': 'Overture'}, {'id': 12, 'name': 'PLA MAX'}, {'id': 11, 'name': 'Prima Filament'}, {'id': 14, 'name': 'Protopasta'}, {'id': 2, 'name': 'Sunlu'}, {'id': 10, 'name': 'Voxelab'}]
+2024-09-06 17:21:48,281 - __main__ - INFO - Fetching filament types for manufacturer_id: 1
+2024-09-06 17:21:48,284 - __main__ - INFO - Found filament types: ['ABS', 'ABS GF', 'ASA', 'PA6-CF', 'PA6-GF', 'PAHT-CF', 'PC', 'PETG Basic', 'PETG-CF', 'PETG Translucent', 'PLA Aero', 'PLA Basic', 'PLA-CF', 'PLA Galaxy', 'PLA Glow', 'PLA Matte', 'PVA', 'TPU 95A']
+2024-09-06 17:21:49,449 - __main__ - INFO - Fetching colors for manufacturer_id: 1, filament_type: ASA
+2024-09-06 17:21:49,451 - __main__ - INFO - Found colors: [(109, 'Black', '#000000'), (108, 'Blue', '#2140B4'), (105, 'Gray', '#8A949E'), (107, 'Green', '#00A6A0'), (106, 'Red', '#E02928'), (104, 'White', '#FFFAF2')]
+2024-09-06 17:21:52,959 - __main__ - INFO - Fetching manufacturers from database
+2024-09-06 17:21:52,961 - __main__ - INFO - Found 15 manufacturers: [{'id': 13, 'name': '3d Printz'}, {'id': 1, 'name': 'Bambulabs'}, {'id': 15, 'name': 'Colorfabb'}, {'id': 7, 'name': 'Eryone'}, {'id': 4, 'name': 'eSun'}, {'id': 8, 'name': 'Formfutura'}, {'id': 9, 'name': 'Hatchbox'}, {'id': 5, 'name': 'Igus'}, {'id': 6, 'name': 'Ooznest'}, {'id': 3, 'name': 'Overture'}, {'id': 12, 'name': 'PLA MAX'}, {'id': 11, 'name': 'Prima Filament'}, {'id': 14, 'name': 'Protopasta'}, {'id': 2, 'name': 'Sunlu'}, {'id': 10, 'name': 'Voxelab'}]
+2024-09-06 17:21:54,561 - __main__ - INFO - Fetching filament types for manufacturer_id: 15
+2024-09-06 17:21:54,563 - __main__ - INFO - Found filament types: ['PLA']
+2024-09-06 17:21:55,605 - __main__ - INFO - Fetching colors for manufacturer_id: 15, filament_type: PLA
+2024-09-06 17:21:55,607 - __main__ - INFO - Found colors: [(386, 'Festool Green', '#44B93A')]
